@@ -1,4 +1,8 @@
 CalCms::Application.routes.draw do
+  get "settings/index"
+
+  get "dashboard/index"
+
   root :to => "events#index"
   #get "events/index"
 
