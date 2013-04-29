@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20130421065015) do
     t.string   "contact_email",        :limit => 40
     t.integer  "contact_phone"
     t.string   "contact_organization", :limit => 40
+    t.string   "created_by",           :limit => 40
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
   end
@@ -91,23 +92,25 @@ ActiveRecord::Schema.define(:version => 20130421065015) do
     t.string   "option_value", :limit => 125
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
+    t.string   "created_by",   :limit => 40
   end
 
   create_table "parkings", :force => true do |t|
     t.text     "parking_details", :limit => 255
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
+    t.string   "created_by",      :limit => 40
   end
 
   create_table "users", :force => true do |t|
-    t.string   "first_name", :limit => 25
-    t.string   "last_name",  :limit => 50
-    t.string   "email",                    :default => "", :null => false
-    t.string   "username",   :limit => 40,                 :null => false
-    t.string   "password",   :limit => 40,                 :null => false
-    t.string   "status",     :limit => 8,                  :null => false
-    t.datetime "created_at",                               :null => false
-    t.datetime "updated_at",                               :null => false
+    t.string   "first_name",  :limit => 25
+    t.string   "last_name",   :limit => 50
+    t.string   "email",                     :default => "", :null => false
+    t.string   "displayname", :limit => 40,                 :null => false
+    t.string   "password",    :limit => 40,                 :null => false
+    t.string   "status",      :limit => 8,                  :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
   end
 
 end
