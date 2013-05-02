@@ -10,7 +10,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130421065015) do
+ActiveRecord::Schema.define(:version => 20130502031117) do
+
+  create_table "auth_user_pages", :id => false, :force => true do |t|
+    t.integer "auth_user_id"
+    t.integer "page_id"
+  end
+
+  add_index "auth_user_pages", ["auth_user_id", "page_id"], :name => "index_auth_user_pages_on_auth_user_id_and_page_id"
+
+  create_table "auth_users", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "contacts", :force => true do |t|
     t.string   "contact_title",        :limit => 5
@@ -95,11 +107,32 @@ ActiveRecord::Schema.define(:version => 20130421065015) do
     t.string   "created_by",   :limit => 40
   end
 
+  create_table "pages", :force => true do |t|
+    t.string   "page_name",  :limit => 50, :null => false
+    t.string   "permalink"
+    t.integer  "position"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
+
   create_table "parkings", :force => true do |t|
     t.text     "parking_details", :limit => 255
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
     t.string   "created_by",      :limit => 40
+  end
+
+  create_table "sections", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "subjects", :force => true do |t|
+    t.string   "subject_name", :limit => 50,                    :null => false
+    t.boolean  "visible",                    :default => false
+    t.integer  "position"
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
   end
 
   create_table "users", :force => true do |t|
