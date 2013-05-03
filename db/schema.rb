@@ -108,12 +108,15 @@ ActiveRecord::Schema.define(:version => 20130502031117) do
   end
 
   create_table "pages", :force => true do |t|
+    t.integer  "subject_id"
     t.string   "page_name",  :limit => 50, :null => false
     t.string   "permalink"
     t.integer  "position"
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
   end
+
+  add_index "pages", ["subject_id"], :name => "index_pages_on_subject_id"
 
   create_table "parkings", :force => true do |t|
     t.text     "parking_details", :limit => 255
@@ -123,9 +126,15 @@ ActiveRecord::Schema.define(:version => 20130502031117) do
   end
 
   create_table "sections", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "page_id"
+    t.string   "section_name", :limit => 50,                    :null => false
+    t.boolean  "visible",                    :default => false
+    t.integer  "position"
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
   end
+
+  add_index "sections", ["page_id"], :name => "index_sections_on_page_id"
 
   create_table "subjects", :force => true do |t|
     t.string   "subject_name", :limit => 50,                    :null => false
