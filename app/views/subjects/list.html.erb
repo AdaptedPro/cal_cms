@@ -1,0 +1,38 @@
+<% if !flash[:notice].blank? %>
+	<div class="notice">
+		<%= flash[:notice] %>
+	</div>
+<% end %>
+
+<div class="subject list">
+	<h2>Subjects</h2>
+
+	<%= link_to("Add New Subject", {:action => 'new'}, :class => 'action new') %>	
+
+	<table class="tablesorter">
+		<thead>
+			<tr>
+				<th></th>
+				<th>Subject</th>
+				<th>Visible</th>
+				<th>Pages</th>
+				<th>Actions</th>
+			</tr>
+		</thead>	
+		<tbody>
+			<% @subject.each do |subject| %>
+			<tr>
+				<td><%= subject.position %></td>	 	 	 	 	 	 		
+				<td><%= subject.subject_name %></td>	 	 	 	 	 	 		
+				<td><%= subject.visible ? "Yes": "No" %></td>		 	 	 	 	 	 		
+				<td><%= subject.pages.size %></td>	 
+				<td>
+					<%= link_to("Show", {:action => 'show', :id => subject.id}, :class => 'action show') %>
+					<%= link_to("Edit", {:action => 'edit', :id => subject.id}, :class => 'action edit') %>
+					<%= link_to("Delete", {:action => 'delete', :id => subject.id}, :class => 'action delete') %>
+				</td>			
+			</tr>
+			<% end %>
+		</tbody>	
+	</table>
+</div>	

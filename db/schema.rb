@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130502031117) do
+ActiveRecord::Schema.define(:version => 20130505223705) do
 
   create_table "auth_user_pages", :id => false, :force => true do |t|
     t.integer "auth_user_id"
@@ -20,8 +20,13 @@ ActiveRecord::Schema.define(:version => 20130502031117) do
   add_index "auth_user_pages", ["auth_user_id", "page_id"], :name => "index_auth_user_pages_on_auth_user_id_and_page_id"
 
   create_table "auth_users", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "first_name",  :limit => 25
+    t.string   "last_name",   :limit => 50
+    t.string   "email",                     :default => "", :null => false
+    t.string   "displayname", :limit => 40,                 :null => false
+    t.string   "password",    :limit => 40,                 :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
   end
 
   create_table "contacts", :force => true do |t|
@@ -124,6 +129,16 @@ ActiveRecord::Schema.define(:version => 20130502031117) do
     t.datetime "updated_at",                     :null => false
     t.string   "created_by",      :limit => 40
   end
+
+  create_table "section_edits", :force => true do |t|
+    t.integer  "auth_user_id"
+    t.integer  "section_id"
+    t.string   "summary"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "section_edits", ["auth_user_id", "section_id"], :name => "index_section_edits_on_auth_user_id_and_section_id"
 
   create_table "sections", :force => true do |t|
     t.integer  "page_id"
