@@ -1,0 +1,62 @@
+
+                <header id="feature"></header>
+
+               <section id="column_i">
+                    <ul class="options">
+	            		<li class="check_inline"><input type="radio" name="check_all" class="check_all" value="check" checked="checked" /> Check all</li>
+	            		<li class="check_inline"><input type="radio" name="check_all" class="check_all" value="uncheck" /> Uncheck all</li>                   
+                    </ul>
+                    <fieldset>
+                    	<legend>Subjects</legend>
+						<ul>
+							<% @subject.each do |subject| %> 	 	 	 	 	 		 	 	 	 	 	 		 
+								<li>
+									<input class="cbox" type="checkbox" checked="checked" value="<%= subject.id %>" />
+									<%= link_to(subject.subject_name, {:action => 'subject', :id => subject.id}, :class => 'action show') %>
+								</li>		
+							<% end %>
+						</ul>                     	
+                    </fieldset>                   
+                </section>
+
+                <section id="column_ii">
+                    <ul class="f_elements">                     
+                        <li>
+                            <div class="f_label hide">
+                                <label for="event_title">LookUp:</label>
+                            </div>
+                            <div class="f_data">
+                                <input id="lookup" title="Find Event" type="text" class="setWidth" /> 
+                            </div>
+                        </li>
+                     </ul>
+
+                    <ul class="items">
+                    <% @event_item.each do |event_item| %> 
+                        <li>
+                            <div class="inner">
+                                <h3>
+                                    <%= link_to(event_item.item_title, {:action => 'show', :id => event_item.id}, :class => 'action show') %>
+                                </h3>
+                                <div class="inner_left">
+                                    <p><%= event_item.item_description %>&hellip;</p>
+                                </div>
+                                <div class="inner_right">
+                                    <dl>
+                                      <dt>When:</dt>
+                                        <dd>Startdate and time - EndDate and time</dd>
+                                      <dt>Where:</dt>
+                                        <dd><a href="#">Title of location links to map, if address or latlon.</a></dd> 
+                                    </dl>
+                                </div>
+                            </div>                                                  
+                        </li>
+                    <% end %>
+
+                </ul>
+                </section>
+
+                <section id="column_iii">
+                    <div id="datepicker"></div>
+                    <h3>Twitter</h3>
+                </section>	
