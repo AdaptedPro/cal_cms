@@ -1,0 +1,111 @@
+<style type="text/css">
+  #map-canvas { background-color: #333; position: ; left: 0;}
+  #posts ul {
+    list-style-type: none;
+  }
+  #posts ul li {
+    list-style-type: none;
+    display: inline;
+    float: left;
+    width: 30%;
+  }
+</style> 
+<script type="text/javascript"
+  src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyATH7XLbF2tdxlGK5IvfOOiEcbn1D4AgoU">
+</script> 
+<div id="map-canvas"></div>
+<div id="posts">
+  <ul>
+        <% @locations.each do |location| %>
+        <li>(<%= location.location_lat %>)</li>
+        <% end %>  
+  </ul>
+</div>
+
+<script type="text/javascript">
+$('#map-canvas').width($(window).width());
+$('#map-canvas').height($(window).height()/2);
+//$('#map-canvas').css(['top','20']);
+//$('#map-canvas').attr('style','top:'+ $('.header-container').height()+';');
+
+  function initialize() {
+
+    var mapOptions = {
+      zoom: 7,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
+
+	 if(navigator.geolocation) {
+	    navigator.geolocation.getCurrentPosition(function(position) {
+	      var pos = new google.maps.LatLng(position.coords.latitude,
+	                                       position.coords.longitude);
+
+	      var infowindow = new google.maps.InfoWindow({
+	        map: map,
+	        position: pos,
+	        content: 'Location found using HTML5.'
+	      });
+
+	      map.setCenter(pos);
+
+      var markers = [];
+      var iterator = 0;
+      var neighborhoods = [
+
+      	<% @locations.each do |location| %>
+      	new google.maps.LatLng(<%= location.location_lat %>, <%= location.location_lng %>),
+      	<% end %>    
+      ];
+
+      drop();
+      function drop() {
+        for (var i = 0; i < neighborhoods.length; i++) {
+          setTimeout(function() {
+            addMarker();
+          }, i * 300);
+        }
+      }
+
+      function addMarker() {
+        markers.push(new google.maps.Marker({
+          position: neighborhoods[iterator],
+          map: map,
+          draggable: false
+          //animation: google.maps.Animation.BOUNCE
+        }));
+        iterator++;
+      } 
+
+	    }, function() {
+	      handleNoGeolocation(true);
+	    });
+	  } else {		  	
+	    // Browser doesn't support Geolocation
+	    handleNoGeolocation(false);
+	  }
+
+
+  }
+
+function handleNoGeolocation(errorFlag) {
+  if (errorFlag) {
+    var content = 'Error: The Geolocation service failed.';
+  } else {
+    var content = 'Error: Your browser doesn\'t support geolocation.';
+  }
+
+  var options = {
+    map: map,
+    position: new google.maps.LatLng(60, 105),
+    content: content
+  };
+
+  var infowindow = new google.maps.InfoWindow(options);
+  map.setCenter(options.position);
+}    
+ 
+      google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+

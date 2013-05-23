@@ -67,7 +67,7 @@ body {
 
 .wrapper {
     width: 90%;
-    margin: 0 5%;
+    /*margin: 0 5%;*/
 }
 
 /* ===================
@@ -76,6 +76,8 @@ body {
 
 .header-container {
     border-bottom: 1px solid #AAA;
+    width: 100%;
+    position: fixed;
 }
 
 .footer-container,
@@ -86,7 +88,12 @@ body {
 .header-container,
 .footer-container,
 .main aside {
-    /*background: #fff;*/
+    background: #fff;
+    z-index: 3000;
+}
+
+.main {
+    margin: 100px 0px;
 }
 
 .title {
@@ -115,7 +122,7 @@ nav a {
 
 nav a:hover,
 nav a:visited {
-    color: white;
+    color: #333;
 }
 
 nav a:hover {
@@ -126,8 +133,15 @@ nav a:hover {
     MOBILE: Main
    ============== */
 
+.main-container {
+    background-color: #FAFAFA;
+    padding: 50px 0 80px 0;
+    height: 100%;
+}
+
 .main {
     padding: 30px 0;
+    height: 100%;
 }
 
 .main article h1 {
@@ -141,7 +155,7 @@ nav a:hover {
 
 .footer-container footer {
     color: grey;
-    padding: 20px 0;
+    padding: 10px 0;
     font-size: 90%;
     font-weight: lighter;    
 }
@@ -163,6 +177,33 @@ footer {
    ========================================================================== */
 
 a { text-decoration: none; }
+
+.footer-container {
+    position:fixed;
+    bottom:0;
+    height: 80px;
+    width: 100%;
+    background-color: #F9F9F9;
+}
+
+.footer-container ul {
+    list-style-type: none;
+    margin: 15px 0;
+    padding: 0;
+    float:right;
+}
+
+.footer-container ul li {
+    list-style-type: none;
+    display: inline;
+    float: left;
+    margin-right: 3em;
+}
+
+.footer-container ul li a {
+    color:#333;
+    font-weight: bold;
+}
 
 #feature {
     width:100%;
@@ -220,8 +261,6 @@ a { text-decoration: none; }
     list-style-type:none;
     display:block;
 }
-
-//
 
 .items h3 { 
     background-color:#F9F9F9;
@@ -328,14 +367,12 @@ a { text-decoration: none; }
 /* ====================
     WIDE: CSS3 Effects
    ==================== */
-    /*
-    .header-container,
-    .main aside {
-        -webkit-box-shadow: 0 5px 10px #aaa;
-           -moz-box-shadow: 0 5px 10px #aaa;
-                box-shadow: 0 5px 10px #aaa;
+    .header-container
+    /*,.main aside*/ {
+        -webkit-box-shadow: 0 1px 3px #aaa;
+           -moz-box-shadow: 0 1px 3px #aaa;
+                box-shadow: 0 1px 3px #aaa;
     }
-    */
 
 /* ============
     WIDE: Menu
@@ -484,8 +521,7 @@ a { text-decoration: none; }
         display: table-header-group; /* h5bp.com/t */
     }
 
-    tr,
-    img {
+    tr,img {
         page-break-inside: avoid;
     }
 
@@ -497,15 +533,12 @@ a { text-decoration: none; }
         margin: 0.5cm;
     }
 
-    p,
-    h2,
-    h3 {
+    p,h2,h3 {
         orphans: 3;
         widows: 3;
     }
 
-    h2,
-    h3 {
+    h2,h3 {
         page-break-after: avoid;
     }
 }

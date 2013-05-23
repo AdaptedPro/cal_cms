@@ -3,7 +3,7 @@ CalCms::Application.routes.draw do
 
   get "dashboard/index"
 
-  root :to => "events#index"
+  root :to => "main#index"
   #get "events/index"
 
   # The priority is based upon order of creation:

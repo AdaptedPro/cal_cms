@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130505223705) do
+ActiveRecord::Schema.define(:version => 20130519171521) do
 
   create_table "auth_user_pages", :id => false, :force => true do |t|
     t.integer "auth_user_id"
@@ -90,7 +90,6 @@ ActiveRecord::Schema.define(:version => 20130505223705) do
   end
 
   create_table "locations", :force => true do |t|
-    t.string   "location_title",     :limit => 40
     t.string   "location_address_1", :limit => 40
     t.string   "location_address_2", :limit => 40
     t.string   "location_city",      :limit => 40
@@ -98,10 +97,10 @@ ActiveRecord::Schema.define(:version => 20130505223705) do
     t.string   "location_zip",       :limit => 10
     t.string   "location_country",   :limit => 60
     t.string   "location_abbr",      :limit => 10
-    t.decimal  "location_lat",                     :precision => 10, :scale => 0
-    t.decimal  "location_lng",                     :precision => 10, :scale => 0
-    t.datetime "created_at",                                                      :null => false
-    t.datetime "updated_at",                                                      :null => false
+    t.float    "location_lat"
+    t.float    "location_lng"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
   end
 
   create_table "options", :force => true do |t|
@@ -150,6 +149,11 @@ ActiveRecord::Schema.define(:version => 20130505223705) do
   end
 
   add_index "sections", ["page_id"], :name => "index_sections_on_page_id"
+
+  create_table "splashes", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "subjects", :force => true do |t|
     t.string   "subject_name", :limit => 50,                    :null => false
