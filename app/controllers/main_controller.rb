@@ -6,7 +6,13 @@ class MainController < ApplicationController
 	end
 
 	def welcome
+		@event = ItemData.all
+		@event = ItemData.order	
+
+		
 		@locations = Location.all;
-		@locations = Location.order;		
+		@locations = Location.order;
+
+		@msg = "Hello World"		
 	end
 end
