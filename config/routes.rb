@@ -1,9 +1,19 @@
 CalCms::Application.routes.draw do
-  get "settings/index"
+  get "auth_users/list"
 
-  get "dashboard/index"
+  get "auth_users/new"
+
+  get "auth_users/edit"
+
+  get "auth_users/delete"
+
+  #get "settings/index"
+
+  #get "dashboard/index"
 
   root :to => "main#index"
+
+  match 'admin', :to => 'account#menu'
   #get "events/index"
 
   # The priority is based upon order of creation:

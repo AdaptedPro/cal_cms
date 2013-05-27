@@ -77,7 +77,7 @@ body {
 .header-container {
     border-bottom: 1px solid #AAA;
     width: 100%;
-    position: fixed;
+    /*position: fixed;*/
 }
 
 .footer-container,

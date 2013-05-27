@@ -20,13 +20,14 @@ ActiveRecord::Schema.define(:version => 20130519171521) do
   add_index "auth_user_pages", ["auth_user_id", "page_id"], :name => "index_auth_user_pages_on_auth_user_id_and_page_id"
 
   create_table "auth_users", :force => true do |t|
-    t.string   "first_name",  :limit => 25
-    t.string   "last_name",   :limit => 50
-    t.string   "email",                     :default => "", :null => false
-    t.string   "displayname", :limit => 40,                 :null => false
-    t.string   "password",    :limit => 40,                 :null => false
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.string   "first_name",      :limit => 25
+    t.string   "last_name",       :limit => 50
+    t.string   "email",                         :default => "", :null => false
+    t.string   "displayname",     :limit => 40,                 :null => false
+    t.string   "hashed_password", :limit => 40,                 :null => false
+    t.string   "salt",            :limit => 40,                 :null => false
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
   end
 
   create_table "contacts", :force => true do |t|

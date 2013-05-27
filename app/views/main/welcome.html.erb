@@ -9,7 +9,7 @@
     list-style-type: none;
     display: inline;
     float: left;
-    width: 30%;
+    width: 10%;
     padding: 10px;
     background-color: #F9F9F9;
     margin: 10px 5px 10px 5px;
@@ -27,7 +27,7 @@
           <% @event.each do |event| %>
           <li><h3><%= event.item_title.split(' ').select {|w| w.capitalize! || w }.join(' ') %></h3>
             <p><%= event.item_description = event.item_description[0..150] %><br />
-            
+         
             <% if event.timedate_id > 0
               @time = ItemTimeDate.find(event.timedate_id) %> 
               <u><%= @time.start_time %></u><br /> 

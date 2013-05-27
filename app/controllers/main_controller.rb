@@ -9,10 +9,7 @@ class MainController < ApplicationController
 		@event = ItemData.all
 		@event = ItemData.order	
 
-		
 		@locations = Location.all;
-		@locations = Location.order;
-
-		@msg = "Hello World"		
+		@locations = Location.order;	
 	end
 end

@@ -1,18 +1,31 @@
+<% @page_title = "Admin Login" %>
+
 <h3>Sign In</h3>
-<table>
-  <tr>
-    <th>
-    	Log In
-    	<div>facebook</div>
-    </th>
-  </tr>
-  <tr>
-    <td><label for="email">Email:</label><input type="text" value="Email" /></td>
-  </tr>
-  <tr>
-    <td><label for="password">Password:</label><input type="password" value="" /></td>
-  </tr>
-  <tr>
-    <td><a href="#">Sign Up for Cirrus Era</a> or <input type="submit" value="Log In" /></td>
-  </tr>    
-</table>
+<% if !flash[:notice].blank? %>
+<div class="notice">
+  <%= flash[:notice] %>
+</div>
+<% end %>
+<%= form_tag(:action => 'attempt_signin') do %>
+  <table>
+    <tr>
+      <th>
+      	Log In
+      	<div>facebook</div>
+      </th>
+    </tr>
+    <tr>
+      <td>
+        <%= label_tag(:displayname) %><%= text_field_tag(:displayname) %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+          <%= label_tag(:password) %><%= password_field_tag(:password) %>
+      </td>
+    </tr>
+    <tr>
+      <td><a href="#">Sign Up!</a> or &nbsp;<div class="form-buttons"><%= submit_tag("Sign In") %></div></td>
+    </tr>    
+  </table>
+<% end %>
