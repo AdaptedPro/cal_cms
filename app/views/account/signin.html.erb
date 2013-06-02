@@ -1,31 +1,39 @@
-<% @page_title = "Admin Login" %>
+<% @page_title = "Sign In" %>
 
-<h3>Sign In</h3>
-<% if !flash[:notice].blank? %>
-<div class="notice">
-  <%= flash[:notice] %>
+<div id="sign_in_frame">
+  <% if !flash[:notice].blank? %>
+  <div class="notice">
+    <%= flash[:notice] %>
+  </div>
+  <% end %>
+  <%= form_tag(:action => 'attempt_signin') do %>
+    <table>
+      <tr>
+        <th>
+        </th>
+      </tr>
+      <tr>
+        <td>
+          <span class="text-input">
+            <%= text_field_tag(:displayname, nil, :id => 'displayname_field', :placeholder => 'Email') %>
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <span class="text-input">
+              <%= password_field_tag(:password, nil, :id => 'password_field', :placeholder => 'Password') %>
+            </span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <!--<a href="signup">Sign Up!</a> or <br />-->
+          <span class="signin-button">
+            <%= submit_tag("Sign In") %>
+          </span>
+        </td>
+      </tr>    
+    </table>
+  <% end %>  
 </div>
-<% end %>
-<%= form_tag(:action => 'attempt_signin') do %>
-  <table>
-    <tr>
-      <th>
-      	Log In
-      	<div>facebook</div>
-      </th>
-    </tr>
-    <tr>
-      <td>
-        <%= label_tag(:displayname) %><%= text_field_tag(:displayname) %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-          <%= label_tag(:password) %><%= password_field_tag(:password) %>
-      </td>
-    </tr>
-    <tr>
-      <td><a href="#">Sign Up!</a> or &nbsp;<div class="form-buttons"><%= submit_tag("Sign In") %></div></td>
-    </tr>    
-  </table>
-<% end %>

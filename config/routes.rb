@@ -1,16 +1,4 @@
 CalCms::Application.routes.draw do
-  get "auth_users/list"
-
-  get "auth_users/new"
-
-  get "auth_users/edit"
-
-  get "auth_users/delete"
-
-  #get "settings/index"
-
-  #get "dashboard/index"
-
   root :to => "main#index"
 
   match 'admin', :to => 'account#menu'

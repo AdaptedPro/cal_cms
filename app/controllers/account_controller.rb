@@ -1,5 +1,6 @@
 class AccountController < ApplicationController
 	
+	layout 'login'	
 	before_filter :confirm_logged_in, :except => [:signin, :attempt_signin, :signout]
 
 	def index
@@ -19,6 +20,7 @@ class AccountController < ApplicationController
 	end
 	
 	def signin
+		
 	end
 
 	def signup

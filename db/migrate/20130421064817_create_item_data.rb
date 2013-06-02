@@ -6,6 +6,7 @@ class CreateItemData < ActiveRecord::Migration
       t.integer "contact_id"
       t.integer "location_id"
       t.integer "parking_id"
+      t.integer "user_id"      
       t.string "permalink"
       t.string "item_title", :limit => 40
       t.text "item_description", :limit => 300

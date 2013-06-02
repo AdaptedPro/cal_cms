@@ -11,9 +11,14 @@ textarea {
 }
 
 body {
+    background-color: #FFF;
     font-size: 1em;
     line-height: 1.4;
     color:#333;
+}
+
+h1,h2,h3,h4,h5,h6 {
+
 }
 
 ::-moz-selection {
@@ -80,7 +85,7 @@ body {
     /*position: fixed;*/
 }
 
-.footer-container,
+/*.footer-container,*/
 .main aside {
     border-top: 20px solid #E0E0E0;
 }
@@ -88,12 +93,8 @@ body {
 .header-container,
 .footer-container,
 .main aside {
-    background: #fff;
+    /*background: #fff;*/
     z-index: 3000;
-}
-
-.main {
-    margin: 100px 0px;
 }
 
 .title {
@@ -116,13 +117,12 @@ nav a {
     text-align: center;
     text-decoration: none;
     font-weight: bold;
-    color: #333;
-    background: #FFF;
+    color: #FFF;
 }
 
 nav a:hover,
 nav a:visited {
-    color: #333;
+    color: #FFF;
 }
 
 nav a:hover {
@@ -134,7 +134,7 @@ nav a:hover {
    ============== */
 
 .main-container {
-    background-color: #FAFAFA;
+    /*background-color: #FAFAFA;*/
     padding: 0 0 80px 0;
     height: 100%;
 }
@@ -160,10 +160,6 @@ nav a:hover {
     font-weight: lighter;    
 }
 
-footer {
-
-}
-
 /* ===============
     ALL: IE Fixes
    =============== */
@@ -177,33 +173,119 @@ footer {
    ========================================================================== */
 
 a { text-decoration: none; }
+textarea, input { outline: none; }
 
-.footer-container {
-    position:fixed;
-    bottom:0;
-    height: 80px;
-    width: 100%;
-    background-color: #F9F9F9;
+header nav ul li  a{
+    color: #333;
+/*    
+    background-color: #FFCC00;
+    border-radius: 0 0 10px 10px / 0px 0 10px 10px;
+    text-shadow: #AAA 0.1em 0.1em 0.1em;      
+    -webkit-box-shadow: 0 1px 1px #000;
+       -moz-box-shadow: 0 1px 1px #000;
+            box-shadow: 0 1px 1px #000;   
+*/             
 }
 
-.footer-container ul {
-    list-style-type: none;
-    margin: 15px 0;
+#splash {
+    color: #FFF;
+    padding: 10px;
+    position: absolute;
+    height: 30%;
+    width: 60%;    
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);    
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
+#splash span {
+    font-family: 'Sigmar One', cursive;
+    line-height: 1.125em;
+    color: #FFCC00;
+    text-shadow: rgba(0, 0, 0, 0.317647) 0px 1px 0px; 
+}
+
+.lrg { font-size: 4em;}
+
+#splash ul { 
+    list-style-type: none; 
+    margin: 8% 0 0 0;
     padding: 0;
-    float:right;
+    font-size: 1.5em; 
+    font-weight: lighter;
 }
 
-.footer-container ul li {
+#splash ul li {
     list-style-type: none;
+    margin: .5em 0;
     display: inline;
     float: left;
-    margin-right: 3em;
+    width: 20%;
+    margin: 0 1.7%;
+    padding: 25px 2%;
+    margin-bottom: 0;
+    background-color:#FFF;
+    border-radius: 25px;
+    color:#333;
 }
 
-.footer-container ul li a {
-    color:#333;
-    font-weight: bold;
+img.bg {
+  /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1024px;
+    
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+    
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
 }
+
+#acc-menu-section {
+    width: 80%;
+    margin: 0 auto;
+}
+
+#acc-menu-section-nav {
+    background-color: #E9E9E9;
+    border-radius: 25px;
+    width: 15%;
+    padding: 2%;
+    margin:2% 0;
+    float: left;
+    display: inline;
+    min-width: 150px;
+}
+
+#acc-menu-section-nav ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+#acc-menu-section-mc {
+    width:60%; 
+    padding: 2%;
+    float: left;
+    display: inline;
+    background-color: #Fc0;
+    margin:2% 2% 2%;    
+    border-radius: 25px;
+}
+
+@media screen and (max-width: 1024px) { /* Specific to this particular image */
+  img.bg {
+    left: 50%;
+    margin-left: -512px;   /* 50% */
+  }
+}
+
 
 #feature {
     width:100%;
@@ -284,6 +366,12 @@ a { text-decoration: none; }
     line-height: 0;
 }
 
+.f_button {
+    border:1px solid #000;
+    background-color: #030;
+    padding: 10px 20px;
+}
+
 .f_elements {
     list-style-type:none;
     margin:0;
@@ -297,7 +385,7 @@ a { text-decoration: none; }
 }
 
 .f_label {
-    
+    font-weight: bold;
 }
 
 .f_data {
@@ -321,6 +409,81 @@ a { text-decoration: none; }
 
 .setWidth {
     width:100%;
+}
+
+#sign_in_frame {
+    padding: 10px;
+    position: absolute;
+    height: 100px;
+    width: 300px;    
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);    
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
+#sign_in_frame table { width: 100%;}
+/*
+#sign_in_frame span input {
+    -webkit-box-shadow: 0 1px 1px #000;
+       -moz-box-shadow: 0 1px 1px #000;
+            box-shadow: 0 1px 1px #000;    
+}
+*/
+span.text-input input {
+    border-radius: 10px;
+    border: 0;
+    font-size: 1.2em;
+    padding: 12px 5% 9px 5%;
+    width: 90%;
+    margin-bottom: 8px;
+    line-height: 1em;    
+}
+
+span.signin-button input {
+    background-color: #339933;
+    border-radius: 10px;
+    border: 0;
+    font-size: 1.2em;
+    padding: 12px 5% 9px 5%;
+    width: 100%;
+    margin-bottom: 8px;
+    color:#E0E0E0; 
+    text-shadow: rgba(0, 0, 0, 0.317647) 0px -1px 0px;   
+}
+
+.footer-container {
+    position:fixed;
+    bottom:0;
+    height: 5%;
+    width: 100%;
+    background-color: #F9F9F9;
+}
+
+.footer-container h3 {
+    padding: 0;
+    margin: 0 2%;
+}
+
+.footer-container ul {
+    list-style-type: none;
+    margin: 3px 0;
+    padding: 0;
+    float:right;
+}
+
+.footer-container ul li {
+    list-style-type: none;
+    display: inline;
+    float: left;
+    margin-right: 3em;
+}
+
+.footer-container ul li a {
+    color:#333;
+    font-weight: bold;
 }
 
 /* ==========================================================================
@@ -367,12 +530,14 @@ a { text-decoration: none; }
 /* ====================
     WIDE: CSS3 Effects
    ==================== */
+    /*
     .header-container
-    /*,.main aside*/ {
+    ,.main aside {
         -webkit-box-shadow: 0 1px 3px #aaa;
            -moz-box-shadow: 0 1px 3px #aaa;
                 box-shadow: 0 1px 3px #aaa;
     }
+    */
 
 /* ============
     WIDE: Menu
@@ -384,7 +549,7 @@ a { text-decoration: none; }
 
     nav {
         float: right;
-        width: 38%;
+        width: 25%;
     }
 
 /* ============
@@ -409,8 +574,8 @@ a { text-decoration: none; }
    =============== */
 
     .wrapper {
-        width: 1026px; /* 1140px - 10% for margins */
-        margin: 0 auto;
+        width: 100%; /* 1140px - 10% for margins */
+        margin: 0;
     }
 }
 
