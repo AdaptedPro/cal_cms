@@ -34,8 +34,8 @@ class AuthUser < ActiveRecord::Base
 	"#{first_name} #{last_name}"
   end
 
-  def self.authenticate(displayname="", password="")
-  	user = AuthUser.find_by_displayname(displayname)
+  def self.authenticate(email="", password="")
+  	user = AuthUser.find_by_email(email)
   	if user && user.password_match?(password)
   		return user
   	else
@@ -47,8 +47,8 @@ class AuthUser < ActiveRecord::Base
   	hashed_password == AuthUser.hash_with_salt(password, salt)
   end
 
-  def self.make_salt(displayname="")
-  	Digest::SHA1.hexdigest("Use #{displayname} with #{Time.now} to make salt")
+  def self.make_salt(email="")
+  	Digest::SHA1.hexdigest("Use #{email} with #{Time.now} to make salt")
   end
 
   def self.hash_with_salt(password="", salt="")
@@ -60,7 +60,7 @@ class AuthUser < ActiveRecord::Base
   	#Due when :password has value
   	unless password.blank?
   		#Use self when assigning values
-  		self.salt = AuthUser.make_salt(displayname) if salt.blank?
+  		self.salt = AuthUser.make_salt(email) if salt.blank?
   		self.hashed_password = AuthUser.hash_with_salt(password, salt)
   	end
   end

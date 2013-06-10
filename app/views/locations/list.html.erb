@@ -1,0 +1,41 @@
+<% @page_title = "Locations List" %>
+
+<div class="location list">
+	<h2>Locations</h2>
+	<%= link_to("Add New Location", {:action => 'new'}, :class => 'action new') %>
+	<% if (@locations.length != 0) %>	
+	<table id="myTable">
+		<thead>
+			<tr>	
+				<th>Address</th>
+				<th>City</th>
+				<th>State</th>
+				<th>Zip</th>
+				<th>Created</th>
+				<th>Updated</th>
+				<th class="{sorter: false}">Actions</th>
+			</tr>
+		</thead>	
+		<tbody>
+			<% @locations.find_each do |location| %>
+			<tr>	 	 	 	 	 	 		
+				<td><%= location.location_address_1 %></td>	 	 	 	 	 	 		
+				<td><%= location.location_city %></td>
+				<td><%= location.location_state %></td>
+				<td><%= location.location_zip %></td>						 	 	 	 	 	 		 		
+				<td><%= location.created_at %></td>
+				<td><%= location.updated_at %></td>	
+				<td>
+					<%= link_to("Show", {:action => 'show', :id => location.id}, :class => 'action show') %>
+					<%= link_to("Edit", {:action => 'edit', :id => location.id}, :class => 'action edit') %>
+					<%= link_to("Delete", {:action => 'delete', :id => location.id}, :class => 'action delete') %>
+				</td>									
+			</tr>
+			<% end %>
+		</tbody>	
+	</table>
+	<% else %>
+		<br class="clr" />
+		<p>You have no locations yet, <%= link_to("click here", {:action => 'new'}) %> to add a new location.</p>
+	<% end %>
+</div>

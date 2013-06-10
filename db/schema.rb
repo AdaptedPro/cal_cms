@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20130519171521) do
     t.integer  "contact_id"
     t.integer  "location_id"
     t.integer  "parking_id"
+    t.integer  "user_id",                                             :null => false
     t.string   "permalink"
     t.string   "item_title",        :limit => 40
     t.text     "item_description"

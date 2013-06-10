@@ -1,5 +1,3 @@
-<% @page_title = "Sign In" %>
-
 <div id="sign_in_frame">
   <% if !flash[:notice].blank? %>
   <div class="notice">
@@ -15,7 +13,7 @@
       <tr>
         <td>
           <span class="text-input">
-            <%= text_field_tag(:displayname, nil, :id => 'displayname_field', :placeholder => 'Email') %>
+            <%= text_field_tag(:email, nil, :id => 'email_field', :placeholder => 'Email') %>
           </span>
         </td>
       </tr>

@@ -1,8 +1,9 @@
 	
 <div class="contact list">
 	<h2>Contacts</h2>
-
-	<table class="tablesorter">
+	<%= link_to("Add New Contact", {:action => 'new'}, :class => 'action new') %>
+	<% if (@contact.length != 0) %>	
+	<table id="myTable" class="tablesorter">
 		<thead>
 			<tr>
 				<th></th>
@@ -23,9 +24,17 @@
 				<td><%= contact.contact_email %></td>	 	 	 	 	 	 		
 				<td><%= contact.contact_phone %></td>	 	 	 	 	 	 		
 				<td><%= contact.contact_organization %></td>
-				<td><%= link_to("Show", {:action => 'show', :id => contact.id}, :class => 'action show')%></td>			
+				<td>
+					<%= link_to("Show", {:action => 'show', :id => contact.id}, :class => 'action show') %>
+					<%= link_to("Edit", {:action => 'edit', :id => contact.id}, :class => 'action edit') %>
+					<%= link_to("Delete", {:action => 'delete', :id => contact.id}, :class => 'action delete') %>
+				</td>							
 			</tr>
 			<% end %>
 		</tbody>	
 	</table>
+	<% else %>
+		<br class="clr" />
+		<p>You have no contacts yet, <%= link_to("click here", {:action => 'new'}) %> to add a new contact.</p>
+	<% end %>	
 </div>	

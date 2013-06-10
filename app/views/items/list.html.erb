@@ -1,27 +1,25 @@
 <% @page_title = "Events List" %>
 
 <div class="event list">
-	<h2>events</h2>
-
+	<h2>Items</h2>
 	<%= link_to("Add New Event", {:action => 'new'}, :class => 'action new') %>	
-
 	<table id="myTable" class="tablesorter">
 		<thead>
 			<tr>	
-				<th>Event</th>
+				<th>Title</th>
 				<th>Visible</th>
-				<th>Published</th>
-				<th>Updated</th>
-				<th>Actions</th>
+				<th>Publish</th>
+				<th>Status</th>
+				<th class="{sorter: false}">Actions</th>
 			</tr>
 		</thead>	
 		<tbody>
 			<% @event.each do |event| %>
 			<tr>	 	 	 	 	 	 		
 				<td><%= event.item_title %></td>	 	 	 	 	 	 		
-				<td><%= event.item_viewable ? "Yes": "No" %></td>
-				<td><%= event.item_publish_date %><td>	
-				<td><%= event.updated_at %><td>		 	 	 	 	 	 		 
+				<td><%= event.item_viewable ? "Yes": "No" %></td> 
+				<td><%= event.item_publish_date %></td> 
+				<td><%= event.item_status %></td> 	 	 	 	 	 		 
 				<td>
 					<%= link_to("Show", {:action => 'show', :id => event.id}, :class => 'action show') %>
 					<%= link_to("Edit", {:action => 'edit', :id => event.id}, :class => 'action edit') %>
@@ -29,6 +27,21 @@
 				</td>			
 			</tr>
 			<% end %>
-		</tbody>	
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="3">
+					<div id="pager">
+						<select class="pagesize">
+							<option selected="selected"  value="10">10</option>
+							<option value="20">20</option>
+							<option value="30">30</option>
+							<option  value="40">40</option>
+						</select>
+					</div>
+				</td>
+			</tr>
+		</tfoot>	
 	</table>
 </div>
+

@@ -1,7 +1,17 @@
 class EventsController < ApplicationController
+	
+	before_filter :confirm_logged_in, :except => [:signin, :attempt_signin, :signout]
+
   def index
-  	render('index')
+
+  	#render('index')
   end
+
+	layout 'admin'
+	def usr
+		#@item_type = ItemData.where('(SELECT * FROM items WHERE items.id = ?)', 1)	
+		@event = ItemData.where('user_id = ?', session[:user_id])	
+	end
 
   def details
   	render(:text => 'Event Details here')

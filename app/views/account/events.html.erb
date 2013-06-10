@@ -1,0 +1,29 @@
+
+	<%= link_to("Add New Event", {:action => 'new'}, :class => 'action new') %>	
+
+	<table id="myTable" class="tablesorter">
+		<thead>
+			<tr>	
+				<th>Event</th>
+				<th>Visible</th>
+				<th>Published</th>
+				<th>Updated</th>
+				<th>Actions</th>
+			</tr>
+		</thead>	
+		<tbody>
+			<% @event.each do |event| %>
+			<tr>	 	 	 	 	 	 		
+				<td><%= event.item_title %></td>	 	 	 	 	 	 		
+				<td><%= event.item_viewable ? "Yes": "No" %></td>
+				<td><%= event.item_publish_date %><td>	
+				<td><%= event.updated_at %><td>		 	 	 	 	 	 		 
+				<td>
+					<%= link_to("Show", {:action => 'show', :id => event.id}, :class => 'action show') %>
+					<%= link_to("Edit", {:action => 'edit', :id => event.id}, :class => 'action edit') %>
+					<%= link_to("Delete", {:action => 'delete', :id => event.id}, :class => 'action delete') %>
+				</td>			
+			</tr>
+			<% end %>
+		</tbody>	
+	</table>
