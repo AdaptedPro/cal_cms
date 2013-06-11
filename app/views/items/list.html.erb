@@ -30,18 +30,32 @@
 		</tbody>
 		<tfoot>
 			<tr>
-				<td colspan="3">
-					<div id="pager">
-						<select class="pagesize">
-							<option selected="selected"  value="10">10</option>
-							<option value="20">20</option>
-							<option value="30">30</option>
-							<option  value="40">40</option>
-						</select>
+				<td colspan="5">
+					<div id="pager" class="pager">
+						<form>
+							<img src="/images/first.png" class="first"/>
+							<img src="/images/prev.png" class="prev"/>
+							<input type="text" class="pagedisplay"/>
+							<img src="/images/next.png" class="next"/>
+							<img src="/images/last.png" class="last"/>
+							<select class="pagesize">
+								<option selected="selected"  value="10">10</option>
+								<option value="20">20</option>
+								<option value="30">30</option>
+								<option  value="40">40</option>
+							</select>
+						</form>
 					</div>
 				</td>
 			</tr>
 		</tfoot>	
 	</table>
 </div>
+
+<script type="text/javascript">
+$(function() {
+    //$("#myTable").tablesorterPager({container: $("#pager")});
+ 	$("#myTable").tablesorter().tablesorterPager({container: $("#pager")});     
+});
+</script>
 

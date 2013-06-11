@@ -3,7 +3,7 @@ $(function() {
 	$( "#datepicker" ).datepicker();
 
 	//
-	$("#myTable").tablesorter(); 
+	//$("#myTable").tablesorter(); 
 
 	//SPLASH
 	var checkstate = 'all';

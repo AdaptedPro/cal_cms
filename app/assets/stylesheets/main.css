@@ -11,6 +11,8 @@ textarea {
 }
 
 body {
+    background-image: url('/images/SCM_textLogo.png');
+    background-repeat: no-repeat;
     background-color: #E0E0E0;
     font-size: 1em;
     line-height: 1.4;
@@ -175,8 +177,9 @@ a { text-decoration: none; }
 textarea, input { outline: none; }
 
 header {
-    background-color: #FF6600;
+    
     /*
+    background-color: #FF6600;
     border-bottom: 1px solid #FFF;
     -webkit-box-shadow: 0 1px 2px #AAA;
        -moz-box-shadow: 0 1px 2px #AAA;
@@ -265,7 +268,8 @@ img.bg {
 }
 
 #acc-dashboard-section-nav {
-    background-color: #E9E9E9;
+    background-image: url('/images/bg-trans-white.png');
+    /*background-color: #E9E9E9;*/
     border-radius: 25px;
     width: 15%;
     padding: 2%;

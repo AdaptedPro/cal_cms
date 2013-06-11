@@ -22,12 +22,6 @@
 
         <div class="header-container">
             <header class="wrapper clearfix">
-                <div id="search">
-                    <%= form_for(:location, :url => {:action => 'create'}) do |f| %>
-                    <%= f.text_field(:lookup, :placeholder => 'Search', :id=>'lookup', :width => '200') %>
-                    <% end %>
-
-                </div>
                 <nav>
                     <ul>
                         <% if !session[:user_id] %>
