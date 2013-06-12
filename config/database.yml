@@ -35,8 +35,8 @@ production:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: heroku_93ea9dd3a8bd14e  
+  database: heroku_16976ef5643cca5
   pool: 5
-  username: b1adad09848a42
-  password: 75cdca7f
-  socket: mysql://b1adad09848a42:75cdca7f@us-cdbr-east-03.cleardb.com/heroku_3f8c3bbc0fc91ae?reconnect=true
+  username: b7593559968c5a
+  password: 8f4639d7
+  socket: mysql://b7593559968c5a:8f4639d7@us-cdbr-east.cleardb.com/heroku_16976ef5643cca5?reconnect=true
