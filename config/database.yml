@@ -40,3 +40,4 @@ production:
   username: bbd104d627eb4f
   password: a6b56177
   socket: mysql://b1adad09848a42:75cdca7f@us-cdbr-east-03.cleardb.com/heroku_3f8c3bbc0fc91ae?reconnect=true
+
