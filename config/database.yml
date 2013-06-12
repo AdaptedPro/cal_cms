@@ -35,8 +35,9 @@ production:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: cal_cms_production
+  database: heroku_3f8c3bbc0fc91ae
   pool: 5
-  username: root
-  password: root
-  socket: /Applications/MAMP/tmp/mysql/mysql.sock
+  username: b1adad09848a42
+  password: 75cdca7f
+  socket: mysql://b7593559968c5a:8f4639d7@us-cdbr-east-03.cleardb.co
+m/heroku_16976ef5643cca5?reconnect=true
