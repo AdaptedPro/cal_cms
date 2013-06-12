@@ -39,4 +39,4 @@ production:
   pool: 5
   username: b1adad09848a42
   password: 75cdca7f
-  socket: mysql://b1adad09848a42:75cdca7f@us-cdbr-east-03.cleardb.com/heroku_3f8c3bbc0fc91ae?reconnect=true
+  socket: mysql2://b1adad09848a42:75cdca7f@us-cdbr-east-03.cleardb.com/heroku_3f8c3bbc0fc91ae?reconnect=true
