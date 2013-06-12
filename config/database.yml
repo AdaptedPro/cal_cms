@@ -25,18 +25,18 @@ test:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: social-calendar-manager
+  database: cal_cms_test
   pool: 5
-  username: bbd104d627eb4f
-  password: a6b56177
+  username: root
+  password: root
   socket: /Applications/MAMP/tmp/mysql/mysql.sock
 
 production:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: cal_cms_production
+  database: heroku_93ea9dd3a8bd14e  
   pool: 5
-  username: root
-  password: root
-  socket: /Applications/MAMP/tmp/mysql/mysql.sock
+  username: bbd104d627eb4f
+  password: a6b56177
+  socket: mysql://b1adad09848a42:75cdca7f@us-cdbr-east-03.cleardb.com/heroku_3f8c3bbc0fc91ae?reconnect=true
