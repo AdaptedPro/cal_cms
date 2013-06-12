@@ -25,10 +25,10 @@ test:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: cal_cms_test
+  database: social-calendar-manager
   pool: 5
-  username: root
-  password: root
+  username: bbd104d627eb4f
+  password: a6b56177
   socket: /Applications/MAMP/tmp/mysql/mysql.sock
 
 production:
