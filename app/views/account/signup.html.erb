@@ -1,42 +1,58 @@
 <h3>Sign up</h3>
-<%= form_for(:account, :url => {:action => 'signup'}, :html => {:multipart => true}) do |f| %>
-	<table>
-		<thead>
-			<tr>
-				<th>Already on Cirrus Era? <a href="">Sign in</a></th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>
-					<%= f.text_field( :name => 'first_name', :size => 40, :maxlength => 40 ) %>&nbsp
-					<%= f.text_field( :name => 'last_name', :size => 40, :maxlength => 40 ) %>
-				</td>
-			</tr>
-			<tr>
-				<td><%= f.text_field( :name => 'email', :size => 60, :maxlength => 60 ) %></td>
-			</tr>	
-			<tr>
-				<td><%= f.text_field( :name => 'password', :type => 'password', :size => 20, :maxlength => 20 ) %></td>
-			</tr>
-			<tr>
-				<td><%= f.text_field( :name => 'phone', :size => 12, :maxlength => 12 ) %></td>
-			</tr>
-			<tr>
-				<td>Profile photo: <%= f.file_field(:photo) %></td>
-			</tr>	
-			<tr>
-				<td>By clicking Join you confirm that you accept our <a href="#">Privacy Policy</a> and <a href="#">Terms of Service</a>.</td>
-			</tr>							
-		</tbody>
-		<tfoot>
-			<tr>
-				<td>
-					<div class="form-buttons">
-						<%= submit_tag("Join") %>
-					</div>	
-				</td>
-			</tr>
-		</tfoot>
-	</table>
-<% end %>
+
+<div class="form_frame">
+  <% if !flash[:notice].blank? %>
+  <div class="notice">
+    <%= flash[:notice] %>
+  </div>
+  <% end %>
+	<%= form_for(:account, :url => {:action => 'signup'}, :html => {:multipart => true}) do |f| %>
+		<table>
+			<thead>
+				<tr>
+					<th>Already on Cirrus Era? <%= link_to("Sign in", {:action => 'signin'}, :class => 'prompt link') %>!</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+			        	<span class="text-input small-input">
+			            	<%= f.text_field(:name => 'first_name', :size => 40, :maxlength => 40, :placeholder => 'First name') %>
+			        	</span>
+						&nbsp
+						<span class="text-input small-input">	
+							<%= f.text_field(:name => 'last_name', :size => 40, :maxlength => 40, :placeholder => 'Last name') %>
+						</span>	
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<span class="text-input">
+							<%= f.text_field(:name => 'email', :size => 60, :maxlength => 60, :placeholder => 'Email') %>
+						</span>
+					</td>	
+				</tr>	
+				<tr>
+					<td>
+						<span class="text-input">		
+							<%= f.text_field(:name => 'password', :type => 'password', :size => 20, :maxlength => 20, :placeholder => 'Password') %>
+						</span>
+					</td>
+				</tr>
+				<tr>
+					<td>By clicking Join you confirm that you accept our <a href="#">Privacy Policy</a> and <a href="#">Terms of Service</a>.</td>
+				</tr>							
+			</tbody>
+			<tfoot>
+				<tr>
+					<td>
+						<div class="form-buttons">
+							<%= submit_tag("Join") %>
+						</div>	
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	<% end %>
+
+</div>

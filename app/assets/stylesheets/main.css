@@ -432,7 +432,7 @@ img.bg {
     width:100%;
 }
 
-#sign_in_frame {
+.form_frame {
     padding: 10px;
     position: absolute;
     height: 100px;
@@ -445,9 +445,9 @@ img.bg {
     -ms-transform: translate(-50%, -50%);
 }
 
-#sign_in_frame table { width: 100%;}
+.form_frame table { width: 100%;}
 /*
-#sign_in_frame span input {
+.form_frame span input {
     -webkit-box-shadow: 0 1px 1px #000;
        -moz-box-shadow: 0 1px 1px #000;
             box-shadow: 0 1px 1px #000;    
@@ -461,6 +461,10 @@ span.text-input input {
     width: 90%;
     margin-bottom: 8px;
     line-height: 1em;    
+}
+
+span.text-input small-input input {
+    width: 30%;
 }
 
 span.signin-button input {
