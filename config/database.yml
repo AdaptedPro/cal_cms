@@ -35,7 +35,7 @@ production:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: heroku_93ea9dd3a8bd14e  
+  database: heroku_3f8c3bbc0fc91ae 
   pool: 5
   username: b1adad09848a42
   password: 75cdca7f
