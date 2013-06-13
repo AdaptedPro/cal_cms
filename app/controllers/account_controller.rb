@@ -1,7 +1,7 @@
 class AccountController < ApplicationController
 	
 	layout 'login'	
-	before_filter :confirm_logged_in, :except => [:signin, :attempt_signin, :signout]
+	before_filter :confirm_logged_in, :except => [:signin,:signup, :attempt_signin, :signout]
 
 	def index
 
