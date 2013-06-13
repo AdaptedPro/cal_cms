@@ -66,7 +66,7 @@ class PagesController < ApplicationController
 	def destroy
 		Page.find(params[:id]).destroy
 		flash[:notice] = "Page destroyed."
-		redirect_to(:action => 'list', :subject_id = @subject.id)
+		redirect_to(:action => 'list', :subject_id => @subject.id)
 	end
 
 	private
