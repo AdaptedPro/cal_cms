@@ -463,8 +463,8 @@ span.text-input input {
     line-height: 1em;    
 }
 
-span.text-input small-input input {
-    width: 30%;
+span.small-input input {
+    width: 35%;
 }
 
 span.signin-button input {

@@ -35,7 +35,6 @@ class AccountController < ApplicationController
 		redirect_to(:action => 'signin')
 	end
 
-	layout 'admin'
 	def dashboard 
 		@usr_events = ItemData.where('user_id = ?', session[:user_id])
 		@usr_events_count = @usr_events.count

@@ -1,11 +1,9 @@
-<h3>Sign up</h3>
-
 <div class="form_frame">
-  <% if !flash[:notice].blank? %>
-  <div class="notice">
-    <%= flash[:notice] %>
-  </div>
-  <% end %>
+	<% if !flash[:notice].blank? %>
+	<div class="notice">
+		<%= flash[:notice] %>
+	</div>
+	<% end %>
 	<%= form_for(:account, :url => {:action => 'signup'}, :html => {:multipart => true}) do |f| %>
 		<table>
 			<thead>
@@ -17,25 +15,25 @@
 				<tr>
 					<td>
 			        	<span class="text-input small-input">
-			            	<%= f.text_field(:name => 'first_name', :size => 40, :maxlength => 40, :placeholder => 'First name') %>
+			        		<%= text_field_tag(:name, nil, :id => 'first_name_field', :placeholder => 'First name') %>
 			        	</span>
 						&nbsp
 						<span class="text-input small-input">	
-							<%= f.text_field(:name => 'last_name', :size => 40, :maxlength => 40, :placeholder => 'Last name') %>
+							<%= text_field_tag(:name, nil, :id => 'last_name_field', :placeholder => 'Last name') %>
 						</span>	
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<span class="text-input">
-							<%= f.text_field(:name => 'email', :size => 60, :maxlength => 60, :placeholder => 'Email') %>
+							<%= text_field_tag(:email, nil, :id => 'email_field', :placeholder => 'Email') %>
 						</span>
 					</td>	
 				</tr>	
 				<tr>
 					<td>
 						<span class="text-input">		
-							<%= f.text_field(:name => 'password', :type => 'password', :size => 20, :maxlength => 20, :placeholder => 'Password') %>
+							<%= password_field_tag(:password, nil, :id => 'password_field', :placeholder => 'Password') %>
 						</span>
 					</td>
 				</tr>
