@@ -74,7 +74,7 @@ body {
 
 .wrapper {
     width: 90%;
-    /*margin: 0 5%;*/
+    margin: 0 5%;
 }
 
 /* ===================
@@ -177,7 +177,6 @@ a { text-decoration: none; }
 textarea, input { outline: none; }
 
 header {
-    
     /*
     background-color: #FF6600;
     border-bottom: 1px solid #FFF;
@@ -203,8 +202,8 @@ header nav ul li  a{
     top: 50%;
     transform: translate(-50%, -50%);    
     -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
 }
 
 #splash span {
@@ -274,8 +273,10 @@ img.bg {
     width: 15%;
     padding: 2%;
     margin:2% 0;
+    /*
     float: left;
     display: inline;
+    */
     min-width: 150px;
 }
 
@@ -613,7 +614,7 @@ th.header { cursor: pointer; }
 
     nav {
         float: right;
-        width: 25%;
+        width: 38%;
     }
 
 /* ============

@@ -1,6 +1,8 @@
 <% @page_title = "Events List" %>
 
-<div class="event list">
+                <article>
+                	<section class="event list">
+
 	<h2>Items</h2>
 	<%= link_to("Add New Event", {:action => 'new'}, :class => 'action new') %>	
 	<table id="myTable" class="tablesorter">
@@ -50,7 +52,8 @@
 			</tr>
 		</tfoot>	
 	</table>
-</div>
+                	</section>            	                	
+                </article>	
 
 <script type="text/javascript">
 $(function() {
