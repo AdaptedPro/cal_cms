@@ -22,7 +22,7 @@ class ItemsController < ApplicationController
 	end
 
 	def new
-		@event = ItemData.new #(:event_name => "Default")
+		@event = ItemData.new
 	end	
 
 	def create

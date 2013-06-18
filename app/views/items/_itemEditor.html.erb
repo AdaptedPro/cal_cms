@@ -1,0 +1,39 @@
+	<article id="item_detail" class="edit">	
+		<section>
+			<%= form_tag("new", :id => "editor_form") do %>
+				<span class="text-input">
+				  	<%= text_field_tag(:item_title, nil, :id => 'item_title', :class => "form_element", 
+								:placeholder => 'Title') %>												
+				</span>
+				<br />
+				<span class="text-input">
+					<%= text_area_tag(:item_description, nil, :id => 'item_description', :class => "form_element", 
+								:placeholder => 'Description...') %>
+				</span>				
+				<br />
+				<span class="text-input">				
+					<%= text_area_tag(:item_special_note, nil, :id => 'item_special_note', :class => "form_element", 
+								:placeholder => 'Special Notes...') %>												
+				</span>	
+				<br />
+				<span class="text-input">
+				  	<%= text_field_tag(:location_address_1, nil, :id => 'location_address_1', :class => "form_element", 
+								:placeholder => 'Address 1') %>												
+				</span>				
+				<br />
+				<span class="text-input">
+				  	<%= text_field_tag(:location_address_2, nil, :id => 'location_address_2', :class => "form_element", 
+								:placeholder => 'Address 2') %>												
+				</span>				
+				<br />
+				<span class="text-input">
+				  	<%= text_field_tag(:location_city, nil, :id => 'location_city', :class => "form_element", 
+				  				:placeholder => 'City') %>												
+				</span>					
+				<p>
+				<span id="save_btn" class="ajax_form_btn">Save</span> &nbsp; <span id="close_btn" class="ajax_form_btn">Cancel</span>
+				</p>
+			<% end %>
+		</section>
+	</article>
+	<br class ="clr" />
