@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
 
 	layout 'admin'
 	before_filter :confirm_logged_in, :except => [:search]
+	respond_to :html, :json, :xml
 
 	def index
 		list
@@ -10,7 +11,7 @@ class ItemsController < ApplicationController
 
 	def list
 		@event = ItemData.all
-		@event = ItemData.order		
+		@event = ItemData.order	
 	end
 
 	def show
@@ -66,5 +67,36 @@ class ItemsController < ApplicationController
 			flash[:notice] = "event destroyed."		
 		redirect_to(:action => 'list')
 	end	
+
+	#REST
+	def all
+		@event = ItemData.all
+		@event = ItemData.order			
+		respond_with @event			
+	end	
+
+	def specific
+		@event = ItemData.all
+		@event = ItemData.order			
+		respond_with @event			
+	end		
+
+	def build
+		@event = ItemData.new(params[:event])
+		@event.save
+		respond_with @event
+	end
+
+	def tweek
+		@event = ItemData.find(params[:id])
+		@event.update_attributes(params[:event])
+		respond_with @event
+	end		
+
+	def break
+		@event = ItemData.find(params[:id])
+		@event.destroy
+		respond_with @event		
+	end
 	
 end

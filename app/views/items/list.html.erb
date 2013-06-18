@@ -80,24 +80,14 @@
 				<script type="text/javascript">
   				$("table thead th:eq(4)").data("sorter", false);
   				$(function() {
-				  $("#make_new").click(function () {
-					$("#item_detail").slideDown(); 
-					$(this).fadeOut();
-				  });
+					$("#make_new").click(function () {
+						$("#item_detail").slideDown(); 
+						$(this).fadeOut();
+					});
 
-				  $("#close_btn").click(function () {
-					$("#item_detail").slideUp(); 
-					$("#make_new").fadeIn();
-				  });				  
- 			// 						
-						/*
-						$.ajax({
-						  type: "POST",
-						  url: "/items/new/",
-						  data: $(".edit_form_option")
-						}).done(function(msg) {
-						  alert("Data Saved: " + msg);
-						});
-						*/ 					
+					$("#close_btn").click(function () {
+						$("#item_detail").slideUp(); 
+						$("#make_new").fadeIn();
+					});	
   				});
 				</script>

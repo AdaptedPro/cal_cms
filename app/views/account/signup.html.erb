@@ -4,7 +4,7 @@
 		<%= flash[:notice] %>
 	</div>
 	<% end %>
-	<%= form_for(:account, :url => {:action => 'signup'}, :html => {:multipart => true}) do |f| %>
+	<%= form_for(:account, :url => {:action => 'attempt_signup'}, :html => {:multipart => true}) do |f| %>
 		<table>
 			<thead>
 				<tr>

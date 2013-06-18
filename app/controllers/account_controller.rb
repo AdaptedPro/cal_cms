@@ -19,12 +19,25 @@ class AccountController < ApplicationController
 			redirect_to(:action => 'signin')			
 		end
 	end
+
+	def attempt_signup
+		@temp_user = TempUser.new(params[:subject])
+
+		if @temp_user.save
+			flash[:notice] = "New User created."
+			redirect_to(:action => 'verify')
+		else
+			flash[:notice] = "You could not be added. Please try again."
+			redirect_to(:action => 'signup')
+		end			
+	end
 	
 	def signin
-		@page_title = "Sign In 2"
+		@page_title = "Sign In"
 	end
 
 	def signup
+		@page_title = "Sign Up"
 	end
 
 	def signout
