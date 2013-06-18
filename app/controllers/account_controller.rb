@@ -34,11 +34,6 @@ class AccountController < ApplicationController
 		redirect_to(:action => 'signin')
 	end
 
-	#layout 'admin'
-	def dashboard 
-
-	end
-
 	def usr
 	end
 

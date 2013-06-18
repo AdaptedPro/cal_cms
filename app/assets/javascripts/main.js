@@ -1,11 +1,17 @@
 $(function() {
-	//
-	$( "#datepicker" ).datepicker();
-
-	//
-	//$("#myTable").tablesorter(); 
-
-	//SPLASH
+    $("#start_date").datepicker({
+        //numberOfMonths: 2,
+        onSelect: function(selected) {
+          $("#end_date").datepicker("option","minDate", selected)
+        }
+    });
+    $("#end_date").datepicker({ 
+        //numberOfMonths: 2,
+        onSelect: function(selected) {
+           $("#start_date").datepicker("option","maxDate", selected)
+        }
+    });
+    
 	var checkstate = 'all';
 	$(".check_all").change(function() {
 		if ($(this).val() == "check") {

@@ -1,8 +1,3 @@
-<style type="text/css">
-#map-canvas {width: 100%; height: 300px;}
-#map-legend {margin: 1% 0;}
-</style>
-
                 <article>
                 	<section>
 						<fieldset>
@@ -46,14 +41,6 @@ function initialize() {
 	 if(navigator.geolocation) {
 	    navigator.geolocation.getCurrentPosition(function(position) {
 	      var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
-			/*
-			var infowindow = new google.maps.InfoWindow({
-			map: map,
-			position: pos,
-			content: 'Location found using HTML5.'
-			});
-			*/
 
 	      	map.setCenter(pos);
 

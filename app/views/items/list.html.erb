@@ -1,64 +1,78 @@
 <% @page_title = "Events List" %>
 
                 <article>
+                	<section id="article_header">
+						<%= link_to("+ Add New Event", {:action => 'new'}, :class => 'action new') %>	                		
+						<h2>Calendar Items</h2>
+						<br class="clr" />						
+                	</section>
+
+                	<section class="event search">
+						<%= form_tag("ajax_search", :remote => true, :id => "search_form") do %>
+							<%= text_field_tag(:search, nil, :id => 'search', :class => "search_term", 
+							:placeholder => 'Search Events', :maxlength => 125) %>	
+							<br />
+							<%= text_field_tag(:start_date, nil, :id => 'start_date', :class => "search_term", :read_only => true, :placeholder => 'Start Date') %>&nbsp;	
+							<%= text_field_tag(:end_date, nil, :id => 'end_date', :class => "search_term", :read_only => true, :placeholder => 'End Date') %>	
+							&nbsp;	
+							<span id="search_btn" class="form_btn">Search</span>
+							&nbsp;	
+							<span id="clear_btn" class="form_btn">Clear</span>
+						<% end %>   
+                	</section>	
+
                 	<section class="event list">
-
-	<h2>Items</h2>
-	<%= link_to("Add New Event", {:action => 'new'}, :class => 'action new') %>	
-	<table id="myTable" class="tablesorter">
-		<thead>
-			<tr>	
-				<th>Title</th>
-				<th>Visible</th>
-				<th>Publish</th>
-				<th>Status</th>
-				<th class="{sorter: false}">Actions</th>
-			</tr>
-		</thead>	
-		<tbody>
-			<% @event.each do |event| %>
-			<tr>	 	 	 	 	 	 		
-				<td><%= event.item_title %></td>	 	 	 	 	 	 		
-				<td><%= event.item_viewable ? "Yes": "No" %></td> 
-				<td><%= event.item_publish_date %></td> 
-				<td><%= event.item_status %></td> 	 	 	 	 	 		 
-				<td>
-					<%= link_to("Show", {:action => 'show', :id => event.id}, :class => 'action show') %>
-					<%= link_to("Edit", {:action => 'edit', :id => event.id}, :class => 'action edit') %>
-					<%= link_to("Delete", {:action => 'delete', :id => event.id}, :class => 'action delete') %>
-				</td>			
-			</tr>
-			<% end %>
-		</tbody>
-		<tfoot>
-			<tr>
-				<td colspan="5">
-					<div id="pager" class="pager">
-						<form>
-							<img src="/images/first.png" class="first"/>
-							<img src="/images/prev.png" class="prev"/>
-							<input type="text" class="pagedisplay"/>
-							<img src="/images/next.png" class="next"/>
-							<img src="/images/last.png" class="last"/>
-							<select class="pagesize">
-								<option selected="selected"  value="10">10</option>
-								<option value="20">20</option>
-								<option value="30">30</option>
-								<option  value="40">40</option>
-							</select>
-						</form>
-					</div>
-				</td>
-			</tr>
-		</tfoot>	
-	</table>
-                	</section>            	                	
-                </article>	
-
-<script type="text/javascript">
-$(function() {
-    //$("#myTable").tablesorterPager({container: $("#pager")});
- 	$("#myTable").tablesorter().tablesorterPager({container: $("#pager")});     
-});
-</script>
-
+						<table id="myTable" class="tablesorter">
+							<thead>
+								<tr>	
+									<th>Title</th>
+									<th>Visible</th>
+									<th>Publish</th>
+									<th>Status</th>
+									<th class="no_pointer">Actions</th>
+								</tr>
+							</thead>	
+							<tbody>
+								<% @event.each do |event| %>
+								<tr>	 	 	 	 	 	 		
+									<td><%= event.item_title %></td>	 	 	 	 	 	 		
+									<td><%= event.item_viewable ? "Yes": "No" %></td> 
+									<td><%= event.item_publish_date %></td> 
+									<td><%= event.item_status %></td> 	 	 	 	 	 		 
+									<td>
+										<%= link_to("Show", {:action => 'show', :id => event.id}, :class => 'action show') %>
+										<%= link_to("Edit", {:action => 'edit', :id => event.id}, :class => 'action edit') %>
+										<%= link_to("Delete", {:action => 'delete', :id => event.id}, :class => 'action delete') %>
+									</td>			
+								</tr>
+								<% end %>
+							</tbody>
+							<tfoot>
+								<tr>
+									<td colspan="5">
+										&nbsp;
+										<div id="pager" class="pager">
+											<form>
+												<img src="/images/first.png" class="first"/>
+												<img src="/images/prev.png" class="prev"/>
+												<input type="text" class="pagedisplay"/>
+												<img src="/images/next.png" class="next"/>
+												<img src="/images/last.png" class="last"/>
+												<select class="pagesize">
+													<option selected="selected"  value="10">10</option>
+													<option value="20">20</option>
+													<option value="30">30</option>
+													<option  value="40">40</option>
+												</select>
+											</form>
+										</div>
+									</td>
+								</tr>
+							</tfoot>	
+						</table>
+                	</section>  
+                </article>
+				<br class="clr" />
+				<script type="text/javascript">
+  				$("table thead th:eq(4)").data("sorter", false);
+				</script>

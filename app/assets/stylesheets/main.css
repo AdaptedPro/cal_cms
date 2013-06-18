@@ -11,7 +11,7 @@ textarea {
 }
 
 body {
-    background-image: url('/images/SCM_textLogo.png');
+    /*background-image: url('/images/SCM_textLogo.png');*/
     background-repeat: no-repeat;
     background-color: #E0E0E0;
     font-size: 1em;
@@ -88,7 +88,7 @@ body {
 
 /*.footer-container,*/
 .main aside {
-    border-top: 20px solid #E0E0E0;
+    /*border-top: 20px solid #E0E0E0;*/
 }
 
 .header-container,
@@ -135,7 +135,6 @@ nav a:hover {
    ============== */
 
 .main-container {
-    /*background-color: #FAFAFA;*/
     padding: 0 0 80px 0;
     height: 100%;
 }
@@ -151,7 +150,7 @@ nav a:hover {
 
 .main aside {
     color: #333;
-    padding: 0px 5% 10px;
+    /*padding: 0px 5% 10px;*/
 }
 
 .footer-container footer {
@@ -256,10 +255,8 @@ img.bg {
 
 }
 
-#search {
-    width: 40%;
-    margin: 0 auto;
-}
+#map-canvas {width: 100%; height: 300px;}
+#map-legend {margin: 1% 0;}
 
 #acc-dashboard-section {
     width: 80%;
@@ -270,8 +267,8 @@ img.bg {
     background-image: url('/images/bg-trans-white.png');
     /*background-color: #E9E9E9;*/
     border-radius: 25px;
-    width: 15%;
-    padding: 2%;
+    width: 90%;
+    padding: 10%;
     margin:2% 0;
     /*
     float: left;
@@ -299,6 +296,60 @@ img.bg {
     margin: 0!important;
     padding: 0!important;
     list-style-type: none;
+}
+
+#search {
+    width: 97%;
+}
+
+.search_term {
+    border-radius: 10px;
+    border: 0;
+    font-size: 1em;
+    padding: 12px 3px 9px 10px;
+    margin-bottom: 8px;
+    line-height: 1.2em;     
+}
+
+.form_btn {
+    width: 50px;
+}
+
+#search_btn {
+    background-color: #0033CC;
+    border-radius: 10px;
+    border: 0;
+    font-size: 1em;
+    padding: 12px 20px 9px 20px;
+    margin-bottom: 8px;
+    line-height: 1em; 
+    cursor: pointer; 
+    color: #FFF;
+}
+
+#clear_btn {
+    background-color: #FF6600;
+    border-radius: 10px;
+    border: 0;
+    font-size: 1em;
+    padding: 12px 20px 9px 20px;
+    margin-bottom: 8px;
+    line-height: 1em; 
+    cursor: pointer; 
+    color: #FFF;    
+}
+
+.tablesorter th {
+    cursor:pointer;
+}
+
+.no_pointer {
+    cursor:text!important;
+}
+
+.clr {
+    clear: both;
+    line-height: 0;
 }
 
 @media screen and (max-width: 1024px) { /* Specific to this particular image */
@@ -383,10 +434,6 @@ img.bg {
 
 #lookUp { width:;}
 .hide { display:none; }
-.clr {
-    clear: both;
-    line-height: 0;
-}
 
 .f_button {
     border:1px solid #000;
@@ -441,9 +488,9 @@ img.bg {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);    
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
 }
 
 .form_frame table { width: 100%;}
@@ -480,6 +527,50 @@ span.signin-button input {
     text-shadow: rgba(0, 0, 0, 0.317647) 0px -1px 0px;   
 }
 
+/*
+||||||||||||-++ TABLE SORTER STYLES ++- |||||||||||||||
+*/
+table.tablesorter {
+    font-family:arial;
+    background-color: #CDCDCD;
+    margin:10px 0pt 15px;
+    font-size: 8pt;
+    width: 100%;
+    text-align: left;
+}
+table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+    background-color: #e6EEEE;
+    border: 1px solid #FFF;
+    font-size: 8pt;
+    padding: 4px;
+}
+table.tablesorter thead tr .header {
+    background-image: url(bg.gif);
+    background-repeat: no-repeat;
+    background-position: center right;
+    cursor: pointer;
+}
+table.tablesorter tbody td {
+    color: #3D3D3D;
+    padding: 4px;
+    background-color: #FFF;
+    vertical-align: top;
+}
+table.tablesorter tbody tr.odd td {
+    background-color:#F0F0F6;
+}
+table.tablesorter thead tr .headerSortUp {
+    background-image: url(asc.gif);
+}
+table.tablesorter thead tr .headerSortDown {
+    background-image: url(desc.gif);
+}
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+    background-color: #8dbdd8;
+}
+/*
+*/
+
 .footer-container {
     position:fixed;
     bottom:0;
@@ -514,11 +605,18 @@ span.signin-button input {
 
 
 a.new, a.action_link {
-    float: left;
+    float: right;
     padding:10px 20px;
-    background-color: #333;
     color: #FFF;
+    background-color: #FF6600;
+    border-radius: 10px;
+    border: 0;
+    font-size: 1em;
+    margin-bottom: 8px;
+    line-height: 1em; 
+    cursor: pointer;   
 }
+
 #myTable {
     width:100%;
     border-collapse:collapse;
@@ -528,7 +626,7 @@ th.header { cursor: pointer; }
 #myTable td, #myTable th {
     font-size:1em;
     border:1px solid #FFF;
-    padding:3px 7px 2px 7px;
+    /*padding:3px 7px 2px 7px;*/
 }
 
 .collect-table td,

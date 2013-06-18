@@ -11,8 +11,8 @@
         <meta name="viewport" content="width=device-width" />
         <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;key=AIzaSyATH7XLbF2tdxlGK5IvfOOiEcbn1D4AgoU"></script> 
-        <%= stylesheet_link_tag    "main","normalize","normalize.min","ui-lightness/jquery-ui-1.10.3.custom.css","select2", :media => "all" %>
-        <%= javascript_include_tag    "jquery-1.9.1","jquery-ui-1.10.3.custom","main","jquery.tablesorter", "addons/pager/jquery.tablesorter.pager.js","select2" %>
+        <%= javascript_include_tag    "application" ,"select2" %>      
+        <%= stylesheet_link_tag    "main","normalize","normalize.min","ui-lightness/jquery-ui-1.10.3.custom.css","select2", :media => "all" %>         
         <%= csrf_meta_tags %>
     </head>
     <body>
@@ -42,23 +42,22 @@
             <section id="acc-dashboard-section">
 
                 <aside>    
-                <section id="acc-dashboard-section-nav">
-                    <h3><a href="/admin">Dashboard</a></h3>
-                    <hr />
-                    <ul>
-                        <li><a href="#/calendar/usr/">View Calendar</a></li>        
-                        <li><a href="/items/">Items</a></li>
-                        <li><a href="/locations/">Locations</a></li>
-                        <li><a href="/contacts/">Contacts</a></li>
-                        <li><a href="#/pending/">Pending</a></li>
-                    </ul>
-                    <hr />
-                    <ul>    
-                        <li><a href="#/social/usr/facebook">Post to Facebook</a></li>
-                        <li><a href="#/social/usr/twitter">Tweet to Twitter</a></li>
-                        <li><a href="#/social/usr/youtube">Upload to YouTube</a></li>
-                    </ul>   
-                </section>
+                    <section id="acc-dashboard-section-nav">
+                        <h3><a href="/admin">Dashboard</a></h3>
+                        <hr />
+                        <ul>       
+                            <li><a href="/items/">Items</a></li>
+                            <li><a href="/locations/">Locations</a></li>
+                            <li><a href="/contacts/">Contacts</a></li>
+                            <li><a href="#/pending/">Pending</a></li>
+                        </ul>
+                        <hr />
+                        <ul>    
+                            <li><a href="#/social/usr/facebook">Post to Facebook</a></li>
+                            <li><a href="#/social/usr/twitter">Tweet to Twitter</a></li>
+                            <li><a href="#/social/usr/youtube">Upload to YouTube</a></li>
+                        </ul>   
+                    </section>
                 </aside>
 
                 <%= yield %>

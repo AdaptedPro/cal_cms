@@ -1,7 +1,7 @@
 CalCms::Application.routes.draw do
   root :to => "main#index"
 
-  match 'admin', :to => 'account#dashboard'
+  match 'admin', :to => 'dashboard#index'
   #get "events/index"
 
   # The priority is based upon order of creation:

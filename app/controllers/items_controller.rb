@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
 
 	layout 'admin'
+	before_filter :confirm_logged_in, :except => [:search]
+
 	def index
 		list
 		render('list')
@@ -13,6 +15,10 @@ class ItemsController < ApplicationController
 
 	def show
 		@event = ItemData.find(params[:id])
+		@timedate = ItemTimeDate.where('(SELECT COUNT(*) FROM item_data 
+											WHERE item_data.timedate_id = item_time_dates.id)')
+		@locals = Location.where('(SELECT COUNT(*) FROM item_data 
+											WHERE item_data.location_id = locations.id)')		
 	end
 
 	def new
