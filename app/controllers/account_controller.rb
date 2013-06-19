@@ -28,6 +28,7 @@ class AccountController < ApplicationController
 	end
 
 	def signup
+		flash[:notice] = ""
 		@page_title = "Sign Up"
 	end
 
