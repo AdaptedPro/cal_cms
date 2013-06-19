@@ -27,3 +27,12 @@ $ ->
 
   $("#search_btn").click ->
     do_search()
+
+#numberOfMonths: 2,
+$("#start_date").datepicker onSelect: (selected) ->
+  $("#end_date").datepicker "option", "minDate", selected
+
+
+#numberOfMonths: 2,
+$("#end_date").datepicker onSelect: (selected) ->
+  $("#start_date").datepicker "option", "maxDate", selected

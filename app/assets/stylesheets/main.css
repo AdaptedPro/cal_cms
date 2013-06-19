@@ -219,7 +219,7 @@ img.logo {
     font-family: 'Oswald', sans-serif;
     line-height: 1.125em;
     color: #FFF;
-    text-shadow: rgba(0, 0, 0, 0.317647) 0px 3px 3px; 
+    /*text-shadow: rgba(0, 0, 0, 1) 0px 3px 3px;*/ 
 }
 
 .lrg { font-size: 4em;}
@@ -343,7 +343,7 @@ img.bg {
     line-height: 1em; 
     cursor: pointer; 
     color: #FFF;
-    text-shadow: rgba(0, 0, 0, 0.3) 0px -1px 0px;  
+    /*text-shadow: rgba(0, 0, 0, 1) 0px -1px 0px;*/  
 }
 
 #clear_btn {
@@ -356,7 +356,7 @@ img.bg {
     line-height: 1em; 
     cursor: pointer; 
     color: #FFF;
-    text-shadow: rgba(0, 0, 0, 0.3) 0px -1px 0px;      
+    /*text-shadow: rgba(0, 0, 0, 1) 0px -1px 0px; */     
 }
 
 .ajax_form_btn {
@@ -382,7 +382,7 @@ img.bg {
 .action { 
     color:#FFF; 
     padding: 3px 4px;
-    text-shadow: rgba(0, 0, 0, 2) 0px 1px 3px;      
+    /*text-shadow: rgba(0, 0, 0, 2) 0px 1px 3px; */     
 }
 .show { background-color: #009900; }
 .edit { background-color: #FFCC00; }
@@ -486,7 +486,6 @@ img.bg {
 .inner_right { width:200px;}
 .inner_left, .inner_right {display:inline-block;vertical-align:top;}
 
-#lookUp { width:;}
 .hide { display:none; }
 
 .f_button {
@@ -596,7 +595,7 @@ span.signin-button input {
     width: 100%;
     margin-bottom: 8px;
     color:#E0E0E0; 
-    text-shadow: rgba(0, 0, 0, 0.317647) 0px -1px 0px;   
+    /*text-shadow: rgba(0, 0, 0, 1) 0px 1px 0px;  */ 
 }
 
 /*
