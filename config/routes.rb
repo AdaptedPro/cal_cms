@@ -2,6 +2,11 @@ CalCms::Application.routes.draw do
   root :to => "main#index"
 
   match 'admin', :to => 'dashboard#index'
+  match 'about', :to => 'main#about'
+  match 'business', :to => 'main#business'
+  match 'developers', :to => 'main#developers'
+  match 'privacy', :to => 'main#privacy'
+  match 'terms', :to => 'main#terms'
   #get "events/index"
 
   # The priority is based upon order of creation:
