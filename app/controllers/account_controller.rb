@@ -21,6 +21,7 @@ class AccountController < ApplicationController
 	end
 
 	def attempt_signup
+		
 		#@temp_user = TempUser.new(params[:subject])
 
 		#if @temp_user.save
