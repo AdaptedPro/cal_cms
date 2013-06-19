@@ -194,9 +194,10 @@ img.logo {
 }
 
 #dashboard_maincontent {
-    background-image: url('/images/bg-trans-white.png');
-    border-radius: 25px;
-    padding: 10%;    
+    /*background-image: url('/images/bg-trans-white.png');*/
+    background-color: #FFF;
+    border-radius: 5px;
+    padding:3%;    
 }
 
 #splash {
