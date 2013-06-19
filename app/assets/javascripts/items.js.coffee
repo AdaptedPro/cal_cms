@@ -17,7 +17,7 @@ $ ->
         sorting = [[0, 0], [0, 0]]
         $("table").trigger "sorton", [sorting]
     )
-    
+
   $("table").tablesorter(
     widthFixed: true
     widgets: ["zebra"]

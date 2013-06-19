@@ -9,19 +9,18 @@
         <title>Cirrus Era | <%= @page_title || 'Admin Area' %></title>
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width" />
-        <link href='http://fonts.googleapis.com/css?family=Sigmar+One' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css' />
 		<%= stylesheet_link_tag    "main","normalize","normalize.min","ui-lightness/jquery-ui-1.10.3.custom.css", :media => "all" %>
-		<%= javascript_include_tag    "jquery-1.9.1","jquery-ui-1.10.3.custom","main","jquery.tablesorter" %>
+		<%= javascript_include_tag    "application" %>
 		<%= csrf_meta_tags %>
     </head>
-    <body>
+    <body class="welcome">
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
-
         <div class="header-container">
             <header class="wrapper clearfix">
-                <!--<h1 class="title"><a href="/">Social Calendar Manager</a></h1>-->
+                <a href="/"><img class="logo" src="/images/logo_white.png" alt="Cirrus Era"></a>
                 <nav>
                     <ul>
                         <li><a href="/account/signin">Log In</a></li>
@@ -39,7 +38,7 @@
 
         <div class="footer-container">
             <footer class="wrapper">
-                <ul>
+                <ul id="lower_nav">
                 	<li><a href="#">About</a></li>
                 	<li><a href="#">Businesses</a></li>
                 	<li><a href="#">Developers</a></li>

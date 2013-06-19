@@ -11,9 +11,10 @@ textarea {
 }
 
 body {
-    /*background-image: url('/images/SCM_textLogo.png');*/
+    background: url('/images/bg_sky.jpg');
+    background-color: #000;
     background-repeat: no-repeat;
-    background-color: #E0E0E0;
+    background-position:center top;
     font-size: 1em;
     line-height: 1.4;
     color:#333;
@@ -117,17 +118,14 @@ nav a {
     padding: 7px 0;
     text-align: center;
     text-decoration: none;
-    font-weight: bold;
-    color: #333;
+    font-weight: lighter;
+    color: #FFF;
 }
 
 nav a:hover,
 nav a:visited {
-    color: #333;
-}
-
-nav a:hover {
-    text-decoration: underline;
+    color: #FFF;
+    text-decoration: none;
 }
 
 /* ==============
@@ -158,6 +156,12 @@ nav a:hover {
     padding: 10px 0;
     font-size: 90%;
     font-weight: lighter;    
+}
+
+#myCanvas {
+    width:100%;
+    height:100%;
+    position: absolute;
 }
 
 /* ===============
@@ -191,6 +195,12 @@ header nav ul li  a{
     text-shadow: #AAA 0.1em 0.1em 0.1em;                    
 }
 */
+
+img.logo {
+    float:left;
+    margin-top:1.5em; 
+}
+
 #splash {
     color: #FFF;
     padding: 10px;
@@ -206,10 +216,10 @@ header nav ul li  a{
 }
 
 #splash span {
-    font-family: 'Sigmar One', cursive;
+    font-family: 'Oswald', sans-serif;
     line-height: 1.125em;
-    color: #FFCC00;
-    text-shadow: rgba(0, 0, 0, 0.317647) 0px 1px 0px; 
+    color: #FFF;
+    text-shadow: rgba(0, 0, 0, 0.317647) 0px 3px 3px; 
 }
 
 .lrg { font-size: 4em;}
@@ -391,6 +401,11 @@ img.bg {
     line-height: 0;
 }
 
+#lower_nav {
+    display:inline;
+    float: right;
+}
+
 @media screen and (max-width: 1024px) { /* Specific to this particular image */
   img.bg {
     left: 50%;
@@ -520,6 +535,7 @@ img.bg {
 }
 
 .form_frame {
+    color: #FFF;
     padding: 10px;
     position: absolute;
     height: 100px;
@@ -530,6 +546,11 @@ img.bg {
         -webkit-transform: translate(-50%, -50%);
         -moz-transform: translate(-50%, -50%);
         -ms-transform: translate(-50%, -50%);
+}
+
+.form_frame a,
+.form_frame a:visited {
+    color:#FF6600;
 }
 
 .form_frame table { width: 100%;}
@@ -567,7 +588,7 @@ span.small-input input {
 }
 
 span.signin-button input {
-    background-color: #339933;
+    background-color: #FF6600;
     border-radius: 10px;
     border: 0;
     font-size: 1.2em;
@@ -581,6 +602,7 @@ span.signin-button input {
 /*
 ||||||||||||-++ TABLE SORTER STYLES ++- |||||||||||||||
 */
+/*
 table.tablesorter {
     font-family:arial;
     background-color: #CDCDCD;
@@ -619,13 +641,12 @@ table.tablesorter thead tr .headerSortDown {
 table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
     background-color: #8dbdd8;
 }
-/*
 */
 
 .footer-container {
     position:fixed;
     bottom:0;
-    height: 5%;
+    height: 37px;
     width: 100%;
     background-color: #F9F9F9;
 }
@@ -639,7 +660,6 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
     list-style-type: none;
     margin: 3px 0;
     padding: 0;
-    float:right;
 }
 
 .footer-container ul li {
@@ -648,6 +668,10 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
     float: left;
     margin-right: 3em;
 }
+
+.footer-container ul li:last-child {
+    margin-right: 2em;
+} 
 
 .footer-container ul li a {
     color:#333;
@@ -700,6 +724,10 @@ th.header { cursor: pointer; }
     line-height: 1em; 
 }
 
+#lower_nav {
+    display: none;
+}
+
 /* ==========================================================================
    Media Queries
    ========================================================================== */
@@ -708,7 +736,7 @@ th.header { cursor: pointer; }
 
 /* ====================
     INTERMEDIATE: Menu
-   ==================== */
+   ==================== */   
 
     nav a {
         float: left;
@@ -724,6 +752,10 @@ th.header { cursor: pointer; }
 
     nav li:last-child a {
         margin-right: 0;
+    }
+
+    #lower_nav {
+        display: none;
     }
 
 /* ========================
@@ -779,6 +811,11 @@ th.header { cursor: pointer; }
         float: right;
         width: 28%;
     }
+
+    #lower_nav {
+        display: inline;
+        float: right;
+    }    
 }
 
 @media only screen and (min-width: 1140px) {
@@ -790,6 +827,10 @@ th.header { cursor: pointer; }
     .wrapper {
         width: 100%; /* 1140px - 10% for margins */
         margin: 0;
+    }
+
+    .logo {
+        margin-left:50px;
     }
 }
 

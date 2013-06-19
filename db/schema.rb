@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -48,7 +49,7 @@ ActiveRecord::Schema.define(:version => 20130519171521) do
     t.integer  "contact_id"
     t.integer  "location_id"
     t.integer  "parking_id"
-    t.integer  "user_id",                                             :null => false
+    t.integer  "user_id"
     t.string   "permalink"
     t.string   "item_title",        :limit => 40
     t.text     "item_description"
@@ -166,14 +167,15 @@ ActiveRecord::Schema.define(:version => 20130519171521) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "first_name",  :limit => 25
-    t.string   "last_name",   :limit => 50
-    t.string   "email",                     :default => "", :null => false
-    t.string   "displayname", :limit => 40,                 :null => false
-    t.string   "password",    :limit => 40,                 :null => false
-    t.string   "status",      :limit => 8,                  :null => false
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.string   "first_name",      :limit => 25
+    t.string   "last_name",       :limit => 50
+    t.string   "email",                         :default => "", :null => false
+    t.string   "displayname",     :limit => 40,                 :null => false
+    t.string   "hashed_password", :limit => 40,                 :null => false
+    t.string   "salt",            :limit => 40,                 :null => false
+    t.string   "status",          :limit => 8,                  :null => false
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
   end
 
 end
