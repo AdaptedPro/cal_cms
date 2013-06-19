@@ -404,6 +404,12 @@ img.bg {
     float: right;
 }
 
+#legal_info {
+    background-color: #FFF;
+    color: #333;
+    padding: 2% 4%;
+}
+
 @media screen and (max-width: 1024px) { /* Specific to this particular image */
   img.bg {
     left: 50%;
