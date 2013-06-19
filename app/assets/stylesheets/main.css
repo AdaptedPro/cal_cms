@@ -15,7 +15,7 @@ body {
     background-color: #000;
     background-repeat: no-repeat;
     background-position:center top;
-    background-size: Auto 600px;
+    background-size: Auto Auto;
     font-size: 1em;
     line-height: 1.4;
     color:#333;
