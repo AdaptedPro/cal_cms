@@ -88,20 +88,11 @@ body {
     /*position: fixed;*/
 }
 
-/*.footer-container,*/
-.main aside {
-    /*border-top: 20px solid #E0E0E0;*/
-}
-
 .header-container,
 .footer-container,
 .main aside {
     /*background: #fff;*/
     z-index: 3000;
-}
-
-.title {
-    color: white;
 }
 
 /* ==============
