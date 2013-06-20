@@ -82,6 +82,8 @@
 				<script type="text/javascript">
   				$("table thead th:eq(4)").data("sorter", false);
   				$(function() {
+  					$("#event_type").select2();	
+
 					$("#make_new").click(function () {
 						$("#item_detail").slideDown(); 
 						$(this).fadeOut();
