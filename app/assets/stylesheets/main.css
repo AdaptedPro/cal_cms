@@ -420,10 +420,13 @@ img.bg {
     float: right;
 }
 
-#legal_info {
+.legal_info {
     background-color: #FFF;
     color: #333;
     padding: 2% 4%;
+    -webkit-box-shadow: 0 1px 1px #000;
+       -moz-box-shadow: 0 1px 1px #000;
+            box-shadow: 0 1px 1px #000;      
 }
 
 .list_layout h1,
