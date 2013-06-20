@@ -3,7 +3,9 @@ class AccountController < ApplicationController
 	before_filter :confirm_logged_in, :except => [:signin,:signup, :attempt_signin, :signout]
 
 	def index
-
+		#force all traffic to sign in at the index level
+		signin
+		render('signin')
 	end
 
 	def attempt_signin
@@ -23,7 +25,8 @@ class AccountController < ApplicationController
 		existing_user = AuthUser.where('email = ?', params[:email])	
 		if !existing_user.blank?
 			flash[:notice] = "An account with that email has already been created."
-			redirect_to(:action => 'signup')				
+			#redirect_to(:action => 'signup')
+			redirect_to(:controller => 'user', :action => 'verify')				
 		else
 			flash[:notice] = "Good."
 			#new_user = User.new
