@@ -3,7 +3,7 @@
 <div class="event new">
 	<h2>Calendar Item</h2>
 
-	<%= form_for(@event, :url => {:action => 'update', :id => @event.id}) do |f| %>
+	<%= form_for(@event, :url => {:action => 'update'}, :html => {:id => @event.id}) do |f| %>
 
 		<ul class="f_elements">						
 	        <li>
