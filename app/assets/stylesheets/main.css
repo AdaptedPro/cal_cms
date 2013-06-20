@@ -15,7 +15,7 @@ body {
     background-color: #000;
     background-repeat: no-repeat;
     background-position:center top;
-    background-size: 130% Auto;
+    background-size: 100% Auto;
     font-size: 1em;
     line-height: 1.4;
     color:#333;
@@ -198,6 +198,10 @@ img.logo {
     background-color: #FFF;
     border-radius: 5px;
     padding:3%;    
+}
+
+#dashboard_maincontent section {
+    margin-bottom:2em; 
 }
 
 #splash {

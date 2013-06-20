@@ -3,6 +3,8 @@ class DashboardController < ApplicationController
 	layout 'admin'
 	before_filter :confirm_logged_in	
 	def index
+		@usr = AuthUser.where('email = ?', session[:email])
+
 		@usr_events = ItemData.where('user_id = ?', session[:user_id])
 		@usr_events_count = @usr_events.count
 		
