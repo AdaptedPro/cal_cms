@@ -23,4 +23,8 @@ class UserController < ApplicationController
 	def settings
 	end
 
+	def attempt_signup
+		debug(params)	
+	end	
+
 end

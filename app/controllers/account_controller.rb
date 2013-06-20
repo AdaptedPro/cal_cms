@@ -18,10 +18,6 @@ class AccountController < ApplicationController
 			redirect_to(:action => 'signin')			
 		end
 	end
-
-	def attempt_signup
-		debug(params)	
-	end
 	
 	def signin
 		@page_title = "Sign In"
