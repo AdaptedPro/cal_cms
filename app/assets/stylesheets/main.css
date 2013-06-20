@@ -331,7 +331,9 @@ img.bg {
 }
 
 .editor_article {
-    padding: 5px;
+    padding: 2px 4px;
+    width: 100%;
+    margin-right: 10px;
 }
 
 #item_detail {
