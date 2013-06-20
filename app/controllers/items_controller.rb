@@ -13,8 +13,8 @@ class ItemsController < ApplicationController
 		@event = ItemData.all
 		@event = ItemData.order	
 
-		@event_types = Items.all
-		@event_types = Items.order
+		@event_types = Item.all
+		@event_types = Item.order
 	end
 
 	def show
