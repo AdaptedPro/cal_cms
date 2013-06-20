@@ -36,7 +36,7 @@ class AccountController < ApplicationController
 	end
 
 	def usr
-		
+ 		@auth_user = AuthUser.find(params[:id])		
 	end
 
 end

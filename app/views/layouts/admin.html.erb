@@ -28,7 +28,7 @@
                         <li><a href="/account/signin">Log In</a></li>
                         <li><a href="/account/signup">Sign Up</a></li>                        
                         <% else %>
-                        <li><a href="/account/usr"><%= session[:email] %></a></li>
+                        <li><a href="/account/usr/<%= session[:user_id]%>"><%= session[:email] %></a></li>
                         <li><a href="/account/signout">Log out</a></li>
                         <% end %>
                     </ul>
