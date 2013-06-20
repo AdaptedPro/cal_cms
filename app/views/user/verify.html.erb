@@ -1,5 +1,10 @@
                 <article id="dashboard_maincontent">
-                	<h2>Attention</h2>
                 	<section>
+                		<h2>Attention</h2>
+					  <% if !flash[:notice].blank? %>
+					  <div class="notice">
+					    <%= flash[:notice] %>
+					  </div>
+					  <% end %>                		
                 	</section>
                 </article>	
