@@ -79,8 +79,7 @@ class ItemsController < ApplicationController
 	end	
 
 	def specific
-		@event = ItemData.all
-		@event = ItemData.order			
+		@event = ItemData.find(params[:id])		
 		respond_with @event			
 	end		
 
