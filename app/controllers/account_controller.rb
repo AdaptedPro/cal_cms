@@ -20,16 +20,7 @@ class AccountController < ApplicationController
 	end
 
 	def attempt_signup
-		authorized_user = AuthUser.authenticate(params[:email],params[:password])		
-		if authorized_user
-			session[:user_id] = authorized_user.id
-			session[:email] = authorized_user.email
-			flash[:notice] = "You are now logged in."
-			redirect_to(:controller => 'dashboard', :action => 'index')
-		else
-			flash[:notice] = "Invalid login."
-			redirect_to(:action => 'signin')			
-		end		
+		debug(params)	
 	end
 	
 	def signin
