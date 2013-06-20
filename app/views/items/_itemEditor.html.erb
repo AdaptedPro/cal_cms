@@ -1,8 +1,8 @@
 		<section class="editor_article">
-			<%= form_tag("new", :id => "editor_form") do %>
+			<%= form_tag("create", :id => "editor_form") do %>
 				<p>
-				<select id="">
-					<option value="">Select an item type</option>
+				<select id="event_type">
+					<option>Select an event type</option>
 					<% @event_types.each do |type| %>
 						<option value="<%= type.id %>"><%= type.item_name %></option>
 					<% end %>
