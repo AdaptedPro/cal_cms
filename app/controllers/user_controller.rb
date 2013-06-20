@@ -32,11 +32,7 @@ class UserController < ApplicationController
 			redirect_to(:controller => 'user', :action => 'verify')				
 		else			
 			# Instantiate a new object using form parameters
-			user = User.new(:first_name => params[:first_name], 
-							:last_name => params[:last_name], 
-							:email => params[:email], 
-							:hashed_password => Digest::SHA1.hexdigest(params[:password]))
-
+			user = User.new()
 			if user.save
 				flash[:notice] = "User created."
 			else
