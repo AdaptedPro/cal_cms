@@ -1,13 +1,14 @@
 	<article class="editor_article">	
 		<section>
 			<%= form_tag("new", :id => "editor_form") do %>
+				<p>
 				<select id="event_type">
 					<option></option>
 					<% @event_types.each do |type| %>
 						<option value="<%= type.id %>"><%= type.item_name %></option>
 					<% end %>
 				</select>
-				<br />
+				</p>
 				<span class="text-input">
 				  	<%= text_field_tag(:item_title, nil, :id => 'item_title', :class => "form_element", 
 								:placeholder => 'Title') %>												
