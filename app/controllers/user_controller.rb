@@ -24,7 +24,7 @@ class UserController < ApplicationController
 	end
 
 	def attempt_signup
-		@user_data = 'Hello World' #params
+		@user_data = params
 		render('verify')
 	end	
 
