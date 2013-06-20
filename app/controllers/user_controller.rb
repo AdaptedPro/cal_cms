@@ -41,9 +41,9 @@ class UserController < ApplicationController
 				flash[:notice] = "User created."
 			else
 				flash[:notice] = "User not created."
-			end	
-			render('verify')			
+			end				
 		end		
+		render('verify')		
 	end	
 
 	def verify
