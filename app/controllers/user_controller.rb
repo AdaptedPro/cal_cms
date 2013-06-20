@@ -24,8 +24,8 @@ class UserController < ApplicationController
 	end
 
 	def attempt_signup
-		@user_data = params[:first_name]
-		redirect_to(:controller => 'user', :action => 'verify')
+		@user_data = 'Hello World' #params
+		render('verify')
 	end	
 
 	def verify
