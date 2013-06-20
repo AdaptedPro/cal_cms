@@ -7,7 +7,7 @@
 						<option value="<%= type.id %>"><%= type.item_name %></option>
 					<% end %>
 				</select>
-
+				<br />
 				<span class="text-input">
 				  	<%= text_field_tag(:item_title, nil, :id => 'item_title', :class => "form_element", 
 								:placeholder => 'Title') %>												
@@ -37,9 +37,7 @@
 				  	<%= text_field_tag(:location_city, nil, :id => 'location_city', :class => "form_element", 
 				  				:placeholder => 'City') %>												
 				</span>					
-				<p>
-				<span id="save_btn" class="ajax_form_btn">Save</span> &nbsp; <span id="close_btn" class="ajax_form_btn">Cancel</span>
-				</p>
+				<p><span id="save_btn" class="ajax_form_btn">Save</span> &nbsp; <span id="close_btn" class="ajax_form_btn">Cancel</span></p>
 			<% end %>
 		</section>
 	</article>
