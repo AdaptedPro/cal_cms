@@ -1,8 +1,9 @@
                 <article id="dashboard_maincontent">
-                	<h2>Hello <%= @usr.first_name %></h2>
+                	<h2>Hello <%= @usr.first_name %>!</h2>
                 	<section>
 						<fieldset>
 							<legend>Locations</legend>
+							<% if !@user_locations.blank? %>
 							<div id="map-legend">
 								<select id="user_locations_legend">
 									<% @user_locations.each do |location_title| %>
@@ -10,6 +11,7 @@
 									<% end %>    					
 								</select>
 							</div>
+							<% end %>
 							<div id="map-canvas"></div>
 						</fieldset>	                		
                 	</section>
@@ -17,8 +19,8 @@
 						<fieldset>
 							<legend>Currently</legend>
 							<ul class="item_count">
-								<li><strong><%= @contacts_count %></strong> - Contacts</li>				
-								<li><strong><%= @usr_events_count %></strong> - Events</li>
+								<li><strong><%= @contacts_count %></strong> - Contacts <%= button_tag('Import',:id => 'import_contacts') %></li>				
+								<li><strong><%= @usr_events_count %></strong> - Events <%= button_tag('Import',:id => 'import_events') %></li>
 								<li><strong><%= @location_count %></strong> - Locations</li>
 							</ul>
 						</fieldset>	                		
@@ -28,9 +30,36 @@
 							<legend>Pending</legend>
 						</fieldset>	                    	
                 	</section>            	                	
-                </article>			
+                </article>		
+
+				<div id="import_contacts_dialog" title="Get Contacts" class="dialog hideme">
+				  <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+				</div> 
+
+				<div id="import_events_dialog" title="Get Events" class="dialog hideme">
+				  <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+				</div>                	
 
 <script type="text/javascript">
+$(function() {
+	$('#import_contacts_dialog').dialog({
+      autoOpen: false, height: 300, width: 350,
+      modal: false});
+	$('#import_events_dialog').dialog({
+      autoOpen: false, height: 300, width: 350,
+      modal: false});
+
+	$("#import_contacts").click(function() {
+		$(".ui-dialog:visible").find(".dialog").dialog("close");
+		$('#import_contacts_dialog').dialog("open");
+	});
+
+	$("#import_events").click(function() {
+		$(".ui-dialog:visible").find(".dialog").dialog("close");
+		$('#import_events_dialog').dialog("open");
+	});	
+});
+
 function initialize() {
 	var mapOptions = {
 	  zoom: 8,

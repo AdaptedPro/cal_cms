@@ -4,7 +4,7 @@
 		<%= flash[:notice] %>
 	</div>
 	<% end %>
-	<%= form_for(:account, :url => {:action => 'attempt_signup'}, :html => {:multipart => true}) do |f| %>
+	<%= form_tag(:action => 'attempt_signup') do %>
 		<table>
 			<thead>
 				<tr>
@@ -38,7 +38,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td>By clicking Join you confirm that you accept our <a href="#">Privacy Policy</a> and <a href="#">Terms of Service</a>.</td>
+					<td>By clicking Join you confirm that you accept our <a href="/privacy">Privacy Policy</a> and <a href="/terms">Terms of Service</a>.</td>
 				</tr>							
 			</tbody>
 			<tfoot>

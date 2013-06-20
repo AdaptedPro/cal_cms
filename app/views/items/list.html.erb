@@ -1,6 +1,6 @@
 <% @page_title = "Events List" %>
 
-                <article>
+                <article class="list_layout">
                 	<section id="article_header"> 
 						<span id="make_new">+ Add an item</span>               		
 						<h2>Calendar Items</h2>
@@ -26,6 +26,7 @@
                 	</section>	
 
                 	<section class="event list">
+                		<% if !@event.blank? %>
 						<table id="myTable" class="tablesorter">
 							<thead>
 								<tr>	
@@ -74,6 +75,7 @@
 								</tr>
 							</tfoot>	
 						</table>
+						<% end %>
                 	</section>  
                 </article>
 				<br class="clr" />
@@ -88,6 +90,17 @@
 					$("#close_btn").click(function () {
 						$("#item_detail").slideUp(); 
 						$("#make_new").fadeIn();
-					});	
+					});
+
+					$('#save_btn').click(function () {
+						$.ajax({
+						  type: "POST",
+						  url: "/items/create/",
+						  data: $('.form_element').serialize(),
+						  success: function(msg) {
+						  	console.log(msg);
+						  }
+						});						
+					});
   				});
 				</script>

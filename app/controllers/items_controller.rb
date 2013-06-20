@@ -30,9 +30,9 @@ class ItemsController < ApplicationController
 		# Instantiate a new object using form parameters
 		@event = ItemData.new(params[:event])
 		# Save the object
-		if @ItemData.save
+		if @event.save
 			# if save succeeds, redirect to the list action
-			flash[:notice] = "event created."
+			flash[:notice] = "Event created."
 			redirect_to(:action => 'list')
 		else
 			# If save fails, redisplay the form so the iser can fix problems
