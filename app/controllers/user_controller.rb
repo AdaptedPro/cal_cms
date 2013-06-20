@@ -27,12 +27,21 @@ class UserController < ApplicationController
 		existing_user = AuthUser.where('email = ?', params[:email])	
 		if !existing_user.blank?
 			flash[:notice] = "An account with that email has already been created."
-			#redirect_to(:action => 'signup')
 			redirect_to(:controller => 'user', :action => 'verify')				
-		else
-			flash[:notice] = "Good."
-			#new_user = User.new
-			#if new user is created then send to verify
+		else			
+			# Instantiate a new object using form parameters
+			@user = User.new(:first_name => params[:first_name_field], :last_name => params[:last_name_field], :email => params[:email_field],
+				:hashed_password => Digest::SHA1.hexdigest(params[:password]))
+			if @user.save
+				# if save succeeds, redirect to the list action
+				flash[:notice] = "User created."
+				#redirect_to(:action => 'list')
+			else
+				# If save fails, redisplay the form so the iser can fix problems
+				#render('new')
+				flash[:notice] = "User not created."
+			end	
+
 			redirect_to(:controller => 'user', :action => 'verify')				
 		end
 	end	
