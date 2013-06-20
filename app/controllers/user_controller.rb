@@ -39,10 +39,10 @@ class UserController < ApplicationController
 
 			if @user.save
 				flash[:notice] = "User created."
-				render('verify')
 			else
 				flash[:notice] = "User not created."
-			end				
+			end	
+			render('verify')			
 		end		
 	end	
 
