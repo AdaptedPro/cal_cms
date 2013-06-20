@@ -18,13 +18,23 @@ class AccountController < ApplicationController
 			redirect_to(:action => 'signin')			
 		end
 	end
+
+	def attempt_signup
+		existing_user = AuthUser.where('email = ?', params[:email])	
+		if existing_user
+			flash[:notice] = "An account with that email has already been created."
+			redirect_to(:action => 'signup')				
+		else
+			flash[:notice] = "Good."
+			redirect_to(:action => 'signup')				
+		end
+	end		
 	
 	def signin
 		@page_title = "Sign In"
 	end
 
 	def signup
-		flash[:notice] = ""
 		@page_title = "Sign Up"
 	end
 

@@ -29,7 +29,7 @@ class UserController < ApplicationController
 	end	
 
 	def verify
-		debug(params)
+
 	end
 
 end

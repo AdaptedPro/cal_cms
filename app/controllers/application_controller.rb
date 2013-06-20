@@ -10,6 +10,17 @@ class ApplicationController < ActionController::Base
 		else
 			return true
 		end
+	end
+
+	protected
+	def confirm_has_private_key
+		unless session[:private_key]
+			flash[:notice] = "Please double check that you have the correct private key in place."
+			redirect_to(:controller => 'dashboard', :action => 'index')
+			return false
+		else
+			return true
+		end
 	end	
 
 end
