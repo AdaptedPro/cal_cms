@@ -26,6 +26,7 @@ class AccountController < ApplicationController
 			redirect_to(:action => 'signup')				
 		else
 			flash[:notice] = "Good."
+			#new_user = User.new
 			redirect_to(:action => 'signup')				
 		end
 	end		
