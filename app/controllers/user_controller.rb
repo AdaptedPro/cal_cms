@@ -33,13 +33,12 @@ class UserController < ApplicationController
 			@user = User.new(:first_name => params[:first_name_field], :last_name => params[:last_name_field], :email => params[:email_field],
 				:hashed_password => Digest::SHA1.hexdigest(params[:password]))
 			if @user.save
-				# if save succeeds, redirect to the list action
 				flash[:notice] = "User created."
 				#redirect_to(:action => 'list')
 			else
-				# If save fails, redisplay the form so the iser can fix problems
 				#render('new')
 				flash[:notice] = "User not created."
+				@user_data = params
 			end	
 
 			redirect_to(:controller => 'user', :action => 'verify')				
