@@ -2,7 +2,7 @@
 			<%= form_tag("create", :id => "editor_form") do %>
 				<p>
 				<select id="event_type">
-					<option>Select an event type</option>
+					<option></option>
 					<% @event_types.each do |type| %>
 						<option value="<%= type.id %>"><%= type.item_name %></option>
 					<% end %>

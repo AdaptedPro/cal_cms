@@ -333,7 +333,7 @@ img.bg {
 
 .editor_article {
     padding: 2px 4px;
-    width: 80%!important;
+    width: 90%!important;
 }
 
 #item_detail {
@@ -347,8 +347,8 @@ img.bg {
     padding: 3px 4px;    
 }
 
-#make_new {float: right; }
-#make_new,
+.main_btn {float: right; }
+.main_btn,
 #search_btn {
     background-color: #FF6600;
     border-radius: 10px;
@@ -435,6 +435,14 @@ img.bg {
 .list_layout h2,
 .list_layout h3 {
     color: #FFF;
+}
+
+.content_holder {
+    background-color: #FFF;
+    padding: 2% 4%;
+    -webkit-box-shadow: 0 1px 1px #000;
+       -moz-box-shadow: 0 1px 1px #000;
+            box-shadow: 0 1px 1px #000;      
 }
 
 @media screen and (max-width: 1024px) { /* Specific to this particular image */
