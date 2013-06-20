@@ -4,7 +4,7 @@
 		<%= flash[:notice] %>
 	</div>
 	<% end %>
-	<%= form_tag(:action => 'attempt_signup') do %>
+	<%= form_tag(:controller => 'user',:action => 'attempt_signup') do %>
 		<table>
 			<thead>
 				<tr>
