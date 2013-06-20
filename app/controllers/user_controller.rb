@@ -25,6 +25,11 @@ class UserController < ApplicationController
 
 	def attempt_signup
 		debug(params)	
+		redirect_to(:action => 'verify')		
 	end	
+
+	def verify
+		render('verify')
+	end
 
 end
