@@ -404,6 +404,11 @@ img.bg {
 .edit { background-color: #FFCC00; }
 .delete { background-color: #FF0000; }
 
+.list { 
+    background-image: url('/images/bg-trans-white.png');
+    padding: 3px 4px;
+}
+
 .tablesorter th {
     cursor:pointer;
 }

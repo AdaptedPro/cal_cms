@@ -1,3 +1,4 @@
+require 'digest/sha1'
 class UserController < ApplicationController
 
 	def index
