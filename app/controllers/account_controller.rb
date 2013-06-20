@@ -3,7 +3,6 @@ class AccountController < ApplicationController
 	before_filter :confirm_logged_in, :except => [:signin,:signup, :attempt_signin, :signout]
 
 	def index
-		#force all traffic to sign in at the index level
 		signin
 		render('signin')
 	end
