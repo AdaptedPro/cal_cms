@@ -32,4 +32,8 @@ class UserController < ApplicationController
 
 	end
 
+	def register
+		#if params[:temp_key] is in user table, delete user from user table and add them to authuser table
+	end
+
 end
