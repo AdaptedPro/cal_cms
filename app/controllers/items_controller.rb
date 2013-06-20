@@ -12,6 +12,9 @@ class ItemsController < ApplicationController
 	def list
 		@event = ItemData.all
 		@event = ItemData.order	
+
+		@event_types = Items.all
+		@event_types = Items.order
 	end
 
 	def show

@@ -8,7 +8,7 @@
                 	</section>
 
                 	<section id="item_detail" style="display:none;">
-                		<%= render :partial => 'itemEditor', :layout => false %>	
+                		<%= render :partial => 'itemEditor', :collection => @event_types, :layout => false %>	
                 	</section>
 
                 	<section class="event search">

@@ -1,5 +1,6 @@
 	<article class="editor_article">	
 		<section>
+			<%= debug(@event_types) %>
 			<%= form_tag("new", :id => "editor_form") do %>
 				<span class="text-input">
 				  	<%= text_field_tag(:item_title, nil, :id => 'item_title', :class => "form_element", 
