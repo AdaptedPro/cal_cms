@@ -27,7 +27,7 @@ class AccountController < ApplicationController
 		else
 			flash[:notice] = "Good."
 			#new_user = User.new
-			redirect_to(:action => 'signup')				
+			redirect_to(:controller => 'user', :action => 'verify')				
 		end
 	end		
 	
@@ -42,7 +42,7 @@ class AccountController < ApplicationController
 	def signout
 		session[:user_id] = nil
 		session[:email] = nil		
-		flash[:notice] = "You have been loggen out"
+		flash[:notice] = "You have been logged out"
 		redirect_to(:action => 'signin')
 	end
 
