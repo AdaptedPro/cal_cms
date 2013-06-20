@@ -1,6 +1,7 @@
 require 'digest/sha1'
 class UserController < ApplicationController
 
+	layout 'admin'
 	def index
 		dashboard
 		render('dashboard')		
