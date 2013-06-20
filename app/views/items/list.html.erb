@@ -100,9 +100,15 @@
 						  url: "/items/create/",
 						  data: $('.form_element').serialize(),
 						  success: function(msg) {
-						  	console.log(msg);
+						  	//console.log(msg);
 						  }
 						});						
 					});
+
+					$('#close_btn').click(function () {
+						$('.form_element').each(function() {
+						  $(this).val('');
+						});			
+					});									
   				});
 				</script>

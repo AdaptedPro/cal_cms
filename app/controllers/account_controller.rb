@@ -36,6 +36,7 @@ class AccountController < ApplicationController
 	end
 
 	def usr
+		
 	end
 
 end

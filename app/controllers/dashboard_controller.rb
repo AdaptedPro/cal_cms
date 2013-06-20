@@ -1,7 +1,8 @@
 class DashboardController < ApplicationController
 
 	layout 'admin'
-	before_filter :confirm_logged_in	
+	before_filter :confirm_logged_in
+
 	def index
 		@usr = AuthUser.find_by_id(session[:user_id])
 
@@ -20,4 +21,5 @@ class DashboardController < ApplicationController
 											WHERE contacts.id = item_data.location_id)')
 		@contacts_count = @user_contacts.count()			
  	end
+
 end

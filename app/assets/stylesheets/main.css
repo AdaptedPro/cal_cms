@@ -333,8 +333,7 @@ img.bg {
 
 .editor_article {
     padding: 2px 4px;
-    width: 100%!important;
-    margin-right: 10px;
+    width: 80%!important;
 }
 
 #item_detail {
@@ -641,7 +640,9 @@ table.tablesorter {
     width: 100%;
     text-align: left;
 }
-table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+
+table.tablesorter thead tr th, 
+table.tablesorter tfoot tr th {
     background-color: #e6EEEE;
     border: 1px solid #FFF;
     font-size: 8pt;
@@ -653,22 +654,28 @@ table.tablesorter thead tr .header {
     background-position: center right;
     cursor: pointer;
 }
+
 table.tablesorter tbody td {
     color: #3D3D3D;
     padding: 4px;
     background-color: #FFF;
     vertical-align: top;
 }
+
 table.tablesorter tbody tr.odd td {
     background-color:#F0F0F6;
 }
+
 table.tablesorter thead tr .headerSortUp {
     background-image: url(asc.gif);
 }
+
 table.tablesorter thead tr .headerSortDown {
     background-image: url(desc.gif);
 }
-table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+
+table.tablesorter thead tr .headerSortDown, 
+table.tablesorter thead tr .headerSortUp {
     background-color: #8dbdd8;
 }
 
@@ -707,7 +714,6 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
     color:#333;
     font-weight: bold;
 }
-
 
 a.new, a.action_link {
     float: right;
