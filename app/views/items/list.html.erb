@@ -2,7 +2,7 @@
 
                 <article class="list_layout">
                 	<section id="article_header"> 
-						<span id="make_new" class="main_btn">+ Add an item</span>               		
+						<span id="make_new" class="main_btn custom_btn">+ Add an item</span>               		
 						<h2>Calendar Items</h2>
 						<br class="clr" />						
                 	</section>
@@ -19,9 +19,9 @@
 							<%= text_field_tag(:start_date, nil, :id => 'start_date', :class => "search_term", :read_only => true, :placeholder => 'Start Date') %>&nbsp;	
 							<%= text_field_tag(:end_date, nil, :id => 'end_date', :class => "search_term", :read_only => true, :placeholder => 'End Date') %>	
 							&nbsp;	
-							<span id="search_btn" class="form_btn">Search</span>
+							<span id="search_btn" class="form_btn custom_btn">Search</span>
 							&nbsp;	
-							<span id="clear_btn" class="form_btn">Clear</span>
+							<span id="clear_btn" class="form_btn custom_btn">Clear</span>
 						<% end %>   
                 	</section>	
 

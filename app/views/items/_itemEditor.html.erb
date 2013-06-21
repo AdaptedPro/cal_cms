@@ -23,20 +23,31 @@
 								:placeholder => 'Special Notes...') %>												
 				</span>	
 				<br />
-				<span class="text-input">
-				  	<%= text_field_tag(:location_address_1, nil, :id => 'location_address_1', :class => "form_element", 
-								:placeholder => 'Address 1') %>												
-				</span>				
-				<br />
-				<span class="text-input">
-				  	<%= text_field_tag(:location_address_2, nil, :id => 'location_address_2', :class => "form_element", 
-								:placeholder => 'Address 2') %>												
-				</span>				
-				<br />
-				<span class="text-input">
-				  	<%= text_field_tag(:location_city, nil, :id => 'location_city', :class => "form_element", 
-				  				:placeholder => 'City') %>												
-				</span>					
+			<% if !@locations.blank? %>
+				<fieldset>
+					<legend>Add a new location</legend>
+					<%= hidden_field_tag('new_location', 'false')%>
+				</fieldset>		
+			<% else %>
+				<fieldset>
+					<legend>Add a new location</legend>
+					<%= hidden_field_tag('new_location', 'true')%>
+					<span class="text-input">
+					  	<%= text_field_tag(:location_address_1, nil, :id => 'location_address_1', :class => "form_element", 
+									:placeholder => 'Address 1') %>												
+					</span>				
+					<br />
+					<span class="text-input">
+					  	<%= text_field_tag(:location_address_2, nil, :id => 'location_address_2', :class => "form_element", 
+									:placeholder => 'Address 2') %>												
+					</span>				
+					<br />
+					<span class="text-input">
+					  	<%= text_field_tag(:location_city, nil, :id => 'location_city', :class => "form_element", 
+					  				:placeholder => 'City') %>												
+					</span>	
+				</fieldset>
+			<% end %>				
 				<p><span id="save_btn" class="ajax_form_btn">Save</span> &nbsp; <span id="close_btn" class="ajax_form_btn">Cancel</span></p>
 			<% end %>
 		</section>

@@ -15,6 +15,9 @@ class ItemsController < ApplicationController
 
 		@event_types = Item.all
 		@event_types = Item.order
+
+		@locals = Location.where('(SELECT COUNT(*) FROM item_data 
+											WHERE item_data.location_id = locations.id)')		
 	end
 
 	def show
@@ -41,6 +44,34 @@ class ItemsController < ApplicationController
 			# If save fails, redisplay the form so the iser can fix problems
 			render('new')
 		end	
+	end
+
+	def ajax_create
+		@event.ItemData.new()
+		@event.item_description = params[:item_description]
+		@event.item_special_note = params[:item_special_note]
+		@event.item_title = params[:item_title]
+		@event.item_viewable = params[:item_viewable]
+		@event.item_publish_date = Time.now
+		@event.item_status = params[:item_status]
+		
+		if params[:new_location] == true
+			#@event_location = Location.new()
+			#@event_location.location_address_1 = params[:location_address_1]
+			#@event_location.location_address_2 = params[:location_address_2]
+			#@event_location.location_city = params[:location_city]
+			#@event_location.location_state = params[:location_state]
+			#@event_location.location_country = params[:location_country]			
+		else
+			#@event.location_id = params[:location]
+		end
+
+		if @event.save
+			render(:html => 'Hello World')
+		else 	
+			render(:html => 'Problem exists')			
+		end
+
 	end	
 
 	def edit
