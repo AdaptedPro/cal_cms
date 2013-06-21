@@ -1,3 +1,4 @@
+require 'digest/sha1'
 class AccountController < ApplicationController
 
 	before_filter :confirm_logged_in, :except => [:signin,:signup, :attempt_signin, :attempt_signup, :verify, :signout]
@@ -24,7 +25,7 @@ class AccountController < ApplicationController
 		authorized_user = AuthUser.authenticate(params[:email],params[:password])
 		if authorized_user
 			flash[:notice] = "It appears as if you already have an account. Please login."
-			#redirect_to(:controller => 'dashboard', :action => 'index')
+			redirect_to(:action => 'signup')
 		else
 			# Instantiate a new object using form parameters
 			@user = User.new()
@@ -36,17 +37,13 @@ class AccountController < ApplicationController
 			@user.status = params[:commit]
 
 			if @user.save
-				session[:email] = params[:email]
-		        UserMailer.confirm_email(@user).deliver		 
-				flash[:notice] = "User created."
-				redirect_to(:action => 'verify')
-		        #format.html { redirect_to(@user, :notice => 'User was successfully created.') }
-		        #format.json { render :json => @user, :status => :created, :location => @user }
+				#session[:email] = params[:email]
+		        #UserMailer.confirm_email(@user).deliver		 
+				#flash[:notice] = "User created."
+				#redirect_to(:action => 'verify')
 			else
-				flash[:notice] = "Not just yet! Perhaps try a different email address."
-				redirect_to(:action => 'signup')
-				#format.html { render :action => "signup" }
-				#format.json { render :json => @user.errors, :status => :unprocessable_entity }
+				#flash[:notice] = "Not just yet! Perhaps try a different email address."
+				#redirect_to(:action => 'signup')
 			end
 		end	
 	end	
