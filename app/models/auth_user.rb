@@ -66,5 +66,5 @@ class AuthUser < ActiveRecord::Base
   	#For security because hashing is not needed
   	self.password = nil
   end
-
+  
 end

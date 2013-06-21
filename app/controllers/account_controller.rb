@@ -94,4 +94,16 @@ class AccountController < ApplicationController
 	def verify
 	end
 
+	def facebook
+		if params[:verified] == true || params[:link].start_with?('https://www.facebook.com/')
+			session[:user_id] = params[:id]
+			session[:email] = params[:email]
+			flash[:notice] = "You are now logged in."
+			redirect_to(:controller => 'dashboard', :action => 'index')		
+		else
+			flash[:notice] = "Invalid login."
+			redirect_to(:action => 'signin')			
+		end
+	end
+
 end
