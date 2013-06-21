@@ -36,8 +36,8 @@
 	        	</div>
 	            <div class="f_data">
 	                <select id="event_status">
-	                    <option value="active" <%= event.item_viewable ? "Yes": "selected='selected'" %>>Active</option>
-	                    <option value="inactive" <%= event.item_viewable ? "No": "selected='selected'" %>>Inactive</option>
+	                    <option value="active" <%= @event.item_viewable ? "Yes": "selected='selected'" %>>Active</option>
+	                    <option value="inactive" <%= @event.item_viewable ? "No": "selected='selected'" %>>Inactive</option>
 	                </select>
 	            </div>
 	            <br class="clr" />

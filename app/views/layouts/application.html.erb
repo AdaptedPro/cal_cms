@@ -81,18 +81,16 @@
                                     window.location.replace("/admin");
                                 }
                             }, 
-                            fail: function () {}
+                            fail: function () {
+                                $( "#fail-modal" ).dialog({
+                                    height: 140,
+                                    modal: false
+                                });                               
+                            }
                         });                    
                     }
                 });
-            }
-
-            $(function() {
-                $( "#fail-modal" ).dialog({
-                    height: 140,
-                    modal: true
-                });
-            });            
+            }           
         </script>        
 
         <!--[if lt IE 7]>

@@ -46,6 +46,19 @@ class MainController < ApplicationController
 			session[:user_id] = params[:id]
 			session[:email] = params[:email]
 			session[:fb] = true
+
+			@usr = AuthUser.find_by_id(session[:user_id])
+
+			if @usr.blank?
+				@usr = AuthUser.new
+				@usr.first_name = params[:first_name]
+				@usr.last_name = params[:last_name]
+				@user.hashed_password = Digest::SHA1.hexdigest(params[:password])
+				@user.email = params[:email]
+				@user.salt = params[:username]
+			else
+			end
+
 			render :json => { :reply => 'good' }
 		else
 			render :json => { :reply => 'bad' }		

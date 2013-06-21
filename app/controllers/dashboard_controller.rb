@@ -19,7 +19,7 @@ class DashboardController < ApplicationController
 		
 		@user_contacts = ItemData.where('(SELECT COUNT(*) FROM contacts 
 											WHERE contacts.id = item_data.location_id)')
-		@contacts_count = @user_contacts.count()			
+		@contacts_count = @user_contacts.count()		
  	end
 
 end

@@ -76,7 +76,8 @@ class AccountController < ApplicationController
 
 	def signout
 		session[:user_id] = nil
-		session[:email] = nil		
+		session[:email] = nil
+		session[:fb] = nil		
 		flash[:notice] = "You have been logged out"
 		redirect_to(:action => 'signin')
 	end
