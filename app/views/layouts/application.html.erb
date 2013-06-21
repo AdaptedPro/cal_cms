@@ -76,7 +76,9 @@
                             type:'POST',
                             url:'/main/facebook',
                             data:response,
-                            success: function (msg) {}, 
+                            success: function (msg) { 
+                                console.log(msg['reply'])
+                            }, 
                             fail: function () {}
                         });                    
                     }
