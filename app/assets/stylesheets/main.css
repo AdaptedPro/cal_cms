@@ -434,6 +434,8 @@ img.bg {
     color: #333;
     padding: 2% 4%;
     margin: 0 auto;
+    width: 60%;
+    margin: 0 auto;
     -webkit-box-shadow: 0 1px 1px #000;
        -moz-box-shadow: 0 1px 1px #000;
             box-shadow: 0 1px 1px #000;      

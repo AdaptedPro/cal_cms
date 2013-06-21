@@ -13,14 +13,11 @@ class AuthUser < ActiveRecord::Base
   validates_length_of :first_name, :maximum => 25
   validates_presence_of :last_name
   validates_length_of :last_name, :maximum => 50  
-  validates_presence_of :displayname
-  validates_length_of :displayname, :within => 7..40
-  validates_uniqueness_of :displayname
   validates_presence_of :email
   validates_length_of :email, :maximum => 255
   validates_format_of :email, :with => EMAIL_REGEX
   validates_confirmation_of :email
-
+  validates_presence_of :password
   validates_length_of :password, :within => 8..25, :on => :create
   
   before_save :create_hashed_password

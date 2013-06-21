@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130519171521) do
+ActiveRecord::Schema.define(:version => 20130621042135) do
 
   create_table "auth_user_pages", :id => false, :force => true do |t|
     t.integer "auth_user_id"
@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(:version => 20130519171521) do
     t.string   "first_name",      :limit => 25
     t.string   "last_name",       :limit => 50
     t.string   "email",                         :default => "", :null => false
-    t.string   "displayname",     :limit => 40,                 :null => false
     t.string   "hashed_password", :limit => 40,                 :null => false
     t.string   "salt",            :limit => 40,                 :null => false
     t.datetime "created_at",                                    :null => false
@@ -106,6 +105,14 @@ ActiveRecord::Schema.define(:version => 20130519171521) do
     t.datetime "updated_at",                       :null => false
   end
 
+  create_table "new_users", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "login"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "options", :force => true do |t|
     t.string   "option_name",  :limit => 50
     t.string   "option_value", :limit => 125
@@ -170,12 +177,13 @@ ActiveRecord::Schema.define(:version => 20130519171521) do
     t.string   "first_name",      :limit => 25
     t.string   "last_name",       :limit => 50
     t.string   "email",                         :default => "", :null => false
-    t.string   "displayname",     :limit => 40,                 :null => false
     t.string   "hashed_password", :limit => 40,                 :null => false
     t.string   "salt",            :limit => 40,                 :null => false
     t.string   "status",          :limit => 8,                  :null => false
     t.datetime "created_at",                                    :null => false
     t.datetime "updated_at",                                    :null => false
   end
+
+  add_index "users", ["email"], :name => "email", :unique => true
 
 end

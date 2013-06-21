@@ -1,6 +1,6 @@
 class AccountController < ApplicationController
 
-	before_filter :confirm_logged_in, :except => [:signin,:signup, :attempt_signin, :signout]
+	before_filter :confirm_logged_in, :except => [:signin,:signup, :attempt_signin, :attempt_signup, :verify, :signout]
 
 	def index
 		signin
@@ -19,6 +19,37 @@ class AccountController < ApplicationController
 			redirect_to(:action => 'signin')			
 		end
 	end
+
+	def attempt_signup
+		authorized_user = AuthUser.authenticate(params[:email],params[:password])
+		if authorized_user
+			flash[:notice] = "It appears as if you already have an account. Please login."
+			#redirect_to(:controller => 'dashboard', :action => 'index')
+		else
+			# Instantiate a new object using form parameters
+			@user = User.new()
+			@user.first_name = params[:first_name]
+			@user.last_name = params[:last_name]
+			@user.hashed_password = Digest::SHA1.hexdigest(params[:password])
+			@user.email = params[:email]
+			@user.salt = params[:email]
+			@user.status = params[:commit]
+
+			if @user.save
+				session[:email] = params[:email]
+		        UserMailer.confirm_email(@user).deliver		 
+				flash[:notice] = "User created."
+				redirect_to(:action => 'verify')
+		        #format.html { redirect_to(@user, :notice => 'User was successfully created.') }
+		        #format.json { render :json => @user, :status => :created, :location => @user }
+			else
+				flash[:notice] = "Not just yet! Perhaps try a different email address."
+				redirect_to(:action => 'signup')
+				#format.html { render :action => "signup" }
+				#format.json { render :json => @user.errors, :status => :unprocessable_entity }
+			end
+		end	
+	end	
 	
 	def signin
 		@page_title = "Sign In"
@@ -35,8 +66,25 @@ class AccountController < ApplicationController
 		redirect_to(:action => 'signin')
 	end
 
-	def usr
- 		@auth_user = AuthUser.find(params[:id])		
+	def confirm
+ 		@auth_user = AuthUser.find(params[:id])
+
+ 		@hash_email = params[:e]
+ 		@user = User.select('*').into('auth_user').where('Digest::SHA1.hexdigest(email) = ?', @hash_email)
+
+ 		if !@user.blank?
+			session[:email] = params[:email]
+	        UserMailer.welcome_email(@user).deliver		 
+			flash[:notice] = "User created."
+			redirect_to(:action => 'verify')
+		else
+			flash[:notice] = "Not just yet! Perhaps try a different email address."
+			redirect_to(:action => 'signup')
+		end
+
+	end
+
+	def verify
 	end
 
 end

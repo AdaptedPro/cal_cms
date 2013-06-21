@@ -4,7 +4,7 @@
 		<%= flash[:notice] %>
 	</div>
 	<% end %>
-	<%= form_tag(:controller => 'user',:action => 'attempt_signup') do %>
+	<%= form_tag(:action => 'attempt_signup') do %>
 		<table>
 			<thead>
 				<tr>
@@ -15,25 +15,25 @@
 				<tr>
 					<td>
 			        	<span class="text-input small-input">
-			        		<%= text_field_tag(:first_name, nil, :id => 'first_name_field', :placeholder => 'First name') %>
+			        		<%= text_field_tag(:first_name, nil, :id => 'first_name', :placeholder => 'First name') %>
 			        	</span>
 						&nbsp
 						<span class="text-input small-input">	
-							<%= text_field_tag(:last_name, nil, :id => 'last_name_field', :placeholder => 'Last name') %>
+							<%= text_field_tag(:last_name, nil, :id => 'last_name', :placeholder => 'Last name') %>
 						</span>	
 					</td>
 				</tr>
 				<tr>
 					<td>
 						<span class="text-input">
-							<%= text_field_tag(:email, nil, :id => 'email_field', :placeholder => 'Email') %>
+							<%= text_field_tag(:email, nil, :id => 'email', :placeholder => 'Email') %>
 						</span>
 					</td>	
 				</tr>	
 				<tr>
 					<td>
 						<span class="text-input">		
-							<%= password_field_tag(:password, nil, :id => 'password_field', :placeholder => 'Password') %>
+							<%= password_field_tag(:password, nil, :id => 'password', :placeholder => 'Password') %>
 						</span>
 					</td>
 				</tr>
@@ -45,7 +45,7 @@
 				<tr>
 					<td>
 						<div class="signin-button">
-							<%= submit_tag("Join") %>
+							<%= submit_tag("Join", :html => { :id => 'status'}) %>
 						</div>	
 					</td>
 				</tr>
