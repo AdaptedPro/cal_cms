@@ -100,9 +100,11 @@ class AccountController < ApplicationController
 			session[:email] = params[:email]
 			session[:fb] = true
 			flash[:notice] = "You are now logged in via facebook."
-			#redirect_to(:controller => 'dashboard', :action => 'index')		
+			#redirect_to(:controller => 'dashboard', :action => 'index')
+			render(:html => "Good")
 		else
 			flash[:notice] = "Invalid login."
+			render(:html => "Bad")
 			#redirect_to(:action => 'signin')			
 		end
 	end
