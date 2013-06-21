@@ -74,9 +74,9 @@
                 FB.api('/me', function(response) {
                     if (response.verified == true) {
                         $.ajax({
-                            type: 'POST'
-                            url: '/account/facebook',
-                            data: response,
+                            type:'POST',
+                            url:'/account/facebook',
+                            data:response,
                             success: function () {
 
                             }, fail: function () { 
