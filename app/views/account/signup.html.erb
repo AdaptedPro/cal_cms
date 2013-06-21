@@ -8,10 +8,10 @@
 		<table>
 			<thead>
 				<tr>
-					<th>Already on Cirrus Era? <%= link_to("Sign in", {:action => 'signin'}, :class => 'prompt link') %>!</th>
+					<td>
+						Already on Cirrus Era? <%= link_to("Sign in", {:action => 'signin'}, :class => 'prompt link') %>!
+					</td>
 				</tr>
-			</thead>
-			<tbody>
 				<tr>
 					<td>
 			        	<span class="text-input small-input">
@@ -40,8 +40,6 @@
 				<tr>
 					<td>By clicking Join you confirm that you accept our <a href="/privacy">Privacy Policy</a> and <a href="/terms">Terms of Service</a>.</td>
 				</tr>							
-			</tbody>
-			<tfoot>
 				<tr>
 					<td>
 						<div class="signin-button">
@@ -49,7 +47,6 @@
 						</div>	
 					</td>
 				</tr>
-			</tfoot>
 		</table>
 	<% end %>
 
