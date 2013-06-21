@@ -37,13 +37,13 @@ class AccountController < ApplicationController
 			@user.status = params[:commit]
 
 			if @user.save
-				#session[:email] = params[:email]
-		        #UserMailer.confirm_email(@user).deliver		 
-				#flash[:notice] = "User created."
-				#redirect_to(:action => 'verify')
+				session[:email] = params[:email]
+		        UserMailer.confirm_email(@user).deliver		 
+				flash[:notice] = "User created."
+				redirect_to(:action => 'verify')
 			else
-				#flash[:notice] = "Not just yet! Perhaps try a different email address."
-				#redirect_to(:action => 'signup')
+				flash[:notice] = "Not just yet! Perhaps try a different email address."
+				redirect_to(:action => 'signup')
 			end
 		end	
 	end	
