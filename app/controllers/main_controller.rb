@@ -6,11 +6,15 @@ class MainController < ApplicationController
 	end
 
 	def welcome
-		@event = ItemData.all
-		@event = ItemData.order	
+		if !session[:user_id].blank?
+			redirect_to(:controller => 'dashboard', :action => 'index')
+		else
+			@event = ItemData.all
+			@event = ItemData.order	
 
-		@locations = Location.all;
-		@locations = Location.order;	
+			@locations = Location.all;
+			@locations = Location.order;	
+		end			
 	end
 
 	def about

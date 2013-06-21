@@ -59,11 +59,19 @@ class AccountController < ApplicationController
 	end	
 	
 	def signin
-		@page_title = "Sign In"
+		if !session[:user_id].blank?
+			redirect_to(:controller => 'dashboard', :action => 'index')
+		else
+			@page_title = "Sign In"			
+		end
 	end
 
 	def signup
-		@page_title = "Sign Up"
+		if !session[:user_id].blank?
+			redirect_to(:controller => 'dashboard', :action => 'index')
+		else
+			@page_title = "Sign Up"			
+		end
 	end
 
 	def signout

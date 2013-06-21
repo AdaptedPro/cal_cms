@@ -7,12 +7,6 @@
   <%= form_tag(:action => 'attempt_signin') do %>
     <table>
       <tr>
-
-      </tr>
-        <td>
-          <fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>   
-        </td>
-      <tr>
         <td>
           <span class="text-input">
             <%= text_field_tag(:email, nil, :id => 'email_field', :placeholder => 'Email') %>
@@ -33,7 +27,12 @@
             <%= submit_tag("Sign In") %>
           </span>      
         </td>
-      </tr>    
+      </tr> 
+      <tr>
+        <td>
+          <fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>   
+        </td>
+      </tr>         
     </table>
   <% end %>  
 </div>
