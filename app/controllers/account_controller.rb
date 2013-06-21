@@ -93,5 +93,5 @@ class AccountController < ApplicationController
 
 	def verify
 	end
-	
+
 end

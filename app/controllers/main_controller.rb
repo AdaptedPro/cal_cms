@@ -45,7 +45,7 @@ class MainController < ApplicationController
 			session[:fb] = true
 			render :json => { :reply => 'good' }
 		else
-			render :json => { :reply => 'bad'}		
+			render :json => { :reply => params[:verified] }		
 		end
 	end
 
