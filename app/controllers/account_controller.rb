@@ -1,11 +1,19 @@
 require 'digest/sha1'
 class AccountController < ApplicationController
 
-	before_filter :confirm_logged_in, :except => [:signin,:signup, :attempt_signin, :attempt_signup, :verify, :signout]
+	before_filter :confirm_logged_in, :except => [:signin,:signup,:channel, :attempt_signin, :attempt_signup, :verify, :signout]
 
 	def index
 		signin
 		render('signin')
+	end
+
+	def channel
+		cache_expire = 1.year
+		response.headers["Pragma"] = "public"
+		response.headers["Cache-Control"] = "max-age=#{cache_expire.to_i}"
+		response.headers["Expires"] = (Time.now + cache_expire).strftime("%d %m %Y %H:%I:%S %Z")
+		render :layout => false, :inline => "<script src='//connect.facebook.net/en_US/all.js'></script>"
 	end
 
 	def attempt_signin
