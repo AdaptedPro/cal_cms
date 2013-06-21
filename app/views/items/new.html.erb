@@ -1,9 +1,14 @@
-<%= link_to("<< Back to List", {:action => 'list'}, :class => 'back-link') %>	
                 <article class="new_layout">
+					<section>
+						<%= link_to("<< Back to List", {:action => 'list'}, :class => 'main_btn custom_btn') %>
+					</section>
+
                 	<section id="article_header">             		
 						<h2>Create New Item</h2>						
-                	</section>                	
-					<%= render :partial => 'itemEditor', :layout => false %>	
+                	</section>     
+
+					<%= render :partial => 'itemEditor', :layout => false %>
+						
 				</article>
 				<script type="text/javascript">
   				$(function() {
