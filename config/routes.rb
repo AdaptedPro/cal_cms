@@ -1,7 +1,6 @@
 CalCms::Application.routes.draw do
   resources :new_users
 
-
   root :to => "main#index"
 
   match 'admin', :to => 'dashboard#index'

@@ -44,11 +44,11 @@ class MainController < ApplicationController
 			session[:fb] = true
 			flash[:notice] = "You are now logged in via facebook."
 			#redirect_to(:controller => 'dashboard', :action => 'index')
-			render(:html => "Good")
+			render :json => { :reply => 'good' }
 		else
 			flash[:notice] = "Invalid login."
-			render(:html => "Bad")
-			#redirect_to(:action => 'signin')			
+			#redirect_to(:action => 'signin')	
+			render :json => { :reply => 'bad' }		
 		end
 	end
 
