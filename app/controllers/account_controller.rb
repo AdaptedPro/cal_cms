@@ -41,9 +41,11 @@ class AccountController < ApplicationController
 		        UserMailer.confirm_email(@user).deliver		 
 				flash[:notice] = "User created."
 				redirect_to(:action => 'verify')
+				render(verify)
 			else
 				flash[:notice] = "Not just yet! Perhaps try a different email address."
 				redirect_to(:action => 'signup')
+				render(signup)
 			end
 		end	
 	end	
