@@ -14,10 +14,7 @@ class ItemsController < ApplicationController
 		@event = ItemData.order	
 
 		@event_types = Item.all
-		@event_types = Item.order
-
-		@locals = Location.where('(SELECT COUNT(*) FROM item_data 
-											WHERE item_data.location_id = locations.id)')		
+		@event_types = Item.order		
 	end
 
 	def show
@@ -30,6 +27,8 @@ class ItemsController < ApplicationController
 
 	def new
 		@event = ItemData.new
+		@locals = Location.where('(SELECT COUNT(*) FROM item_data 
+											WHERE item_data.location_id = locations.id)')		
 	end	
 
 	def create

@@ -2,13 +2,11 @@
 
                 <article class="list_layout">
                 	<section id="article_header"> 
-						<span id="make_new" class="main_btn custom_btn">+ Add an item</span>               		
+						<span id="make_new" class="main_btn custom_btn">
+							<%= link_to("+ Add an item", {:action => 'new', :id => event.id}, :class => 'action new') %>
+						</span>               		
 						<h2>Calendar Items</h2>
 						<br class="clr" />						
-                	</section>
-
-                	<section id="item_detail" style="display:none;">
-                		<%= render :partial => 'itemEditor', :layout => false %>	
                 	</section>
 
                 	<section class="event search">
@@ -81,37 +79,4 @@
 				<br class="clr" />
 				<script type="text/javascript">
   				$("table thead th:eq(4)").data("sorter", false);
-  				$(function() {
-  					$("#event_type").select2({
-						placeholder : "Type of event",
-						allowClear : true  						
-  					});	
-
-					$("#make_new").click(function () {
-						$("#item_detail").slideDown(); 
-						$(this).fadeOut();
-					});
-
-					$("#close_btn").click(function () {
-						$("#item_detail").slideUp(); 
-						$("#make_new").fadeIn();
-					});
-
-					$('#save_btn').click(function () {
-						$.ajax({
-						  type: "POST",
-						  url: "/items/create/",
-						  data: $('.form_element').serialize(),
-						  success: function(msg) {
-						  	//console.log(msg);
-						  }
-						});						
-					});
-
-					$('#close_btn').click(function () {
-						$('.form_element').each(function() {
-						  $(this).val('');
-						});			
-					});									
-  				});
 				</script>

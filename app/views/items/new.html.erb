@@ -5,3 +5,11 @@
                 	</section>                	
 					<%= render :partial => 'itemEditor', :layout => false %>	
 				</article>
+				<script type="text/javascript">
+  				$(function() {
+  					$("#event_type").select2({
+						placeholder : "Type of event",
+						allowClear : true  						
+  					});	
+  				});
+				</script>				
