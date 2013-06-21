@@ -47,7 +47,7 @@ class ItemsController < ApplicationController
 	end
 
 	def ajax_create
-		@event.ItemData.new()
+		@event.ItemData.new
 		@event.item_description = params[:item_description]
 		@event.item_special_note = params[:item_special_note]
 		@event.item_title = params[:item_title]

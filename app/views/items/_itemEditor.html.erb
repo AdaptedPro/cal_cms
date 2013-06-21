@@ -1,5 +1,5 @@
 		<section class="editor_article">
-			<%= form_tag("new", :id => "editor_form") do %>
+			<%= form_tag("ajax_create", :id => "editor_form") do %>
 				<p>
 				<select id="event_type">
 					<option></option>
@@ -25,12 +25,12 @@
 				<br />
 			<% if !@locations.blank? %>
 				<fieldset>
-					<legend>Add a new location</legend>
+					<legend><h3 style="color:white;">Select a location</h3></legend>
 					<%= hidden_field_tag('new_location', 'false')%>
 				</fieldset>		
 			<% else %>
 				<fieldset>
-					<legend>Add a new location</legend>
+					<legend><h3 style="color:white;">Add a new location</h3></legend>
 					<%= hidden_field_tag('new_location', 'true')%>
 					<span class="text-input">
 					  	<%= text_field_tag(:location_address_1, nil, :id => 'location_address_1', :class => "form_element", 
@@ -46,9 +46,14 @@
 					  	<%= text_field_tag(:location_city, nil, :id => 'location_city', :class => "form_element", 
 					  				:placeholder => 'City') %>												
 					</span>	
+					<br />
+					<span class="text-input">
+					  	<%= text_field_tag(:location_country, nil, :id => 'location_country', :class => "form_element", 
+					  				:placeholder => 'Country') %>												
+					</span>						
 				</fieldset>
 			<% end %>				
-				<p><span id="save_btn" class="ajax_form_btn">Save</span> &nbsp; <span id="close_btn" class="ajax_form_btn">Cancel</span></p>
+				<p><span id="save_btn" class="ajax_form_btn custom_btn">Save</span> &nbsp; <span id="close_btn" class="ajax_form_btn custom_btn">Cancel</span></p>
 			<% end %>
 		</section>
 		<br class ="clr" />
