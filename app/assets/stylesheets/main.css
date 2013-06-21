@@ -328,8 +328,9 @@ img.logo {
 .delete { background-color: #FF0000; }
 
 .list { 
-    background-image: url('/images/bg-trans-white.png');
-    padding: 3px 4px;
+    background-color: #FFF;
+    border-radius: 10px;
+    padding: 2% 4%;
 }
 
 .tablesorter th { cursor:pointer; }

@@ -1,18 +1,16 @@
-<%= link_to("<< Back to List", {:action => 'list'}, :class => 'back-link') %>	
+				<article class="content_holder delete">
+					<section>
+						<%= link_to("<< Back to List", {:action => 'list'}, :class => 'main_btn custom_btn') %>
+					</section>
 
-<div class="subject delete">
-	<h2>Delete Subject</h2>
-
-	<%= form_for(:subject, :url => {:action => 'destroy', :id => @subject.id}) do |f| %>
-
-	<p>Are you sure you want to permanently delete this subject?</p>
-
-	<p class="reference-name"><%= @subject.subject_name %></p>
-
-	<div class="">
-		<%= submit_tag("Delete Subject") %>
-	</div>	
-
-	<% end %>
-
-</div>	
+					<section>
+						<h2>Delete Subject</h2>
+						<%= form_for(:subject, :url => {:action => 'destroy', :id => @event.id}) do |f| %>
+							<p>Are you sure you want to permanently delete this item?</p>
+							<p class="reference-name"><%= @event.item_title %></p>
+							<span class="form_btn custom_btn">
+								<%= submit_tag("Delete Subject") %>
+							</span>	
+						<% end %>						
+					</section>
+				</article>	

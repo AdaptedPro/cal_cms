@@ -1,110 +1,46 @@
-<%= link_to("<< Back to List", {:action => 'list'}, :class => 'back-link') %>	
+				<article class="content_holder">
+					<section>
+						<%= link_to("<< Back to List", {:action => 'list'}, :class => 'main_btn custom_btn') %>
+					</section>
 
-<div class="event new">
-	<h2>Calendar Item</h2>
+					<section>					
+						<%= form_for(@event, :url => {:action => 'update'}, :html => {:id => @event.id}) do |f| %>
 
-	<%= form_for(@event, :url => {:action => 'update'}, :html => {:id => @event.id}) do |f| %>
+			            	<span class="text-input">
+			            		<%= f.text_field(:item_title, :class => "setWidth") %>
+			            	</span>						
+			            	<br />	
+			                <select id="event_status">
+			                    <option value="active" <%= @event.item_viewable ? "Yes": "selected='selected'" %>>Active</option>
+			                    <option value="inactive" <%= @event.item_viewable ? "No": "selected='selected'" %>>Inactive</option>
+			                </select>
+			                <br />
+			                <input id="event_location_title" class="setWidth" type="text" /> <span id="get_map" class="link">Find on map</span>
+					        <br />
+							<select id="event_type">
+								<option></option>
+								<% @event_types.each do |type| %>
+									<option value="<%= type.id %>"><%= type.item_name %></option>
+								<% end %>
+							</select>
+							<br />	
+			            	<%= f.text_area(:item_description, :description => 'Item Description',:size => '40x4', 
+			            	:id => 'event_description', :class => 'setWidth')%> 
+			            	<br />	
+			                <select id="event_contacts" multiple="multiple" style="display:none;" class="setWidth">
+			                	<option value="1">John Doe</option>
+			                	<option value="2">Jane Doe</option>
+			                	<option value="3">Bob Smith</option>
+			                	<option value="4">Bobbie Smith</option>
+			                	<option value="5">The Company</option>
+			                </select>
+			                <br />
+					        <span class="form-buttons">
+					        	<%= submit_tag("Update Event") %>
+					        </span> 								
 
-		<ul class="f_elements">						
-	        <li>
-	            <div class="f_label hide">
-	                <label for="event_title">Title:</label>
-	            </div>
-	            <div class="f_data">
-	                <%= f.text_field(:item_title, :class => "setWidth") %>
-	            </div>
-	            <br class="clr" />
-	        </li>
-	        <li class="multi" style="height:20px;">
-	        	<div class="f_label hide">
-	                <label for="event_sdate event_stime event_edate event_etime">Start and end date and times.</label>
-	            </div>
-	            <div class="f_data">
-	                <%= f.text_field(:item_title) %> to 
-	                <input id="event_sdatetime" type="text" size="20" />
-	            </div>
-	            <br class="clr" />                        	                    	
-	        </li>
-	        <li>
-	        	<div class="f_data">
-	        		<input id="event_duration" type="checkbox" value="Y" /><label for="">All Day</label> <input id="event_repeat" type="checkbox" value="Y" /><label for="">Repeat&hellip;</label>
-	        	</div>
-	        </li>
-	        <li class="li_table_set">
-	        	<div class="f_label">
-	        		<label for="event_status">Status:</label>
-	        	</div>
-	            <div class="f_data">
-	                <select id="event_status">
-	                    <option value="active" <%= @event.item_viewable ? "Yes": "selected='selected'" %>>Active</option>
-	                    <option value="inactive" <%= @event.item_viewable ? "No": "selected='selected'" %>>Inactive</option>
-	                </select>
-	            </div>
-	            <br class="clr" />
-	        </li>    
-	        <li class="li_table_set">
-	        	<div class="f_label">
-	        		<label for="event_location_title">Where:</label>
-	        	</div>
-	            <div class="f_data">
-	                <input id="event_location_title" class="setWidth" type="text" /> <span id="get_map" class="link">Find on map</span>
-	            </div>
-	            <br class="clr" />
-	        </li>
-	        <li class="li_table_set">
-	        	<div class="f_label">
-	        		<label for="event_category">Category:</label>
-	        	</div>
-	            <div class="f_data">
-	                <select id="event_category" multiple="multiple" style="display:none;" class="setWidth">
-	                	<option value="1">Networking</option>
-	                	<option value="2">Entertainment</option>
-	                	<option value="3">Emergency</option>
-	                	<option value="4">Education</option>
-	                	<option value="5">Professional</option>
-	                </select>
-	            </div>
-	            <br class="clr" />
-	        </li>	                    
-	        <li class="li_table_set">
-	            <div class="f_label">
-	                <label for="event_created_by">Created by:</label>
-	            </div>
-	            <div class="f_data">
-	                <em><%= @event.created_by %></em>
-	            </div>
-	            <br class="clr" />
-	        </li>
-	        <li class="li_table_set">
-	            <div class="f_label">
-	                <label for="event_description">Description:</label>
-	            </div>
-	            <div class="f_data">
-	            	<%= f.text_area(:item_description, :description => 'Item Description',:size => '40x4', 
-	            	:id => 'event_description', :class => 'setWidth')%> 
-	            </div>
-	            <br class="clr" />
-	        </li>
-	        <li class="li_table_set">
-	        	<div class="f_label">
-	        		<label for="event_contact">Contacts:</label>
-	        	</div>
-	            <div class="f_data">
-	                <select id="event_contacts" multiple="multiple" style="display:none;" class="setWidth">
-	                	<option value="1">John Doe</option>
-	                	<option value="2">Jane Doe</option>
-	                	<option value="3">Bob Smith</option>
-	                	<option value="4">Bobbie Smith</option>
-	                	<option value="5">The Company</option>
-	                </select>
-	            </div>
-	            <br class="clr" />
-	        </li>
-	    </ul>
+						<% end %>
 
-		<div class="form-buttons">
-			<%= submit_tag("Update Event") %>
-		</div>	
+					</section>
 
-	<% end %>
-</div>	
+				</article>	
