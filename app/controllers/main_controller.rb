@@ -38,14 +38,13 @@ class MainController < ApplicationController
 	end	
 
 	def facebook
-		if params[:verified] == true 
-		#|| params[:link].start_with?('https://www.facebook.com/')
+		if params[:verified] == 'true' && params[:link].start_with?('https://www.facebook.com/')
 			session[:user_id] = params[:id]
 			session[:email] = params[:email]
 			session[:fb] = true
 			render :json => { :reply => 'good' }
 		else
-			render :json => { :reply => params[:verified] }		
+			render :json => { :reply => 'bad' }		
 		end
 	end
 
