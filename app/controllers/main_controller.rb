@@ -38,7 +38,7 @@ class MainController < ApplicationController
 	end	
 
 	def facebook
-		if params[:verified] == true || params[:link].start_with?('https://www.facebook.com/')
+		if params[:verified] == true #|| params[:link].start_with?('https://www.facebook.com/')
 			session[:user_id] = params[:id]
 			session[:email] = params[:email]
 			session[:fb] = true
@@ -51,5 +51,5 @@ class MainController < ApplicationController
 			#redirect_to(:action => 'signin')			
 		end
 	end
-						
+
 end
