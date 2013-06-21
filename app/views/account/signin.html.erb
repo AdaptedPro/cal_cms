@@ -34,6 +34,9 @@
 </div>
 
 <script type="text/javascript">
+
+$('#fbsubmit').click(function() {
+
  FB.login(function(response) {
      if (response.authResponse) {
        console.log('Welcome!  Fetching your information.... ');
@@ -44,4 +47,5 @@
        console.log('User cancelled login or did not fully authorize.');
      }
    }), {scope: 'email,user_likes'});
+});
 </script>
