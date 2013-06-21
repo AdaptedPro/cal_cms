@@ -1,59 +1,26 @@
-		<section class="editor_article">
-			<%= form_tag("ajax_create", :id => "editor_form") do %>
-				<p>
-				<select id="event_type">
-					<option></option>
-					<% @event_types.each do |type| %>
-						<option value="<%= type.id %>"><%= type.item_name %></option>
-					<% end %>
-				</select>
-				</p>
-				<span class="text-input">
-				  	<%= text_field_tag(:item_title, nil, :id => 'item_title', :class => "form_element", 
-								:placeholder => 'Title') %>												
-				</span>
-				<br />
-				<span class="text-input">
-					<%= text_area_tag(:item_description, nil, :id => 'item_description', :class => "form_element", 
-								:placeholder => 'Description...') %>
-				</span>				
-				<br />
-				<span class="text-input">				
-					<%= text_area_tag(:item_special_note, nil, :id => 'item_special_note', :class => "form_element", 
-								:placeholder => 'Special Notes...') %>												
-				</span>	
-				<br />
-			<% if !@locations.blank? %>
-				<fieldset>
-					<legend><h3 style="color:white;">Select a location</h3></legend>
-					<%= hidden_field_tag('new_location', 'false')%>
-				</fieldset>		
-			<% else %>
-				<fieldset>
-					<legend><h3 style="color:white;">Add a new location</h3></legend>
-					<%= hidden_field_tag('new_location', 'true')%>
+			<section class="editor_article">
+
+				<%= form_tag(:event, :url => {:action => 'create'} do |f| %>
+					<p>
+					<select id="event_type">
+						<option></option>
+						<% @event_types.each do |type| %>
+							<option value="<%= type.id %>"><%= type.item_name %></option>
+						<% end %>
+					</select>
+					</p>
 					<span class="text-input">
-					  	<%= text_field_tag(:location_address_1, nil, :id => 'location_address_1', :class => "form_element", 
-									:placeholder => 'Address 1') %>												
+					  	<%= f.text_field(:item_title) %>												
+					</span>
+					<br />
+					<span class="text-input">
+						<%= f.text_area(:item_description) %>
 					</span>				
 					<br />
-					<span class="text-input">
-					  	<%= text_field_tag(:location_address_2, nil, :id => 'location_address_2', :class => "form_element", 
-									:placeholder => 'Address 2') %>												
-					</span>				
-					<br />
-					<span class="text-input">
-					  	<%= text_field_tag(:location_city, nil, :id => 'location_city', :class => "form_element", 
-					  				:placeholder => 'City') %>												
-					</span>	
-					<br />
-					<span class="text-input">
-					  	<%= text_field_tag(:location_country, nil, :id => 'location_country', :class => "form_element", 
-					  				:placeholder => 'Country') %>												
-					</span>						
-				</fieldset>
-			<% end %>				
-				<p><span id="save_btn" class="ajax_form_btn custom_btn">Save</span> &nbsp; <span id="close_btn" class="ajax_form_btn custom_btn">Cancel</span></p>
-			<% end %>
-		</section>
-		<br class ="clr" />
+					<span class="text-input">				
+						<%= f.text_area(:item_special_note) %>												
+					</span>					
+					<p><%= submit_tag("Save") %></p>
+				<% end %>
+			</section>
+			<br class ="clr" />

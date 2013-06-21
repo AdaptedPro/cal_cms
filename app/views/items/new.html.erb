@@ -1,28 +1,7 @@
 <%= link_to("<< Back to List", {:action => 'list'}, :class => 'back-link') %>	
-
-<div class="item new">
-	<h2>Create Event</h2>
-
-	<%= form_for(:subject, :url => {:action => 'create'}) do |f| %>
-
-	<table summary="Subject detail view">
-		<tr>
-			<th>Name</th>
-			<td><%= f.text_field(:subject_name) %></td>
-		</tr>	
-		<tr>
-			<th>Position</th>
-			<td><%= f.text_field(:position) %></td>
-		</tr>	
-		<tr>
-			<th>Visible</th>
-			<td><%= f.text_field(:visible) %></td>
-		</tr>					
-	</table>
-
-	<div class="form-buttons">
-		<%= submit_tag("Create Subject") %>
-	</div>	
-
-	<% end %>
-</div>	
+                <article class="new_layout">
+                	<section id="article_header">             		
+						<h2>Create New Item</h2>						
+                	</section>                	
+					<%= render :partial => 'itemEditor', :layout => false %>	
+				</article>
