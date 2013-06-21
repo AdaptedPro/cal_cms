@@ -10,7 +10,6 @@ CalCms::Application.routes.draw do
   match 'developers', :to => 'main#developers'
   match 'privacy', :to => 'main#privacy'
   match 'terms', :to => 'main#terms'
-  match 'facebook', :to => 'main#facebook'
   #get "events/index"
 
   # The priority is based upon order of creation:
