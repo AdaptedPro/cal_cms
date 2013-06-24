@@ -4,12 +4,12 @@
 					</section>
 
 					<section>
-						<h2>Delete Subject</h2>
+						<h2>Delete Item</h2>
 						<%= form_for(:subject, :url => {:action => 'destroy', :id => @event.id}) do |f| %>
 							<p>Are you sure you want to permanently delete this item?</p>
-							<p class="reference-name"><%= @event.item_title %></p>
-							<span class="form_btn custom_btn">
-								<%= submit_tag("Delete Subject") %>
+							<h3><u><%= @event.item_title %></u></h3>
+							<span class="save_btn custom_btn">
+								<%= submit_tag("Delete item") %>
 							</span>	
 						<% end %>						
 					</section>

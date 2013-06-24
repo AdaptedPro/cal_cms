@@ -6,10 +6,9 @@
 	<% end %>
 	<%= form_tag(:action => 'attempt_signup') do %>
 		<table>
-			<thead>
 				<tr>
 					<td>
-						Already on Cirrus Era? <%= link_to("Sign in", {:action => 'signin'}, :class => 'prompt link') %>!
+						Already on Cirrus Era? <%= link_to("Sign in!", {:action => 'signin'}, :class => 'prompt link') %>
 					</td>
 				</tr>
 				<tr>
@@ -46,12 +45,7 @@
 							<%= submit_tag("Join", :html => { :id => 'status'}) %>
 						</div>	
 					</td>
-				</tr>
-		    	<tr>
-		        	<td>
-		          		<fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>   
-		        	</td>
-		      	</tr> 				
+				</tr>		
 		</table>
 	<% end %>
 

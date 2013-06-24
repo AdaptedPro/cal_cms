@@ -163,6 +163,10 @@ img.logo {
     margin-top:1.5em; 
 }
 
+.mvs .fsm span {
+    display: none!important;
+}
+
 #dashboard_maincontent {
     background-color: #FFF;
     border-radius: 5px;
@@ -264,6 +268,10 @@ img.logo {
     line-height: 1.2em;     
 }
 
+.save_btn {
+
+}
+
 .form_btn {
     width: 50px;
 }
@@ -271,6 +279,11 @@ img.logo {
 .editor_article {
     padding: 2px 4px;
     width: 90%!important;
+}
+
+.editor_article input,
+.editor_article textarea {
+
 }
 
 #item_detail {
@@ -348,6 +361,7 @@ img.logo {
 
 .content_holder {
     background-color: #FFF;
+    border-radius: 10px;
     padding: 2% 4%;
     -webkit-box-shadow: 0 1px 1px #000;
        -moz-box-shadow: 0 1px 1px #000;
@@ -371,7 +385,8 @@ img.logo {
     margin: 0 auto;
     -webkit-box-shadow: 0 1px 1px #000;
        -moz-box-shadow: 0 1px 1px #000;
-            box-shadow: 0 1px 1px #000;      
+            box-shadow: 0 1px 1px #000;
+    line-height: 1.5em;      
 }
 
 .list_layout h1,
@@ -462,6 +477,32 @@ img.logo {
 
 .form_frame table { width: 100%;}
 
+.date_holder {
+    display: inline-block;
+    text-align: left;
+    margin-bottom: 2em;
+}
+
+#search_btns {
+    width: 300px;
+}
+.action_links a {
+    display: inline-block;
+    line-height: 2em;
+}
+
+.content_holder span.text-input textarea,
+span.text-input input {
+    background-color: #AAA;
+    color: #000;
+}
+
+.content_holder {
+    background-color: #FFF;
+    border-radius: 10px;
+    padding: 2% 4%;   
+}
+
 span.text-input textarea {
     border-radius: 10px;
     border: 0;
@@ -485,7 +526,8 @@ span.text-input input {
 }
 
 span.small-input input { width: 35%; }
-span.signin-button input {
+span.signin-button input, 
+.save_btn input {
     background-color: #FF6600;
     border-radius: 10px;
     border: 0;
@@ -498,7 +540,7 @@ span.signin-button input {
 }
 
 .footer-container {
-    position:absolute;
+    position:fixed;
     bottom:0;
     height: 37px;
     width: 100%;
@@ -552,7 +594,7 @@ a.new, a.action_link {
 /* ==========================================================================
    Table Sorter
    ========================================================================== */
-table.tablesorter {
+.tablesorter {
     font-family:arial;
     background-color: #CDCDCD;
     margin:10px 0pt 15px;
@@ -561,44 +603,61 @@ table.tablesorter {
     text-align: left;
 }
 
-table.tablesorter thead tr th, 
-table.tablesorter tfoot tr th {
+.tablesorter thead tr th, 
+.tablesorter tfoot tr th {
     background-color: #e6EEEE;
     border: 1px solid #FFF;
     font-size: 8pt;
     padding: 4px;
 }
-table.tablesorter thead tr .header {
+.tablesorter thead tr .header {
     background-image: url(bg.gif);
     background-repeat: no-repeat;
     background-position: center right;
     cursor: pointer;
 }
 
-table.tablesorter tbody td {
+.tablesorter tbody td {
     color: #3D3D3D;
     padding: 4px;
     background-color: #FFF;
     vertical-align: top;
 }
 
-table.tablesorter tbody tr.odd td {
+.tablesorter tbody tr.odd td {
     background-color:#F0F0F6;
 }
 
-table.tablesorter thead tr .headerSortUp {
+.tablesorter thead tr .headerSortUp {
     background-image: url(asc.gif);
 }
 
-table.tablesorter thead tr .headerSortDown {
+.tablesorter thead tr .headerSortDown {
     background-image: url(desc.gif);
 }
 
-table.tablesorter thead tr .headerSortDown, 
-table.tablesorter thead tr .headerSortUp {
+.tablesorter thead tr .headerSortDown, 
+.tablesorter thead tr .headerSortUp {
     background-color: #8dbdd8;
 }
 
+#s2id_item {
+    width: 100%
+}
+
+#recurring_select table {
+    width: 100%;
+}
+
+#recurring_select table th,
+#recurring_select table td {
+    text-align: center;
+    border: 0;
+}
+
+#recurring_select {
+    padding: 2% 3%;
+}
 /* ==========================================================================
    Media Queries
    ========================================================================== */
@@ -645,7 +704,7 @@ table.tablesorter thead tr .headerSortUp {
 
     nav {
         float: right;
-        width: 38%;
+        width: 45%;
     }
 
 /* ============
@@ -673,6 +732,12 @@ table.tablesorter thead tr .headerSortUp {
 /* ===============
     Maximal Width
    =============== */
+
+    .date_holder {
+        display: inline;
+        text-align: left;
+        margin-bottom: 2em;
+    }   
 
     .wrapper {
         width: 100%; /* 1140px - 10% for margins */

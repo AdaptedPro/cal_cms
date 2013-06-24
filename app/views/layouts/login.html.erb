@@ -27,9 +27,9 @@
                         <li><a href="/account/signin">Log In</a></li>
                         <li><a href="/account/signup">Sign Up</a></li>                        
                         <% else %>
-                        <li><a href="#"><%= session[:displayname] %></a></li>
                         <li><a href="/account/signout">Log out</a></li>
                         <% end %>
+                        <fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button> 
                     </ul>
                 </nav>
             </header>

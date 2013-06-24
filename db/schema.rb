@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20130621042135) do
   create_table "auth_users", :force => true do |t|
     t.string   "first_name",      :limit => 25
     t.string   "last_name",       :limit => 50
+    t.string   "fb_id",           :limit => 50
     t.string   "email",                         :default => "", :null => false
     t.string   "hashed_password", :limit => 40,                 :null => false
     t.string   "salt",            :limit => 40,                 :null => false
@@ -183,7 +184,5 @@ ActiveRecord::Schema.define(:version => 20130621042135) do
     t.datetime "created_at",                                    :null => false
     t.datetime "updated_at",                                    :null => false
   end
-
-  add_index "users", ["email"], :name => "email", :unique => true
 
 end

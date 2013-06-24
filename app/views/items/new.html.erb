@@ -1,20 +1,223 @@
-                <article class="new_layout">
-					<section>
-						<%= link_to("<< Back to List", {:action => 'list'}, :class => 'main_btn custom_btn') %>
-					</section>
+<article class="content_holder">
+	<section>
+		<%= link_to("<< Back to List", {:action => 'list'}, :class => 'main_btn custom_btn') %>
+	</section>
 
-                	<section id="article_header">             		
-						<h2>Create New Item</h2>						
-                	</section>     
+	<section id="article_header">             		
+		<h2>Create a new calendar item.</h2>						
+	</section>     
 
-					<%= render :partial => 'itemEditor', :layout => false %>
-						
-				</article>
-				<script type="text/javascript">
-  				$(function() {
-  					$("#event_type").select2({
-						placeholder : "Type of event",
-						allowClear : true  						
-  					});	
-  				});
-				</script>				
+	<section class="editor_article">
+		<%= form_for(@event, :url => {:action => 'create', :id => @event.id}) do |f| %>
+			<p>
+			<select id="item" name="item">
+				<option></option>
+			<% if @event_types %>
+				<% @event_types.each do |type| %>
+					<option value="<%= type.id %>"><%= type.item_name %></option>
+				<% end %>
+			<% end %>
+			</select>
+			</p>
+			<span class="text-input">
+			  	<%= f.text_field(:item_title, :placeholder => 'Title', :class => 'form_put') %>
+			</span>
+			<br />
+			<table>
+				<thead>
+					<tr>
+						<th>Start Date</th>
+						<th>End Date</th>
+						<th>Start Time</th>
+						<th>End Time</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<span class="text-input">
+								<%= text_field_tag(:start_date, nil, :id => 'start_date', :read_only => true, :placeholder => 'Start Date',  :class => 'form_put') %>
+							</span>
+						</td>
+						<td>
+							<span class="text-input">
+							<%= text_field_tag(:end_date, nil, :id => 'end_date', :read_only => true, :placeholder => 'End Date',  :class => 'form_put') %>
+						</td>
+						<td>
+							<span class="text-input">
+								<%= text_field_tag(:start_time, nil, :id => 'start_time', :read_only => true, :placeholder => 'Start Time',  :class => 'form_put') %>
+							</span>	
+						</td>
+						<td>
+							<span class="text-input">
+								<%= text_field_tag(:end_time, nil, :id => 'end_time', :read_only => true, :placeholder => 'End Time',  :class => 'form_put') %>
+							</span>	
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<br />	
+			<span>Recurring: <%= check_box_tag 'recur_select' %></span>	
+			<br />
+			<div id="recurring_select" style="display:none;">
+				<table>
+					<thead>
+						<tr>
+							<th>Day of week:</th>
+							<th>Day of month:</th>
+							<th>Week of month:</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><%= select_tag "day_of_week", @dayweek_options.html_safe %></td>
+							<td><%= select_tag "day_of_month", @daymonth_options.html_safe %></td>
+							<td><%= select_tag "week_of_month", @weekmonth_options.html_safe %></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<br />				
+			<span class="text-input">
+				<%= f.text_area(:item_description, :placeholder => 'Description...',  :class => 'form_put') %>
+			</span>				
+			<br />
+			<span class="text-input">				
+				<%= f.text_area(:item_special_note, :placeholder => 'Special note...',  :class => 'form_put') %>
+			</span>					
+			<br />
+			<span class="text-input">				
+				<%= text_area(:parking_details, :placeholder => 'Parking info...',  :class => 'form_put') %>
+			</span>	
+			<br />
+			<fieldset>
+				<legend>Location</legend>
+				<span class="text-input">
+				<%= text_field_tag(:location_address_1, nil, :id => 'location_address_1', :placeholder => 'Address 1',  :class => 'form_put') %>
+				</span>
+				<br />
+				<span class="text-input">
+				<%= text_field_tag(:location_address_2, nil, :id => 'location_address_2', :placeholder => 'Address 2',  :class => 'form_put') %>
+				</span>
+				<br />
+				<span class="text-input">
+				<%= text_field_tag(:location_city, nil, :id => 'location_city', :placeholder => 'City',  :class => 'form_put') %>
+				</span>
+				<br />
+				<span class="text-input">
+				<%= text_field_tag(:location_state, nil, :id => 'location_state', :placeholder => 'State',  :class => 'form_put') %>
+				</span>
+				<br />
+				<span class="text-input">
+				<%= text_field_tag(:location_country, nil, :id => 'location_country', :placeholder => 'Country',  :class => 'form_put') %>
+				</span>
+				<br />
+			</fieldset>			
+			<br />
+			<fieldset>
+				<legend>Contacts</legend>
+				<% if @event_contact.blank? %>
+					<select>
+						<% @event_contact.each do |contact| %> 
+						<option value="<%= contact.id %>"><%= contact.contact_first_name %> <%= contact.contact_last_name %></option>
+						<% end %>
+					</select>
+				<% end %>	
+				<span class="text-input">
+				<%= text_field_tag(:contact_title, nil, :id => 'contact_title', :placeholder => 'Title',  :class => 'form_put') %>
+				</span>
+				<br />
+				<span class="text-input">
+				<%= text_field_tag(:contact_first_name, nil, :id => 'contact_first_name', :placeholder => 'First name',  :class => 'form_put') %>
+				</span>
+				<br />
+				<span class="text-input">
+				<%= text_field_tag(:contact_last_name, nil, :id => 'contact_last_name', :placeholder => 'Last name',  :class => 'form_put') %><br />
+				<span class="text-input">
+				<%= email_field_tag(:contact_email, nil, :id => 'contact_email', :placeholder => 'Email',  :class => 'form_put') %>
+				</span>
+				<br />
+				<span class="text-input">
+				<%= phone_field_tag(:contact_phone, nil, :id => 'contact_phone', :placeholder => 'Phone',  :class => 'form_put') %>
+				</span>
+				<br />				
+			</fieldset>
+			<br />
+			<span class="save_btn"><%= submit_tag("Save") %></span>
+		<% end %>
+	</section>
+		
+</article>
+<%= javascript_include_tag "select2.min" %>
+<script type="text/javascript">
+$(function() {
+
+	$('select').select2({
+	    placeholder: "Select an item type.",
+	    allowClear: true		
+	});
+
+    $("#start_date").datepicker({
+        onSelect: function(selected) {
+          $("#end_date").datepicker("option","minDate", selected)
+        }
+    });
+
+    $("#end_date").datepicker({ 
+        onSelect: function(selected) {
+           $("#start_date").datepicker("option","maxDate", selected)
+        }
+    });
+
+	//$('.start_time').timepicker();
+	//$('.end_time').timepicker();  
+
+	$('#recur_select').change(function(){
+		var c = this.checked ? $('#recurring_select').slideDown() : $('#recurring_select').slideUp();
+	});
+
+    $('.form_put').bind('input', function() {
+    	$(this).val($(this).val().replace(/[^a-z0-9$,.@'"\/-]/gi, ''));
+    });
+
+	function initialize() {
+		var mapOptions = {
+		  zoom: 8,
+		  disableDefaultUI: true,      
+		  mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+		var map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
+
+		if(navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(function(position) {
+		      var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+		      	map.setCenter(pos);
+		    }, function() {
+		      handleNoGeolocation(true);
+		    });
+		} else {		  	
+			// Browser doesn't support Geolocation
+		    handleNoGeolocation(false);
+		}
+	}
+
+	function handleNoGeolocation(errorFlag) {
+		if (errorFlag) {
+			var content = 'Error: The Geolocation service failed.';
+		} else {
+			var content = 'Error: Your browser doesn\'t support geolocation.';
+		}
+
+		var options = {
+			map: map,
+			position: new google.maps.LatLng(60, 105),
+			content: content
+		};
+
+		var infowindow = new google.maps.InfoWindow(options);
+		map.setCenter(options.position);
+	}    
+	//google.maps.event.addDomListener(window, 'load', initialize);
+
+});
+</script>			

@@ -9,22 +9,28 @@
 						<br class="clr" />						
                 	</section>
 
+                	<% if !@event.blank? %>
                 	<section class="event search">
 						<%= form_tag("ajax_search", :remote => true, :id => "search_form") do %>
 							<%= text_field_tag(:search, nil, :id => 'search', :class => "search_term", 
 							:placeholder => 'Search Events', :maxlength => 125) %>	
 							<br />
-							<%= text_field_tag(:start_date, nil, :id => 'start_date', :class => "search_term", :read_only => true, :placeholder => 'Start Date') %>&nbsp;	
-							<%= text_field_tag(:end_date, nil, :id => 'end_date', :class => "search_term", :read_only => true, :placeholder => 'End Date') %>	
+							<div class="date_holder">
+								<%= text_field_tag(:start_date, nil, :id => 'start_date', :class => "search_term", :read_only => true, :placeholder => 'Start Date') %>&nbsp;	
+								<%= text_field_tag(:end_date, nil, :id => 'end_date', :class => "search_term", :read_only => true, :placeholder => 'End Date') %>
+							</div>	
 							&nbsp;	
-							<span id="search_btn" class="form_btn custom_btn">Search</span>
-							&nbsp;	
-							<span id="clear_btn" class="form_btn custom_btn">Clear</span>
+							<div id="search_btns" class="date_holder">
+								<span id="search_btn" class="form_btn custom_btn">Search</span>
+								&nbsp;	
+								<span id="clear_btn" class="form_btn custom_btn">Clear</span>
+							</div>
+							<br class="clr" />
 						<% end %>   
                 	</section>	
 
                 	<section class="event list">
-                		<% if !@event.blank? %>
+                		
 						<table id="myTable" class="tablesorter">
 							<thead>
 								<tr>	
@@ -42,7 +48,7 @@
 									<td><div class='viewable <%= event.item_viewable ? "yay": "nay" %>'></div></td> 
 									<td><%= event.item_publish_date %></td> 
 									<td><%= event.item_status %></td> 	 	 	 	 	 		 
-									<td>
+									<td class="action_links">
 										<%= link_to("Show", {:action => 'show', :id => event.id}, :class => 'action show') %>
 										<%= link_to("Edit", {:action => 'edit', :id => event.id}, :class => 'action edit') %>
 										<%= link_to("Delete", {:action => 'delete', :id => event.id}, :class => 'action delete') %>
@@ -73,10 +79,35 @@
 								</tr>
 							</tfoot>	
 						</table>
-						<% end %>
-                	</section>  
+                	</section> 
+                	<% else %>
+                	<section class="content_holder">
+                		<p>You don&rsquo;t have any items yet.</p>
+                	</section> 
+                	<% end %>	
                 </article>
 				<br class="clr" />
 				<script type="text/javascript">
-  				$("table thead th:eq(4)").data("sorter", false);
+	  				$("table thead th:eq(4)").data("sorter", false);
+	  				$("#search_btn").click(function() {
+	  					doSearch();
+	  				});
+
+					function doSearch() {
+						$.ajax({
+							type: "POST",
+							url: "/search/ajax_item_search",
+							data: $(".search_term").serialize(),
+							complete: function() {
+							  return $("#myTable tbody").html("");
+							},
+							success: function(data) {
+							  var sorting;
+							  $("#myTable tbody").html(data);
+							  $("table").trigger("update");
+							  sorting = [[0, 0], [0, 0]];
+							  return $("table").trigger("sorton", [sorting]);
+							}
+						});
+					}; 				
 				</script>

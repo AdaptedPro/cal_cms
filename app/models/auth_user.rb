@@ -1,6 +1,6 @@
 require 'digest/sha1'
 class AuthUser < ActiveRecord::Base
-  attr_accessible #:title, :body
+  attr_accessible :first_name, :last_name, :email, :status
   attr_accessor :password
  
   has_and_belongs_to_many :pages
@@ -18,7 +18,7 @@ class AuthUser < ActiveRecord::Base
   validates_format_of :email, :with => EMAIL_REGEX
   validates_confirmation_of :email
   validates_presence_of :password
-  validates_length_of :password, :within => 8..25, :on => :create
+  validates_length_of :password, :within => 5..25, :on => :create
   
   before_save :create_hashed_password
   after_save :clear_password

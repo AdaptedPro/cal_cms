@@ -1,26 +1,60 @@
-			<section class="editor_article">
-
-				<%= form_tag(:event, :url => {:action => 'create'} do |f| %>
-					<p>
-					<select id="event_type">
-						<option></option>
-						<% @event_types.each do |type| %>
-							<option value="<%= type.id %>"><%= type.item_name %></option>
+					<section class="editor_article">
+						<%= form_for(:event, :url => {:action => 'update', :id => @event.id}) do |f| %>
+							<p>
+							<select id="event_type">
+								<option></option>
+								<% if @event_types
+										event_types.each do |type| %>
+									<option value="<%= type.id %>"><%= type.item_name %></option>
+								<% end %>
+							</select>
+							</p>
+							<span class="text-input">
+							  	<%= f.text_field(:item_title) %>												
+							</span>
+							<br />
+							<span class="text-input">
+								<%= f.text_area(:item_description) %>
+							</span>				
+							<br />
+							<span class="text-input">				
+								<%= f.text_area(:item_special_note) %>												
+							</span>					
+							<p><%= submit_tag("Save") %></p>
+							<% end %>
 						<% end %>
-					</select>
-					</p>
-					<span class="text-input">
-					  	<%= f.text_field(:item_title) %>												
-					</span>
-					<br />
-					<span class="text-input">
-						<%= f.text_area(:item_description) %>
-					</span>				
-					<br />
-					<span class="text-input">				
-						<%= f.text_area(:item_special_note) %>												
-					</span>					
-					<p><%= submit_tag("Save") %></p>
-				<% end %>
-			</section>
-			<br class ="clr" />
+					</section>
+					<br class ="clr" />
+
+
+
+										<section class="editor_article">
+						<%= form_for(@event, :url => {:action => 'update', :id => @event.id}) do |f| %>
+							<p>
+							<select id="event_type">
+								<option></option>
+								<% if @event_types
+										event_types.each do |type| %>
+									<option value="<%= type.id %>"><%= type.item_name %></option>
+								<% end %>
+							</select>
+							1
+							</p>
+							<span class="text-input">
+							  	<%= f.text_field(:item_title) %>
+							  	2												
+							</span>
+							<br />
+							<span class="text-input">
+								<%= f.text_area(:item_description) %>
+								3
+							</span>				
+							<br />
+							<span class="text-input">				
+								<%= f.text_area(:item_special_note) %>	
+								4											
+							</span>					
+							<span class="save_btn"><%= submit_tag("Save") %></span>
+							<% end %>
+						<% end %>
+					</section>

@@ -1,7 +1,8 @@
-
 	<section class="legal_info">
-
 		<h2>Attention</h2>
-		<p>An email has been sent to <u><%= session[:email] %></u>. Please check you email to proceed.</p>
-
+		<% if flash[:notice] %>
+		<p><%= flash[:notice] %></p>
+		<% else %>
+		<p>An email has been sent to <u><%= session[:email] %></u>. Please check you email to proceed.</p>		
+		<% end %>
 	</section>
