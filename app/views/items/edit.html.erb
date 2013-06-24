@@ -1,50 +1,60 @@
-				<article class="content_holder">
-					<section>
-						<%= link_to("<< Back to List", {:action => 'list'}, :class => 'main_btn custom_btn') %>
-					</section>
+<article class="content_holder">
+	<section>
+		<%= link_to("<< Back to List", {:action => 'list'}, :class => 'main_btn custom_btn') %>
+	</section>
 
-					<section>					
-						<%= form_for(@event, :url => {:action => 'update'}, :html => {:id => @event.id}) do |f| %>
+	<section>					
+		<%= form_for(@event, :url => {:action => 'update'}, :html => {:id => @event.id}) do |f| %>
 
-			            	<span class="text-input">
-			            		<%= f.text_field(:item_title, :class => "setWidth") %>
-			            	</span>						
-			            	<br />	
-			                <select id="event_status">
-			                    <option value="active" <%= @event.item_viewable ? "Yes": "selected='selected'" %>>Active</option>
-			                    <option value="inactive" <%= @event.item_viewable ? "No": "selected='selected'" %>>Inactive</option>
-			                </select>
-			                <br />
-			                <span class="text-input">
-			                	<input id="event_location_title" class="setWidth" type="text" /> <span id="get_map" class="link">Find on map</span>
-					        </span>
-					        <br />
-							<select id="event_type">
-								<option></option>
-								<% @event_types.each do |type| %>
-									<option value="<%= type.id %>"><%= type.item_name %></option>
-								<% end %>
-							</select>
-							<br />	
-							<span class="text-input">
-			            		<%= f.text_area(:item_description, :description => 'Item Description',:size => '40x4', 
-				            	:id => 'event_description', :class => 'setWidth')%> 
-							</span>
-			            	<br />	
-			                <select id="event_contacts" multiple="multiple" style="display:none;" class="setWidth">
-			                	<option value="1">John Doe</option>
-			                	<option value="2">Jane Doe</option>
-			                	<option value="3">Bob Smith</option>
-			                	<option value="4">Bobbie Smith</option>
-			                	<option value="5">The Company</option>
-			                </select>
-			                <br />
-					        <span class="save_btn">
-					        	<%= submit_tag("Update Event") %>
-					        </span> 								
+        	<span class="text-input">
+        		<%= f.text_field(:item_title, :class => "setWidth") %>
+        	</span>						
+        	<br />	
+			<p>
+			<select id="item" name="item">
+				<option></option>
+			<% if @event_types %>
+				<% @event_types.each do |type| %>
+					<option value="<%= type.id %>"><%= type.item_name %></option>
+				<% end %>
+			<% end %>
+			</select>
+			</p>        	
+            <select id="event_status">
+                <option value="active" <%= @event.item_viewable ? "Yes": "selected='selected'" %>>Active</option>
+                <option value="inactive" <%= @event.item_viewable ? "No": "selected='selected'" %>>Inactive</option>
+            </select>
+            <br />
+            <span class="text-input">
+            	<input id="event_location_title" class="setWidth" type="text" /> <span id="get_map" class="link">Find on map</span>
+	        </span>
+	        <br />
+			<select id="event_type">
+				<option></option>
+				<% @event_types.each do |type| %>
+					<option value="<%= type.id %>"><%= type.item_name %></option>
+				<% end %>
+			</select>
+			<br />	
+			<span class="text-input">
+        		<%= f.text_area(:item_description, :description => 'Item Description',:size => '40x4', 
+            	:id => 'event_description', :class => 'setWidth')%> 
+			</span>
+        	<br />	
+            <select id="event_contacts" multiple="multiple" style="display:none;" class="setWidth">
+            	<option value="1">John Doe</option>
+            	<option value="2">Jane Doe</option>
+            	<option value="3">Bob Smith</option>
+            	<option value="4">Bobbie Smith</option>
+            	<option value="5">The Company</option>
+            </select>
+            <br />
+	        <span class="save_btn">
+	        	<%= submit_tag("Update Event") %>
+	        </span> 								
 
-						<% end %>
+		<% end %>
 
-					</section>
+	</section>
 
-				</article>	
+</article>	

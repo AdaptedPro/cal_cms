@@ -52,7 +52,7 @@ class AccountController < ApplicationController
 		        UserMailer.confirm_email(@user).deliver		 
 				redirect_to(:action => 'verify')
 			else
-				flash[:notice] = "Could not save account. #{params[:email]}"
+				flash[:notice] = "Could not create account. #{params[:email]}"
 				redirect_to(:action => 'signup')
 			end
 		end
