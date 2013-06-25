@@ -4,7 +4,7 @@ class DashboardController < ApplicationController
 	before_filter :confirm_logged_in
 
 	def index
-		if !session[:fb_user_id]
+		if !session[:fb_user_id].blank?
 
 		else	
 			@usr = AuthUser.find_by_id(session[:user_id])
