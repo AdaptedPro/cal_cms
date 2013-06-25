@@ -1,0 +1,15 @@
+				<article class="content_holder delete">
+					<section>
+						<%= link_to("<< Back to List", {:action => 'list'}, :class => 'main_btn custom_btn') %>
+					</section>
+
+					<section>
+						<h2>Delete Contact</h2>
+						<%= form_for(:contact, :url => {:action => 'destroy', :id => @contact.id}) do |f| %>
+							<p>Are you sure you want to permanently delete this contact?</p>
+							<span class="save_btn custom_btn">
+								<%= submit_tag("Delete item") %>
+							</span>	
+						<% end %>						
+					</section>
+				</article>	

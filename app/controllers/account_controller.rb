@@ -113,4 +113,7 @@ class AccountController < ApplicationController
 	def verify
 	end
 
+	def usr
+	end
+
 end

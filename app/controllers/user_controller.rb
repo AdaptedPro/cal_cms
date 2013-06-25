@@ -7,11 +7,7 @@ class UserController < ApplicationController
 		render('dashboard')		
 	end
 
-	def dashboard
-		#Check login
-		#username =>
-		#pending_proposed_events
-		#event_rsvps 
+	def account
 	end
 
 	def history

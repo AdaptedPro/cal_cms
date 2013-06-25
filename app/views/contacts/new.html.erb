@@ -1,0 +1,32 @@
+<article class="content_holder">
+	<section>
+		<%= link_to("<< Back to List", {:action => 'list'}, :class => 'main_btn custom_btn') %>
+	</section>
+
+	<section>	
+		<%= form_for(@event, :url => {:action => 'create', :id => @event.id}) do |f| %>				
+		<span class="text-input">
+			<%= f.text_field(:contact_title, :placeholder => 'Title', :class => 'form_put') %>
+		</span>
+		<br />
+		<span class="text-input">
+			<%= f.text_field(:contact_first_name, :placeholder => 'First Name', :class => 'form_put') %>
+		</span>
+		<br />
+		<span class="text-input">
+			<%= f.text_field(:contact_last_name, :placeholder => 'Last Name', :class => 'form_put') %>
+		</span>	
+		<br />
+		<span class="text-input">
+			<%= f.email_field(:contact_email, :placeholder => 'Email', :class => 'form_put') %>
+		</span>
+		<br />
+		<span class="text-input">
+			<%= f.phone_field(:contact_phone, :placeholder => 'Phone', :class => 'form_put') %>
+		</span>
+		<br />
+		<span class="save_btn"><%= submit_tag("Save") %></span>	
+		<% end %>	
+	</section>
+		
+</article>				

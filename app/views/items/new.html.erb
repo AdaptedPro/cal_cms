@@ -132,7 +132,8 @@
 				</span>
 				<br />
 				<span class="text-input">
-				<%= text_field_tag(:contact_last_name, nil, :id => 'contact_last_name', :placeholder => 'Last name',  :class => 'form_put') %><br />
+				<%= text_field_tag(:contact_last_name, nil, :id => 'contact_last_name', :placeholder => 'Last name',  :class => 'form_put') %>
+				<br />
 				<span class="text-input">
 				<%= email_field_tag(:contact_email, nil, :id => 'contact_email', :placeholder => 'Email',  :class => 'form_put') %>
 				</span>
@@ -151,7 +152,6 @@
 <%= javascript_include_tag "select2.min" %>
 <script type="text/javascript">
 $(function() {
-
 	$('select').select2({
 	    placeholder: "Select an item type.",
 	    allowClear: true		
@@ -179,6 +179,5 @@ $(function() {
     $('.form_put').bind('input', function() {
     	$(this).val($(this).val().replace(/[^a-z0-9$,.@'"\/-]/gi, ''));
     });
-
 });
 </script>			

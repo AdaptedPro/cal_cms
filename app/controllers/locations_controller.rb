@@ -1,20 +1,17 @@
 class LocationsController < ApplicationController
 	
 	before_filter :confirm_logged_in
-
+	layout 'admin'
+	
 	def index
 		list
 		render('list')		
 	end
 
-	layout 'admin'
 	def list
 		@locations = Location.where(
 			'(SELECT COUNT(*) FROM item_data 
 				WHERE item_data.location_id = locations.id)')
-	end
-
-	def usr
 	end
 
 	def show

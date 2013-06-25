@@ -19,9 +19,14 @@ class DashboardController < ApplicationController
 
 		@location_count = @user_locations.count()
 		
-		#@user_contacts = ItemData.where('(SELECT COUNT(*) FROM contacts 
-		#									WHERE contacts.id = item_data.location_id)')
-		#@contacts_count = @user_contacts.count()	
+		@user_contacts = ItemData.where('(SELECT COUNT(*) FROM contacts 
+											WHERE contacts.id = item_data.location_id
+											AND item_data.user_id = #{session[:user_id]})')
+		@contacts_count = @user_contacts.count()	
+ 	end
+
+ 	def check_if_fb
+ 		
  	end
 
 end
