@@ -1,0 +1,25 @@
+<div class="form_frame">
+  <% if !flash[:notice].blank? %>
+  <div class="notice">
+    <%= flash[:notice] %>
+  </div>
+  <% end %>
+  <%= form_tag(:action => 'attempt_recover') do %>
+    <table>
+      <tr>
+        <td>
+          <span class="text-input">
+            <%= text_field_tag(:email, nil, :id => 'email_field', :placeholder => 'Email') %>
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <span class="signin-button">
+            <%= submit_tag("Sign In") %>
+          </span>      
+        </td>
+      </tr>         
+    </table>
+  <% end %>  
+</div>
