@@ -4,10 +4,13 @@
 					</section>
 
 					<section>
-						<h2>Delete Item</h2>
-						<%= form_for(:event, :url => {:action => 'destroy', :id => @event.id}) do |f| %>
+						<h2>Delete Location</h2>
+						<%= form_for(:location, :url => {:action => 'destroy', :id => @location.id}) do |f| %>
 							<p>Are you sure you want to permanently delete this item?</p>
-							<h3><u><%= @event.item_title %></u></h3>
+							<p><%= @locations.location_address_1 %><br />
+								<%= @locations.location_address_2 %><br />
+								<%= @locations.location_city %>, <%= @locations.location_state %><br />
+								<%= @locations.location_country %></p>
 							<span class="save_btn custom_btn">
 								<%= submit_tag("Delete item") %>
 							</span>	
