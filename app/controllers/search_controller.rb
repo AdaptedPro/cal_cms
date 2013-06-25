@@ -12,11 +12,12 @@ class SearchController < ApplicationController
 	    								item_status').where('LCASE(item_data.item_title) || 
 	    								LCASE(item_data.item_description) LIKE LCASE(?)', 
 	    								params[:search])
-	    
+
 	    #respond_to do |format|
 		#	format.js { render :partial => 'itemTable', :collection => @itemResults, :layout => false }
 		if !itemResults.blank?
-			format.js { render :partial => 'itemTable', :collection => @itemResults, :layout => false }
+			format.html { render :partial => 'itemTable', :collection => @itemResults, :layout => false }
+			#format.js { render :partial => 'itemTable', :collection => @itemResults, :layout => false }
 			#render :html => { partial => 'itemTable', :collection => itemResults }
 		else
 			render :json => { :data => 'none' }
