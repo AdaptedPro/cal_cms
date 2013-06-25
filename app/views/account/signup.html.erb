@@ -1,7 +1,7 @@
 <div class="form_frame">
 	<% if !flash[:notice].blank? %>
 	<div class="notice">
-		<%= flash[:notice] %>
+		<p><%= flash[:notice] %></p>
 	</div>
 	<% end %>
 	<%= form_tag(:action => 'attempt_signup') do %>

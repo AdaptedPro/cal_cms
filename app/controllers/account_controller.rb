@@ -1,7 +1,7 @@
 require 'digest/sha1'
 class AccountController < ApplicationController
 
-	before_filter :confirm_logged_in, :except => [:signin,:signup,:channel, :attempt_signin, :attempt_signup, :verify, :signout, :confirm]
+	before_filter :confirm_logged_in, :except => [:signin,:signup,:channel,:attempt_signin,:attempt_signup,:verify,:signout,:confirm,:recover]
 
 	def index
 		signin
@@ -24,7 +24,7 @@ class AccountController < ApplicationController
 			flash[:notice] = "You are now logged in."
 			redirect_to(:controller => 'dashboard', :action => 'index')
 		else
-			flash[:notice] = "Invalid login."
+			flash[:notice] = "Invalid login, please try again."
 			redirect_to(:action => 'signin')			
 		end
 	end
