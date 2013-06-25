@@ -83,7 +83,7 @@ class AccountController < ApplicationController
 	end
 
 	def confirm
- 		@hash_email = params[:e]
+ 		@email = params[:e]
  		@user = User.where('email = ?', @email)
  		if !@user.blank?
 			begin

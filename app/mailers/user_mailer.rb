@@ -3,7 +3,7 @@ class UserMailer < ActionMailer::Base
 
   def confirm_email(user)
     @user = user
-    @url  = "http://cirrusera.com/account/confirm/#{user.email}"
+    @url  = "http://cirrusera.com/account/confirm/?e=#{user.email}"
     mail(:to => user.email, :subject => "Confirm your account on Cirrus Era")
   end 
 

@@ -35,13 +35,13 @@ CalCms::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  config.action_mailer.delivery_method = :smtp
+config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address:              'mail.adaptedpro.net',
-    port:                 587,
-    domain:               'ce.adaptedpro.net',
-    user_name:            'noreply@ce.adaptedpro.net',
-    password:             'x7n^Y8Jp',
-    authentication:       'plain',
-    enable_starttls_auto: true  }
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => 'baci.lindsaar.net',
+    :user_name            => 'ajamesforwork@gmail.com',
+    :password             => 'Ava&Arik04',
+    :authentication       => 'plain',
+    :enable_starttls_auto => true  }
 end
