@@ -104,24 +104,7 @@ class AccountController < ApplicationController
 	def recover
 	end
 
-	def account_password
-		if params[:email]
- 		@authUser = AuthUser.where('email = ?', @email)		
- 		if !@authUser.blank?
-			begin
-				#User.make_auth_from_user(@email) 
-				#session[:email] = params[:e] 
-				UserMailer.recover_password(@authUser).deliver	
-				flash[:notice] = "Please check your email to reset your password."  
-			rescue
-				flash[:notice] = "There was a problem authorizing verifying your account."
-			ensure 
-				redirect_to(:action => 'verify')  
-			end
-		else
-			flash[:notice] = "Could not confirm your email address. Please check your url."
-			redirect_to(:action => 'signup')
-		end 			
+	def account_password			
 
 	end	
 
