@@ -66,7 +66,7 @@ CalCms::Application.configure do
     :port                 => 587,
     :domain               => 'baci.lindsaar.net',
     :user_name            => 'ajamesforwork@gmail.com',
-    :password             => 'Ava&Arik04',
+    :password             => 'Ava&Arik05',
     :authentication       => 'plain',
     :enable_starttls_auto => true  }
 
