@@ -45,10 +45,10 @@
 								<% @event.each do |event| %>
 								<tr>	 	 	 	 	 	 		
 									<td><%= event.item_title %></td>	 	 	 	 	 	 		
-									<td><div class='viewable <%= event.item_viewable ? "yay": "nay" %>'></div></td> 
+									<td style="vertical-align:middle; width:10%;"><div class='viewable <%= event.item_viewable ? "yay": "nay" %>'></div></td> 
 									<td><%= event.item_publish_date %></td> 
 									<td><%= event.item_status %></td> 	 	 	 	 	 		 
-									<td class="action_links">
+									<td class="action_links" width="100">
 										<%= link_to("Show", {:action => 'show', :id => event.id}, :class => 'action show') %>
 										<%= link_to("Edit", {:action => 'edit', :id => event.id}, :class => 'action edit') %>
 										<%= link_to("Delete", {:action => 'delete', :id => event.id}, :class => 'action delete') %>

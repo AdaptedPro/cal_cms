@@ -226,7 +226,7 @@ img.logo {
 }
 
 #acc-dashboard-section-nav {
-    background-image: url('/images/bg-trans-white.png');
+    background-image: url('/images/bg-trans-black.png');
     border-radius: 25px;
     width: 100%;
     padding: 0;
@@ -234,6 +234,7 @@ img.logo {
     min-width: 150px;
 }
 
+#acc-dashboard-section-nav a { color: #FFF; line-height: 1.5em; }
 #acc-dashboard-section-nav ul {
     margin: 0;
     padding: 0;
@@ -257,6 +258,12 @@ img.logo {
 
 #search {
     width: 97%;
+}
+
+.search {
+    background-image: url('/images/bg-trans-black.png');
+    border-radius: 25px;
+    padding: 20px;    
 }
 
 .search_term {
@@ -331,7 +338,7 @@ img.logo {
 
 .action { 
     color:#FFF; 
-    padding: 3px 4px;   
+    padding: 1px 2px;   
 }
 .lrg { font-size: 4em; }
 .yay { background-color: #009900; }
@@ -658,6 +665,14 @@ a.new, a.action_link {
 #recurring_select {
     padding: 2% 3%;
 }
+
+#myTable { border-collapse:collapse; }
+#myTable, 
+#myTable td, 
+#myTable th {
+    border:1px solid #999;
+}    
+
 /* ==========================================================================
    Media Queries
    ========================================================================== */

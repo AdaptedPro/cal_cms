@@ -87,9 +87,9 @@ class AccountController < ApplicationController
  		@user = User.where('email = ?', @email)
  		if !@user.blank?
 			begin
-				User.make_auth_from_user(@hash_email) 
+				User.make_auth_from_user(@email) 
 				session[:email] = params[:e] 
-				flash[:notice] = "User created. You may now sign in."  
+				flash[:notice] = "Account was created. You may now sign in here."  
 			rescue
 				flash[:notice] = "There was a problem authorizing your account."
 			ensure 

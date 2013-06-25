@@ -18,16 +18,27 @@
                 	<section>
 						<fieldset>
 							<legend>Currently</legend>
+							<% if @contacts_count == 0 && @usr_events_count == 0 && @location_count == 0 %>
+								<p>Create a new item for you calendar to get started!</p>
+							<% else %>
 							<ul class="item_count">
 								<li><strong><%= @contacts_count %></strong> - Contacts</li>				
 								<li><strong><%= @usr_events_count %></strong> - Events</li>
 								<li><strong><%= @location_count %></strong> - Locations</li>
 							</ul>
+							<% end %>
 						</fieldset>	                		
                 	</section>
                     <section>
-						<fieldset>
+						<fieldset>	
 							<legend>Pending</legend>
+							<% if @pending_count == 0 %>
+								<p>Implement the Social Calendar!</p>
+							<% else %>
+							<ul>
+								<li>Pending Title. Type, date.</li>
+							</ul>
+							<% end %>
 						</fieldset>	                    	
                 	</section>            	                	
                 </article>		

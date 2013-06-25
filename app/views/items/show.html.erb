@@ -7,11 +7,6 @@
 						<h2><%= @event.item_title %></h2>
 						<%= @event.item_description %>
 					</section>	
-
-					<section>
-						<br />
-						<div id="map-canvas"></div>
-					</section>
 		
 					<section>
 						<h3>Special Note</h3>
@@ -21,6 +16,15 @@
 						<p>No special note.</p>
 						<% end %>
 					</section>
+
+					<section>
+						<h3>Contacts</h3>
+					</section>
+
+					<section>
+						<h3>Location</h3>
+						<div id="map-canvas"></div>
+					</section>					
 					
 				</article>
 
@@ -35,14 +39,14 @@ function initialize() {
 
 	 if(navigator.geolocation) {
 	    navigator.geolocation.getCurrentPosition(function(position) {
-	      var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+	    	var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
-	      	map.setCenter(pos);
+	    	map.setCenter(pos);
 
 			var markers = [];
 			var iterator = 0;
 			var neighborhoods = [
-  
+
 			];
 
 			drop();

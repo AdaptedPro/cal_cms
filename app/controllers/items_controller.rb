@@ -10,8 +10,7 @@ class ItemsController < ApplicationController
 	end	
 
 	def list
-		@event = ItemData.all
-		@event = ItemData.order			
+		@event = ItemData.where('user_id = ?',session[:user_id])			
 	end
 
 	def show
@@ -74,6 +73,7 @@ class ItemsController < ApplicationController
 		@timedate.save		
 
 		@event = ItemData.create(params[:item_data])
+		@event.user_id = session[:user_id]
 		@event.item_id = params[:item]
 		@event.parking_id = @parking.id
 

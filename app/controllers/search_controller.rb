@@ -6,16 +6,18 @@ class SearchController < ApplicationController
 	end	
 
 	def ajax_item_search
-	    itemResults = ItemData.select('distinct item_title, 
+	    itemResults = ItemData.select('item_title, 
 	    								item_viewable, 
 	    								item_publish_date, 
 	    								item_status').where('LCASE(item_data.item_title) || 
 	    								LCASE(item_data.item_description) LIKE LCASE(?)', 
-	    								'%'+params[:search]+'%')
+	    								params[:search])
+	    
 	    #respond_to do |format|
-			#format.js { render :partial => 'itemTable', :collection => @itemResults, :layout => false }
-		if !@itemResults.blank?
-			render :html => { partial => 'itemTable', :collection => @itemResults }
+		#	format.js { render :partial => 'itemTable', :collection => @itemResults, :layout => false }
+		if !itemResults.blank?
+			format.js { render :partial => 'itemTable', :collection => @itemResults, :layout => false }
+			#render :html => { partial => 'itemTable', :collection => itemResults }
 		else
 			render :json => { :data => 'none' }
 	    end	
