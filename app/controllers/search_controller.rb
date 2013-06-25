@@ -16,9 +16,10 @@ class SearchController < ApplicationController
 	    #respond_to do |format|
 		#	format.js { render :partial => 'itemTable', :collection => @itemResults, :layout => false }
 		if !itemResults.blank?
-			format.html { render :partial => 'itemTable', :collection => @itemResults, :layout => false }
+			#format.html { render :partial => 'itemTable', :collection => @itemResults, :layout => false }
 			#format.js { render :partial => 'itemTable', :collection => @itemResults, :layout => false }
-			render :html => { partial => 'itemTable', :collection => itemResults }
+			#render :html => { partial => 'itemTable', :collection => itemResults }
+			render :json => { :data => 'some' }
 		else
 			render :json => { :data => 'none' }
 	    end	

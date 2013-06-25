@@ -105,7 +105,6 @@ class AccountController < ApplicationController
 	end
 
 	def account_password			
-
 	end	
 
 	def password_reset
@@ -115,4 +114,3 @@ class AccountController < ApplicationController
 	end
 
 end
-
