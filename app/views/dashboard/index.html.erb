@@ -1,4 +1,49 @@
-	
+<article id="dashboard_maincontent">
+	<h2>Hello <%= @usr.first_name %>!</h2>
+	<section>
+		<fieldset>
+			<legend>Locations</legend>
+			<% if !@user_locations.blank? %>
+			<div id="map-legend">
+				<select id="">
+					<% @user_locations.each do |location_title| %>
+					<option><%= location_title.item_title %></option>
+					<% end %>    					
+				</select>
+			</div>
+			<% end %>
+			<div id="map-canvas"></div>
+		</fieldset>	                		
+	</section>
+	<section>
+		<fieldset>
+			<legend>Currently</legend>
+			<% if @contacts_count == 0 && @usr_events_count == 0 && @location_count == 0 %>
+				<p>Create a new item for you calendar to get started!</p>
+			<% else %>
+			<ul class="item_count">
+				<li><strong><%= @contacts_count %></strong> - Contacts</li>				
+				<li><strong><%= @usr_events_count %></strong> - Events</li>
+				<li><strong><%= @location_count %></strong> - Locations</li>
+			</ul>
+			<% end %>
+		</fieldset>	                		
+	</section>
+    <section>
+		<fieldset>	
+			<legend>Pending</legend>
+		</fieldset>	                    	
+	</section>            	                	
+</article>		
+
+<div id="import_contacts_dialog" title="Get Contacts" class="dialog hideme">
+  <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+</div> 
+
+<div id="import_events_dialog" title="Get Events" class="dialog hideme">
+  <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+</div>       
+         	
 <%= javascript_include_tag "select2.min" %>
 <script type="text/javascript">
 $(function() {
