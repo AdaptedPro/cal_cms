@@ -48,7 +48,6 @@ class AccountController < ApplicationController
 			@user.status = params[:commit]
 
 			if @user.save
-				session[:email] = params[:email]
 		        UserMailer.confirm_email(@user).deliver		 
 				redirect_to(:action => 'verify')
 			else
@@ -89,7 +88,7 @@ class AccountController < ApplicationController
 			begin
 				User.make_auth_from_user(@email) 
 				session[:email] = params[:e] 
-				flash[:notice] = "Account was created. You may now sign in here."  
+				flash[:notice] = "Account was created. <a href='signin'>Click here to sign in.</a>".html_safe  
 			rescue
 				flash[:notice] = "There was a problem authorizing your account."
 			ensure 
@@ -107,6 +106,11 @@ class AccountController < ApplicationController
 
 	def recover
 	end
+
+	def attempt_recover
+		@user_email = params[:email]
+		#UserMailer.confirm_email(@user).deliver			
+	end	
 
 	def account_password			
 	end	

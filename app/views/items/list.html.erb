@@ -25,12 +25,11 @@
 								&nbsp;	
 								<span id="clear_btn" class="form_btn custom_btn">Clear</span>
 							</div>
-							<br class="clr" />
-						<% end %>   
+							<br class="clr" />						  
                 	</section>	
+                	<% end %> 
 
                 	<section class="event list">
-                		
 						<table id="myTable" class="tablesorter">
 							<thead>
 								<tr>	
@@ -82,7 +81,7 @@
                 	</section> 
                 	<% else %>
                 	<section class="content_holder">
-                		<p>You don&rsquo;t have any items yet.</p>
+                		<p>You don&rsquo;t have any items yet. <%= link_to("Click here", {:action => 'new'}) %> to add a new item.</p>
                 	</section> 
                 	<% end %>	
                 </article>

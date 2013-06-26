@@ -8,6 +8,11 @@
     <table>
       <tr>
         <td>
+          <%= link_to("(Forgot password)", {:action => 'recover'}) %>
+        </td>
+      </tr>
+      <tr>
+        <td>
           <span class="text-input">
             <%= text_field_tag(:email, nil, :id => 'email_field', :placeholder => 'Email') %>
           </span>

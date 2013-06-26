@@ -116,7 +116,7 @@
 			<br />
 			<fieldset>
 				<legend>Contacts</legend>
-				<% if @event_contact.blank? %>
+				<% if !@event_contact.blank? %>
 				<p>
 					<select style="width:100%;">
 						<% @event_contact.each do |contact| %> 
@@ -181,5 +181,14 @@ $(function() {
     $('.form_put').bind('input', function() {
     	$(this).val($(this).val().replace(/[^a-z0-9$,.@'"\/-]/gi, ''));
     });
+
+	$('#commit_message').bind('keypress', function (event) {
+	    var regex = new RegExp("^[a-zA-Z0-9]+$");
+	    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+	    if (!regex.test(key)) {
+	       event.preventDefault();
+	       return false;
+	    }
+	});    
 });
 </script>			
