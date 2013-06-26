@@ -94,7 +94,10 @@ class ItemsController < ApplicationController
 		@event_types = Item.order
 		@event_location = Location.where('(SELECT COUNT(*) FROM item_data 
 											WHERE item_data.location_id = locations.id
-											AND item_data.user_id = ?)', session[:user_id])	
+											AND item_data.user_id = ?)', session[:user_id])
+		@contact = Contact.where('(SELECT COUNT(*) FROM item_data 
+											WHERE item_data.id = contact.event_id
+											AND item_data.user_id = ?)', session[:user_id])										
 	end
 
 	def update

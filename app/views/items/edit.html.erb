@@ -10,12 +10,13 @@
 				<option></option>
 			<% if @event_types %>
 				<% @event_types.each do |type| %>
-					<option value="<%= type.id %>"><%= type.item_name %></option>
+					<option value="<%= type.id %>"<% if @event.item_id == type.id %> selected="selected"<% end %>><%= type.item_name %></option>
 				<% end %>
 			<% end %>
 			</select>
 			&nbsp;
             <select id="event_status" style="width:20%;">
+            	<option></option>
                 <option value="active" <%= @event.item_viewable ? "Yes": "selected='selected'" %>>Active</option>
                 <option value="inactive" <%= @event.item_viewable ? "No": "selected='selected'" %>>Inactive</option>
             </select>
@@ -35,7 +36,7 @@
 			<select id="event_location" style="width:100%;">
 				<option></option>
 				<% @event_location.each do |location| %>
-					<option value="<%= location.id %>"><%= location.location_address_1 %></option>
+					<option value="<%= location.id %>"<% if @event.location_id == location.id %> selected="selected"<% end %>><%= location.location_address_1 %></option>
 				<% end %>
 			</select>
 			<% else %>
@@ -65,16 +66,15 @@
 			<% end %>
 			</p>			
         	<br />
+        	<% if !@contact.blank? %>
         	<p>	
             <select id="event_contacts" multiple="multiple" style="width:100%;">
-            	<option value="1">John Doe</option>
-            	<option value="2">Jane Doe</option>
-            	<option value="3">Bob Smith</option>
-            	<option value="4">Bobbie Smith</option>
-            	<option value="5">The Company</option>
+            	<% @contact.each do |cont| %>
+            	<option value="<%= cont.id %>"><%= cont.contact_first_name %> <%= cont.contact_last_name %></option>
             </select>
         	</p>
             <br />
+            <% end %>
 	        <span class="save_btn">
 	        	<%= submit_tag("Update Event") %>
 	        </span> 								
