@@ -28,8 +28,7 @@ class ItemsController < ApplicationController
 		@event_types = Item.all
 		@event_types = Item.order
 
-		@event_contact = Contact.all
-		@event_contact = Contact.order
+		@event_contact = Contact.where('user_id = ?', session[:user_id])
 
 		@dayweek_options = ""
 		(1..7).each_with_index do |i,index|

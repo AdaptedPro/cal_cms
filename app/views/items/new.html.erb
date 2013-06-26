@@ -117,11 +117,13 @@
 			<fieldset>
 				<legend>Contacts</legend>
 				<% if @event_contact.blank? %>
+				<p>
 					<select style="width:100%;">
 						<% @event_contact.each do |contact| %> 
 						<option value="<%= contact.id %>"><%= contact.contact_first_name %> <%= contact.contact_last_name %></option>
 						<% end %>
 					</select>
+				</p>	
 				<% end %>	
 				<span class="text-input">
 				<%= text_field_tag(:contact_title, nil, :id => 'contact_title', :placeholder => 'Title',  :class => 'form_put') %>
