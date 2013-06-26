@@ -101,6 +101,10 @@ class AccountController < ApplicationController
 		end
 	end
 
+	def usr
+		@auth_user = AuthUser.find_by_id(session[:user_id])
+	end
+
 	def recover
 	end
 
@@ -111,9 +115,6 @@ class AccountController < ApplicationController
 	end
 
 	def verify
-	end
-
-	def usr
-	end
+	end	
 
 end

@@ -1,0 +1,15 @@
+<% @results.each do |item| %>
+	<tr>	 	 	 	 	 	 		
+		<td><%= item.item_title %></td>	 	 	 	 	 	 		
+		<td style="vertical-align:middle; width:10%;">
+			<div class='viewable <%= item.item_viewable ? "yay": "nay" %>'></div>
+		</td>  
+		<td><%= item.item_publish_date %></td> 
+		<td><%= item.item_status %></td> 	 	 	 	 	 		 
+		<td>
+			<%= link_to("Show", {:action => 'show', :id => item.id}, :class => 'action show') %>
+			<%= link_to("Edit", {:action => 'edit', :id => item.id}, :class => 'action edit') %>
+			<%= link_to("Delete", {:action => 'delete', :id => item.id}, :class => 'action delete') %>
+		</td>			
+	</tr>
+<% end %>	

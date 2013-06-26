@@ -93,20 +93,30 @@
 	  					doSearch();
 	  				});
 
+				    $("#start_date").datepicker({
+				        onSelect: function(selected) {
+				          $("#end_date").datepicker("option","minDate", selected)
+				        }
+				    });
+
+				    $("#end_date").datepicker({ 
+				        onSelect: function(selected) {
+				           $("#start_date").datepicker("option","maxDate", selected)
+				        }
+				    });	  				
+
 					function doSearch() {
 						$.ajax({
 							type: "POST",
 							url: "/search/ajax_item_search",
 							data: $(".search_term").serialize(),
-							complete: function() {
-							  return $("#myTable tbody").html("");
-							},
+							datatype: 'text',
 							success: function(data) {
-							  var sorting;
 							  $("#myTable tbody").html(data);
+							  var sorting;
 							  $("table").trigger("update");
 							  sorting = [[0, 0], [0, 0]];
-							  return $("table").trigger("sorton", [sorting]);
+							  $("table").trigger("sorton", [sorting]);
 							}
 						});
 					}; 				

@@ -1,5 +1,7 @@
 <article id="dashboard_maincontent">
+	<% if session[:user_id] %>
 	<h2>Hello <%= @usr.first_name %>!</h2>
+
 	<section>
 		<fieldset>
 			<legend>Locations</legend>
@@ -31,9 +33,16 @@
 	</section>
     <section>
 		<fieldset>	
-			<legend>Pending</legend>
+			<legend>Sample</legend>
+			<ul>
+				<li><a href="/items/all.json">Sample JSON API feed of items</li>
+				<li><a href="/items/all.xml">Sample XML API feed of items</li>
+			</ul>
 		</fieldset>	                    	
-	</section>            	                	
+	</section> 
+	<% else %>
+		<p>Who are you?</p>
+	<% end %>           	                	
 </article>		
 
 <div id="import_contacts_dialog" title="Get Contacts" class="dialog hideme">

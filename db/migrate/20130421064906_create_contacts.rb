@@ -7,7 +7,9 @@ class CreateContacts < ActiveRecord::Migration
       t.string "contact_email", :limit => 40
       t.integer "contact_phone", :limit => 20
       t.string "contact_organization", :limit => 40
-      t.string "created_by", :limit => 40      
+      t.string "created_by", :limit => 40
+      t.int "user_id" 
+      t.int "event_id"           
       t.timestamps
     end
   end

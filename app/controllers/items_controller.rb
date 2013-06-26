@@ -18,7 +18,8 @@ class ItemsController < ApplicationController
 		@timedate = ItemTimeDate.where('(SELECT COUNT(*) FROM item_data 
 											WHERE item_data.timedate_id = item_time_dates.id)')
 		@locals = Location.where('(SELECT COUNT(*) FROM item_data 
-											WHERE item_data.location_id = locations.id)')		
+											WHERE item_data.location_id = locations.id
+											AND item_data.user_id = ?)', session[:user_id])			
 	end
 
 	def new		
@@ -91,7 +92,10 @@ class ItemsController < ApplicationController
 	def edit
 		@event = ItemData.find(params[:id])
 		@event_types = Item.all
-		@event_types = Item.order		
+		@event_types = Item.order
+		@event_location = Location.where('(SELECT COUNT(*) FROM item_data 
+											WHERE item_data.location_id = locations.id
+											AND item_data.user_id = ?)', session[:user_id])	
 	end
 
 	def update

@@ -1,0 +1,111 @@
+<article class="content_holder">
+	<section>
+		<%= link_to("<< Back to List", {:action => 'list'}, :class => 'main_btn custom_btn') %>
+	</section>
+	<section>
+		<ul>
+			<li><%= @location.location_address_1 %></li>
+			<% if !@location.location_address_2.blank? %>
+			<li><%= @location.location_address_2 %></li>
+			<% end %>
+			<% if !@location.location_city.blank? %>
+			<li><%= @location.location_city %></li>
+			<% end %>
+			<% if !@location.location_state.blank? %>
+			<li><%= @location.location_state %></li>
+			<% end %>
+			<% if !@location.location_country.blank? %>
+			<li><%= @location.location_country %></li>
+			<% end %>
+		</ul>
+	</section>
+	<section>
+		<div id="map-canvas"></div>
+		<br />
+	</section>	
+</article>
+<script type="text/javascript">
+$(function() {
+
+function initialize() {
+	var mapOptions = {
+		zoom: 8,
+		disableDefaultUI: true,     
+		zoomControl: true,
+		scaleControl: true,	   
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+	var map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
+
+	 if(navigator.geolocation) {
+	    navigator.geolocation.getCurrentPosition(function(position) {
+	      
+			var markers = [];
+			var iterator = 0;
+			var neighborhoods = [];
+
+			var cur_lat = "";
+			var cur_lng = "";
+
+			cur_lat = '<%= @location.location_lat %>';
+			cur_lng = '<%= @location.location_lng %>';
+			neighborhoods = [
+				new google.maps.LatLng(cur_lat, cur_lng),  
+			];
+			
+			if (cur_lat != null || cur_lat != "" && 
+				cur_lng != null || cur_lng != "") {
+				var pos = new google.maps.LatLng(cur_lat, cur_lng);
+			} else {
+				var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+			}
+			drop();
+			map.setCenter(pos);
+
+			function drop() {
+				for (var i = 0; i < neighborhoods.length; i++) {
+				  setTimeout(function() {
+				    addMarker();
+				  }, i * 300);
+				}
+			}
+
+			function addMarker() {
+				markers.push(new google.maps.Marker({
+				  position: neighborhoods[iterator],
+				  map: map,
+				  draggable: false
+				  //animation: google.maps.Animation.BOUNCE
+				}));
+				iterator++;
+			} 
+
+	    }, function() {
+	      handleNoGeolocation(true);
+	    });
+	  } else {		  	
+	    // Browser doesn't support Geolocation
+	    handleNoGeolocation(false);
+	  }
+}
+
+function handleNoGeolocation(errorFlag) {
+	if (errorFlag) {
+		var content = 'Error: The Geolocation service failed.';
+	} else {
+		var content = 'Error: Your browser doesn\'t support geolocation.';
+	}
+
+	var options = {
+		map: map,
+		position: new google.maps.LatLng(60, 105),
+		content: content
+	};
+
+	var infowindow = new google.maps.InfoWindow(options);
+	map.setCenter(options.position);
+}    
+ 
+google.maps.event.addDomListener(window, 'load', initialize);	
+});
+</script>

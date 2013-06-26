@@ -12,12 +12,13 @@
         <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css' />
 		<%= stylesheet_link_tag    "main","normalize","normalize.min","ui-lightness/jquery-ui-1.10.3.custom.css", :media => "all" %>
 		<%= javascript_include_tag    "application" %>
-		<script src="//connect.facebook.net/en_US/all.js"></script>
+		<!--<script src="//connect.facebook.net/en_US/all.js"></script>-->
         <%= csrf_meta_tags %>
     </head>
     <body class="welcome">
     <div id="fb-root"></div> 
         <script>
+            /*
             window.fbAsyncInit = function() {
                 FB.init({
                     appId      : '392071250858110', // App ID
@@ -75,7 +76,8 @@
                      console.log('User cancelled login or did not fully authorize.');
                    }
                 }, {scope: 'email,user_likes,create_event'});                
-            }                
+            }  
+            */              
         </script>        
 
         <!--[if lt IE 7]>
@@ -87,13 +89,13 @@
                 <a href="/"><img class="logo" src="/images/logo_white.png" alt="Cirrus Era"></a>
                 <nav>
                     <ul>
+                        <% if !session[:user_id] %>
                         <li><a href="/account/signin">Log In</a></li>
-                        <li><a href="/account/signup">Sign Up</a></li>
-                        <!--
-                        <li class="fb-login">
-                            <fb:login-button show-faces="true" width="100" max-rows="1"></fb:login-button>
-                        </li>
-                        -->
+                        <li><a href="/account/signup">Sign Up</a></li>                        
+                        <% else %>
+                        <li><a href="/account/usr/<%= session[:user_id]%>"><%= session[:email] %></a></li>
+                        <li><a href="/account/signout">Log out</a></li>
+                        <% end %>          
                     </ul>
                 </nav>
             </header>
@@ -108,11 +110,13 @@
         <div class="footer-container">
             <footer class="wrapper">
                 <ul id="lower_nav">
+                <!--
                 	<li><a href="/about">About</a></li>
                 	<li><a href="/business">Businesses</a></li>
                 	<li><a href="/developers">Developers</a></li>
                 	<li><a href="/help">Help</a></li>
                 	<li><a href="/privacy">Privacy Policy</a></li>
+                -->
                 	<li><a href="/terms">Terms of Use</a></li>
                 </ul>            	
                 <h3 id="copyright">Cirrus Era &copy; <%= Time.now.year %></h3>

@@ -1,0 +1,192 @@
+
+<style type="text/css">
+#map-canvas {width: 100%; height: 300px;}
+</style>
+
+<article class="content_holder">
+	<section>
+		<%= link_to("<< Browse Locations", {:action => 'list'}, :class => 'action_link', :id => "location_form") %>	
+	</section>
+
+	<section class="location list">
+	
+	<%= form_for(:location, :url => {:action => 'update'}) do |f| %>
+		
+		<h2>Edit Location</h2>
+		<aside>
+			
+		</aside>	
+		<table summary="Location detail view" class="collect-table">
+			<tr>
+				<th>Address 1:</th>
+				<td><%= f.text_field(:location_address_1) %></td>
+			</tr>	
+			<tr>
+				<th>Address 2:</th>
+				<td><%= f.text_field(:location_address_2) %></td>
+			</tr>
+			<tr>
+				<th>City:</th>
+				<td><%= f.text_field(:location_city) %></td>
+			</tr>			
+			<tr>
+				<th>State:</th>
+				<td><%= f.text_field(:location_state) %></td>
+			</tr>			
+			<tr>
+				<th>Zip:</th>
+				<td><%= f.text_field(:location_zip) %></td>
+			</tr>						
+			<tr>
+				<th>Country:</th>
+				<td><%= f.text_field(:location_country) %></td>
+			</tr>			
+			<tr>
+				<th>Abbreviation:</th>
+				<td><%= f.text_field(:location_abbr) %></td>
+			</tr>			
+			<tr>
+				<th>Latitude:</th>
+				<td><%= f.text_field(:location_lat) %></td>
+			</tr>	
+			<tr>
+				<th>Longitude:</th>
+				<td><%= f.text_field(:location_lng) %></td>
+			</tr>							
+		</table>
+		<br />
+		<div class="default_btn"><%= button_tag("Refresh Map", :id => 'preview_location', :type => 'button') %></div>
+		<div class="save_btn"><%= submit_tag("Update Location") %></div>
+		<div id="map-canvas"></div>		
+		<br />
+
+	<br class="clr" />
+	<% end %>
+	</section>
+</article>
+
+<div id="preview_location_dialog" title="Set address!" class="hideme">
+  <p>To preview this location you must enter the following:</p>
+  <ul>
+  	<li>Address 1</li>
+  	<li>City</li>
+  	<li>State</li>
+  </ul>
+  <p>Fictional addresses will not be displayed.</p>
+</div>  
+
+<script type="text/javascript">
+$(function() {
+	
+	$('#preview_location').click(function() {
+		if ($('#location_location_address_1').val() == "" || null && 
+			$('#location_location_city').val() == "" || null && 
+			$('#location_location_state').val() == "" || null) {
+			$('#preview_location_dialog').dialog({resizable: false});
+			$('#preview_location_dialog').dialog('open');
+		} else {
+			initialize();
+		}
+	});
+
+function initialize() {
+	var mapOptions = {
+		zoom: 8,
+		disableDefaultUI: true,     
+		zoomControl: true,
+		scaleControl: true,	   
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+	var map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
+
+	 if(navigator.geolocation) {
+	    navigator.geolocation.getCurrentPosition(function(position) {
+	      
+			var markers = [];
+			var iterator = 0;
+			var neighborhoods = [];
+
+	      	var a = $('#location_location_address_1').val() ? $('#location_location_address_1').val() + ', ': '';
+			var b = $('#location_location_address_2').val() ? $('#location_location_address_2').val() + ', ': '';
+			var c = $('#location_location_city').val() ? $('#location_location_city').val() + ', ': '';
+			var d = $('#location_location_state').val() ? $('#location_location_state').val() + ', ': '';
+			var e = $('#location_location_country').val() ? $('#location_location_country').val() + ' ': '';
+
+			var str = a+b+c+d+e;
+			var result = str.replace(/ /g,'+')
+
+			var cur_lat = "";
+			var cur_lng = "";
+			var places = $.ajax({
+				type: 'GET',
+				url:'http://maps.googleapis.com/maps/api/geocode/json?address='+result+'&sensor=true',
+				datatype:'text',
+				success: function(msg) {
+					cur_lat = msg['results'][0]['geometry']['location']['lat'];
+					cur_lng = msg['results'][0]['geometry']['location']['lng'];
+
+					$('#location_location_lat').val(cur_lat);
+					$('#location_location_lng').val(cur_lng);
+					neighborhoods = [
+						new google.maps.LatLng(cur_lat, cur_lng),  
+					];
+					
+					if (cur_lat != null || cur_lat != "" && 
+						cur_lng != null || cur_lng != "") {
+						var pos = new google.maps.LatLng(cur_lat, cur_lng);
+						//var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+					} else {
+						var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+					}
+					drop();
+					map.setCenter(pos);
+				}
+			});
+
+			function drop() {
+				for (var i = 0; i < neighborhoods.length; i++) {
+				  setTimeout(function() {
+				    addMarker();
+				  }, i * 300);
+				}
+			}
+
+			function addMarker() {
+				markers.push(new google.maps.Marker({
+				  position: neighborhoods[iterator],
+				  map: map,
+				  draggable: false
+				  //animation: google.maps.Animation.BOUNCE
+				}));
+				iterator++;
+			} 
+
+	    }, function() {
+	      handleNoGeolocation(true);
+	    });
+	  } else {		  	
+	    // Browser doesn't support Geolocation
+	    handleNoGeolocation(false);
+	  }
+}
+
+function handleNoGeolocation(errorFlag) {
+	if (errorFlag) {
+		var content = 'Error: The Geolocation service failed.';
+	} else {
+		var content = 'Error: Your browser doesn\'t support geolocation.';
+	}
+
+	var options = {
+		map: map,
+		position: new google.maps.LatLng(60, 105),
+		content: content
+	};
+
+	var infowindow = new google.maps.InfoWindow(options);
+	map.setCenter(options.position);
+}    
+ 
+google.maps.event.addDomListener(window, 'load', initialize);	
+});
+</script>

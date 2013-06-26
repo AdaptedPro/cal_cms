@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width" />
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;key=AIzaSyATH7XLbF2tdxlGK5IvfOOiEcbn1D4AgoU"></script> 
-    <%= javascript_include_tag    "jquery", "jquery_ujs", "jquery.ui.datepicker", "jquery.ui.spinner", "jquery.ui.tooltip", "dialog", "jquery.tablesorter.min", "redactor", "addons/pager/jquery.tablesorter.pager", "jquery.ui.effect-fade", "jquery.ui.effect-slide.js" %>      
+    <%= javascript_include_tag    "jquery", "jquery_ujs", "jquery.ui.datepicker", "jquery.ui.spinner", "jquery.ui.tooltip", "jquery.ui.dialog", "jquery.tablesorter.min", "redactor", "addons/pager/jquery.tablesorter.pager", "jquery.ui.effect-fade", "jquery.ui.effect-slide.js" %>      
     <%= stylesheet_link_tag    "main","normalize","normalize.min","ui-lightness/jquery-ui-1.10.3.custom.css","select2", :media => "all" %>         
     <%= csrf_meta_tags %>
 </head>
@@ -49,13 +49,14 @@
                         <li><a href="/items/">Items</a></li>
                         <li><a href="/locations/">Locations</a></li>
                         <li><a href="/contacts/">Contacts</a></li>
-                        <li><a href="#/pending/">Pending</a></li>
                     </ul>
+                <!--
                     <ul>    
                         <li><a href="#/social/usr/facebook">Post to Facebook</a></li>
                         <li><a href="#/social/usr/twitter">Tweet to Twitter</a></li>
                         <li><a href="#/social/usr/youtube">Upload to YouTube</a></li>
                     </ul>
+                -->
                 </div>   
             </section>
         </aside>
@@ -70,11 +71,13 @@
 <div class="footer-container">
     <footer class="wrapper">
         <ul id="lower_nav">
+            <!--
             <li><a href="/about">About</a></li>
             <li><a href="/business">Businesses</a></li>
             <li><a href="/developers">Developers</a></li>
             <li><a href="/help">Help</a></li>
             <li><a href="/privacy">Privacy Policy</a></li>
+            -->
             <li><a href="/terms">Terms of Use</a></li>
         </ul>               
         <h3 id="copyright">Cirrus Era &copy; <%= Time.now.year %></h3>

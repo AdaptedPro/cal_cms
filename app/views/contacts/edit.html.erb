@@ -1,0 +1,35 @@
+<article class="content_holder">
+	<section>
+		<%= link_to("<< Back to List", {:action => 'list'}, :class => 'main_btn custom_btn') %>
+	</section>
+	<section>
+		<h2>Edit Contact</h2>
+	</section>	
+	<section>
+		<%= form_for(:contact, :url => {:action => 'update', :id => @contact.id}) do |f| %>
+		<span class="text-input">
+		<%= f.text_field(:contact_title)	 %>
+		</span>
+		<br />
+		<span class="text-input">
+		<%= f.text_field(:contact_first_name) %>
+		</span>
+		<br />
+		<span class="text-input">
+		<%= f.text_field(:contact_last_name) %>
+		</span>
+		<br />
+		<span class="text-input">
+		<%= f.email_field(:contact_email) %>
+		</span>
+		<br />
+		<span class="text-input">
+		<%= f.phone_field(:contact_phone) %>
+		</span>
+        <br />
+        <span class="save_btn">
+        	<%= submit_tag("Update Contact") %>
+        </span>
+        <% end %> 				
+	</section>
+</article>

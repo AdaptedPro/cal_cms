@@ -3,7 +3,7 @@
                 	<section class="location list">
 						<h2>Locations</h2>
 						<%= link_to("Add New Location", {:action => 'new'}, :class => 'action new') %>
-						<% if (@locations.length != 0) %>	
+						<% if !@location.blank? %>	
 						<table id="myTable">
 							<thead>
 								<tr>	
@@ -17,7 +17,7 @@
 								</tr>
 							</thead>	
 							<tbody>
-								<% @locations.find_each do |location| %>
+								<% @location.find_each do |location| %>
 								<tr>	 	 	 	 	 	 		
 									<td><%= location.location_address_1 %></td>	 	 	 	 	 	 		
 									<td><%= location.location_city %></td>

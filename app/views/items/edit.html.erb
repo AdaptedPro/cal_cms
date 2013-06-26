@@ -5,13 +5,8 @@
 
 	<section>					
 		<%= form_for(@event, :url => {:action => 'update'}, :html => {:id => @event.id}) do |f| %>
-
-        	<span class="text-input">
-        		<%= f.text_field(:item_title, :class => "setWidth") %>
-        	</span>						
-        	<br />	
 			<p>
-			<select id="item" name="item">
+			<select id="item" name="item" style="width:40%;">
 				<option></option>
 			<% if @event_types %>
 				<% @event_types.each do |type| %>
@@ -19,35 +14,66 @@
 				<% end %>
 			<% end %>
 			</select>
-			</p>        	
-            <select id="event_status">
+			&nbsp;
+            <select id="event_status" style="width:20%;">
                 <option value="active" <%= @event.item_viewable ? "Yes": "selected='selected'" %>>Active</option>
                 <option value="inactive" <%= @event.item_viewable ? "No": "selected='selected'" %>>Inactive</option>
             </select>
-            <br />
-            <span class="text-input">
-            	<input id="event_location_title" class="setWidth" type="text" /> <span id="get_map" class="link">Find on map</span>
-	        </span>
-	        <br />
-			<select id="event_type">
-				<option></option>
-				<% @event_types.each do |type| %>
-					<option value="<%= type.id %>"><%= type.item_name %></option>
-				<% end %>
-			</select>
+
+			</p>   
+        	<span class="text-input">
+        		<%= f.text_field(:item_title, :class => "setWidth") %>
+        	</span>
 			<br />	
 			<span class="text-input">
         		<%= f.text_area(:item_description, :description => 'Item Description',:size => '40x4', 
             	:id => 'event_description', :class => 'setWidth')%> 
 			</span>
-        	<br />	
-            <select id="event_contacts" multiple="multiple" style="display:none;" class="setWidth">
+	        <br />
+	        <p>
+	        <% if !@event_location.blank? %>	
+			<select id="event_location" style="width:100%;">
+				<option></option>
+				<% @event_location.each do |location| %>
+					<option value="<%= location.id %>"><%= location.location_address_1 %></option>
+				<% end %>
+			</select>
+			<% else %>
+			<fieldset>
+				<legend>Location</legend>
+				<span class="text-input">
+				<%= text_field_tag(:location_address_1, nil, :id => 'location_address_1', :placeholder => 'Address 1',  :class => 'form_put') %>
+				</span>
+				<br />
+				<span class="text-input">
+				<%= text_field_tag(:location_address_2, nil, :id => 'location_address_2', :placeholder => 'Address 2',  :class => 'form_put') %>
+				</span>
+				<br />
+				<span class="text-input">
+				<%= text_field_tag(:location_city, nil, :id => 'location_city', :placeholder => 'City',  :class => 'form_put') %>
+				</span>
+				<br />
+				<span class="text-input">
+				<%= text_field_tag(:location_state, nil, :id => 'location_state', :placeholder => 'State',  :class => 'form_put') %>
+				</span>
+				<br />
+				<span class="text-input">
+				<%= text_field_tag(:location_country, nil, :id => 'location_country', :placeholder => 'Country',  :class => 'form_put') %>
+				</span>
+				<br />
+			</fieldset>	
+			<% end %>
+			</p>			
+        	<br />
+        	<p>	
+            <select id="event_contacts" multiple="multiple" style="width:100%;">
             	<option value="1">John Doe</option>
             	<option value="2">Jane Doe</option>
             	<option value="3">Bob Smith</option>
             	<option value="4">Bobbie Smith</option>
             	<option value="5">The Company</option>
             </select>
+        	</p>
             <br />
 	        <span class="save_btn">
 	        	<%= submit_tag("Update Event") %>
@@ -58,3 +84,18 @@
 	</section>
 
 </article>	
+<%= javascript_include_tag "select2.min" %>
+<script type="text/javascript">
+$(function() {
+	$('#item').select2().select2({
+	    placeholder: "Choose a calendar item.",
+	    allowClear: true		
+	});
+	$('#event_type').select2();
+	$('#event_status').select2();	
+	$('#event_contacts').select2({
+	    placeholder: "Choose a contact for this item.",
+	    allowClear: true		
+	});
+});
+</script>

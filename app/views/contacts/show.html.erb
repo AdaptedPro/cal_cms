@@ -1,0 +1,82 @@
+<article class="content_holder">
+	<section>
+		<%= link_to("<< Back to List", {:action => 'list'}, :class => 'main_btn custom_btn') %>
+	</section>
+	<section>
+		<h2><% if !@contact.contact_title.blank? %> 
+					<%= "#{@contact.contact_title} " %>
+					<% end %>
+					<%= @contact.contact_first_name %> <%= @contact.contact_last_name %></h2>
+	</section>	
+	<section>
+		<table class="contact_table">
+			<tr>
+				<th>Email:</th>
+				<td><%= @contact.contact_email %></td>
+			</tr>
+			<tr>
+				<th>Phone:</th>
+				<td><%= @contact.contact_phone %></td>
+			</tr>
+			<tr>
+				<th>Organization:</th>
+				<td><%= @contact.contact_organization %></td>
+			</tr>							
+		</table>				
+	</section>
+	<section class="list">
+		<fieldset>
+			<legend>Associated Events</legend>
+
+				<table id="myTable" class="tablesorter">
+					<thead>
+						<tr>	
+							<th>Title</th>
+							<th>Visible</th>
+							<th>Publish</th>
+							<th>Status</th>
+							<th class="no_pointer">Actions</th>
+						</tr>
+					</thead>	
+					<tbody>
+						<% @event.each do |event| %>
+						<tr>	 	 	 	 	 	 		
+							<td><%= event.item_title %></td>	 	 	 	 	 	 		
+							<td style="vertical-align:middle; width:10%;"><div class='viewable <%= event.item_viewable ? "yay": "nay" %>'></div></td> 
+							<td><%= event.item_publish_date %></td> 
+							<td><%= event.item_status %></td> 	 	 	 	 	 		 
+							<td class="action_links" width="100">
+								<%= link_to("Show", {:controller => 'items', :action => 'show', :id => event.id}, :class => 'action show') %>
+								<%= link_to("Edit", {:controller => 'items', :action => 'edit', :id => event.id}, :class => 'action edit') %>
+								<%= link_to("Delete", {:controller => 'items', :action => 'delete', :id => event.id}, :class => 'action delete') %>
+							</td>			
+						</tr>
+						<% end %>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="5">
+								&nbsp;
+								<div id="pager" class="pager">
+									<form>
+										<img src="/images/first.png" class="first"/>
+										<img src="/images/prev.png" class="prev"/>
+										<input type="text" class="pagedisplay"/>
+										<img src="/images/next.png" class="next"/>
+										<img src="/images/last.png" class="last"/>
+										<select class="pagesize">
+											<option selected="selected"  value="10">10</option>
+											<option value="20">20</option>
+											<option value="30">30</option>
+											<option  value="40">40</option>
+										</select>
+									</form>
+								</div>
+							</td>
+						</tr>
+					</tfoot>	
+				</table>
+
+		</fieldset>
+	</section>
+</article>

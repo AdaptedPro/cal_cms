@@ -9,9 +9,9 @@ class LocationsController < ApplicationController
 	end
 
 	def list
-		@locations = Location.where(
-			'(SELECT COUNT(*) FROM item_data 
-				WHERE item_data.location_id = locations.id)')
+		@location = Location.where('(SELECT COUNT(*) FROM item_data 
+											WHERE item_data.location_id = locations.id
+											AND item_data.user_id = ?)', session[:user_id])	
 	end
 
 	def show
@@ -19,9 +19,7 @@ class LocationsController < ApplicationController
 	end
 
 	def new
-		@location = Location.new 
-		@locals = Location.where('(SELECT COUNT(*) FROM item_data 
-											WHERE item_data.location_id = locations.id)')		
+		@location = Location.new 					
 	end	
 
 	def create
