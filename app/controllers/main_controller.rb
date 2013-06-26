@@ -10,10 +10,9 @@ class MainController < ApplicationController
 	end
 
 	def welcome
-		@event = ItemData.all
-		@event = ItemData.order	
-		@locations = Location.all;
-		@locations = Location.order;			
+		@event = ItemData.where('user_id = ?', session[:user_id])	
+		@locations = Location.where('(SELECT COUNT(*) FROM item_data WHERE item_data.location_id = locations.id
+											AND item_data.user_id = ?)', session[:user_id])				
 	end
 
 	def about

@@ -88,7 +88,7 @@ class AccountController < ApplicationController
 			begin
 				User.make_auth_from_user(@email) 
 				session[:email] = params[:e] 
-				flash[:notice] = "Account was created. <a href='signin'>Click here to sign in.</a>".html_safe  
+				flash[:notice] = "Account was created. <strong><a href='signin'>Click here to sign in.</a></strong>".html_safe  
 			rescue
 				flash[:notice] = "There was a problem authorizing your account."
 			ensure 

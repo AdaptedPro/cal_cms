@@ -78,6 +78,18 @@
 <script type="text/javascript">
 $(function() {
 	
+<script type="text/javascript">
+$(function() {
+	
+	$('input').bind('keypress', function (event) {
+	    var regex = new RegExp("^[a-zA-Z0-9 @ . _ - ]+$");
+	    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+	    if (!regex.test(key)) {
+	       event.preventDefault();
+	       return false;
+	    }
+	});
+
 	$('#preview_location').click(function() {
 		if ($('#location_location_address_1').val() == "" || null && 
 			$('#location_location_city').val() == "" || null && 

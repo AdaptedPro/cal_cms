@@ -6,27 +6,39 @@
 	<section>	
 		<%= form_for(@contact, :url => {:action => 'create', :id => @contact.object_id}) do |f| %>				
 		<span class="text-input">
-			<%= f.text_field(:contact_title, :placeholder => 'Title', :class => 'form_put') %>
+			<%= f.text_field(:contact_title) %>
 		</span>
 		<br />
 		<span class="text-input">
-			<%= f.text_field(:contact_first_name, :placeholder => 'First Name', :class => 'form_put') %>
+			<%= f.text_field(:contact_first_name) %>
 		</span>
 		<br />
 		<span class="text-input">
-			<%= f.text_field(:contact_last_name, :placeholder => 'Last Name', :class => 'form_put') %>
+			<%= f.text_field(:contact_last_name) %>
 		</span>	
 		<br />
 		<span class="text-input">
-			<%= f.email_field(:contact_email, :placeholder => 'Email', :class => 'form_put') %>
+			<%= f.email_field(:contact_email) %>
 		</span>
 		<br />
 		<span class="text-input">
-			<%= f.phone_field(:contact_phone, :placeholder => 'Phone', :class => 'form_put') %>
+			<%= f.phone_field(:contact_phone) %>
 		</span>
 		<br />
 		<span class="save_btn"><%= submit_tag("Save") %></span>	
 		<% end %>	
 	</section>
 		
-</article>				
+</article>
+<script type="text/javascript">
+$(function() {
+	$('input').bind('keypress', function (event) {
+	    var regex = new RegExp("^[a-zA-Z0-9 @ . _ - ]+$");
+	    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+	    if (!regex.test(key)) {
+	       event.preventDefault();
+	       return false;
+	    }
+	});	
+});
+</script>				
