@@ -1,20 +1,19 @@
 class MainController < ApplicationController
 	layout 'application'
 	def index
-		welcome
-		render('welcome')
+		if !session[:user_id].blank?
+			redirect_to(:controller => 'dashboard', :action => 'index')
+		else		
+			welcome
+			render('welcome')
+		end	
 	end
 
 	def welcome
-		if !session[:user_id].blank?
-			redirect_to(:controller => 'dashboard', :action => 'index')
-		else
-			@event = ItemData.all
-			@event = ItemData.order	
-
-			@locations = Location.all;
-			@locations = Location.order;	
-		end			
+		@event = ItemData.all
+		@event = ItemData.order	
+		@locations = Location.all;
+		@locations = Location.order;			
 	end
 
 	def about
