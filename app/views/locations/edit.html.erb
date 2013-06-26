@@ -7,15 +7,11 @@
 	<section>
 		<%= link_to("<< Browse Locations", {:action => 'list'}, :class => 'action_link', :id => "location_form") %>	
 	</section>
-
-	<section class="location list">
-	
-	<%= form_for(:location, :url => {:action => 'update'}) do |f| %>
-		
+	<section>
 		<h2>Edit Location</h2>
-		<aside>
-			
-		</aside>	
+	</section>
+	<section class="location list">
+	<%= form_for(:location, :url => {:action => 'update'}) do |f| %>
 		<table summary="Location detail view" class="collect-table">
 			<tr>
 				<th>Address 1:</th>

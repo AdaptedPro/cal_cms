@@ -6,7 +6,7 @@
 		<h2>Edit Contact</h2>
 	</section>	
 	<section>
-		<%= form_for(:contact, :url => {:action => 'update', :id => @contact.id}) do |f| %>
+		<%= form_for(:contact, :url => {:action => 'create'}) do |f| %>	
 		<span class="text-input">
 		<%= f.text_field(:contact_title)	 %>
 		</span>
