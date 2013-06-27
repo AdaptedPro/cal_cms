@@ -1,7 +1,7 @@
 require 'digest/sha1'
 class AccountController < ApplicationController
 
-	before_filter :confirm_logged_in, :except => [:signin,:signup,:channel,:attempt_signin,:attempt_signup,:verify,:signout,:confirm,:recover]
+	before_filter :confirm_logged_in, :except => [:signin,:signup,:channel,:attempt_signin,:attempt_signup,:verify,:signout,:confirm,:recover,:attempt_recover]
 
 	def index
 		signin
