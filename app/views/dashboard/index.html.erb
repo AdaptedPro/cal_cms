@@ -94,7 +94,7 @@ function initialize() {
 			var neighborhoods = [
   				<% if !@locals.blank? %>
   				<% @locals.each do |local| %>
-  				(<%= @locals.location_lat %>,<%= @locals.location_lng %>),
+  				(<%= @local.location_lat %>,<%= @local.location_lng %>),
   				<% end %>
   				<% end %>
 			];
