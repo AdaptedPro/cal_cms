@@ -22,6 +22,11 @@ body {
     color:#333;
 }
 
+body.main_cal {
+    background-image: none;
+    background-color: #FFF;
+}
+
 h1,h2,h3,h4,h5,h6 {
 
 }
@@ -256,6 +261,13 @@ img.logo {
     margin: 0!important;
     padding: 0!important;
     list-style-type: none;
+}
+
+#cal-section {
+    color:#333;
+    width: 80%;
+    margin: 0 auto;
+    padding: 10px 20px;
 }
 
 #search {

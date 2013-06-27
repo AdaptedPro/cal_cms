@@ -1,0 +1,12 @@
+<article>
+	<section>
+		<h2><%= @event.item_title %></h2>
+		<p><%= @event.item_description %></p>
+		<% if !@event.item_special_note %>
+		<fieldset>
+			<legend>Special Note</legend>
+			<p><%= @event.item_special_note %></p>
+		</fieldset>
+		<% end %>
+	</section>
+</article>

@@ -1,6 +1,6 @@
 class CalendarController < ApplicationController
 	
-	layout 'application'
+	layout 'app'
 	def index
 	end
 
@@ -9,5 +9,9 @@ class CalendarController < ApplicationController
 		@event = ItemData.where('user_id = ? AND item_viewable = true', params[:id])
 		@contact = Contact.where('SELECT COUNT(*) FROM item_data WHERE id = contact.event_id AND item_data.is_viewable = true')
 		@location = Location.where('SELECT COUNT(*) FROM item_data WHERE item_data.location_id = location.id AND item_data.is_viewable = true')
+	end
+
+	def show
+		@event = ItemData.where('id = ?', params[:id])
 	end
 end

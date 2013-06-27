@@ -3,46 +3,73 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>CalCms | <%= @page_title || 'Admin Area' %></title>
-        <meta name="description" content="" />
-        <meta name="viewport" content="width=device-width" />
-		<%= stylesheet_link_tag    "main","normalize.min","ui-lightness/jquery-ui-1.10.3.custom","select2", :media => "all" %>
-		<%= javascript_include_tag    "jquery-1.9.1","main","jquery.tablesorter","jquery-ui-1.10.3.custom","select2" %>
-		<%= csrf_meta_tags %>
-    </head>
-    <body>
-        <!--[if lt IE 7]>
-            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-        <![endif]-->
+<head>
+    <meta charset="utf-8" />
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <title>Cirrus Era | <%= @page_title || 'Admin Area' %></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width" />
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;key=AIzaSyATH7XLbF2tdxlGK5IvfOOiEcbn1D4AgoU"></script> 
+    <%= javascript_include_tag    "jquery", "jquery_ujs", "jquery.ui.datepicker", "jquery.ui.spinner", "jquery.ui.tooltip", "jquery.ui.dialog", "jquery.tablesorter.min", "redactor", "addons/pager/jquery.tablesorter.pager", "jquery.ui.effect-fade", "jquery.ui.effect-slide.js", "modernizr.custom.11163" %>      
+    <%= stylesheet_link_tag    "main","normalize","normalize.min","ui-lightness/jquery-ui-1.10.3.custom.css","select2", "jquery.timepicker", :media => "all" %>         
+    <%= csrf_meta_tags %>
+</head>
+<body class="main_cal">
+<!--[if lt IE 7]>
+    <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+<![endif]-->
+<div class="header-container">
+    <header class="wrapper clearfix">
+        <a href="/"><img class="logo" src="/images/logo_white.png" alt="Cirrus Era"></a>
+        <nav>
+            <ul>
+                <% if !session[:user_id] %>
+                <li><a href="/account/signin">Log In</a></li>
+                <li><a href="/account/signup">Sign Up</a></li>                        
+                <% else %>
+                <li><a href="/account/usr/<%= session[:user_id]%>"><%= session[:email] %></a></li>
+                <li><a href="/account/signout">Log out</a></li>
+                <% end %>          
+            </ul>
+        </nav>
+    </header>
+</div>        
 
-        <div class="header-container">
-            <header class="wrapper clearfix">
-                <h1 class="title"><a href="/">Social Calendar Manager</a></h1>
-                <nav>
-                    <ul>
-                        <li><a href="#">username</a></li>
-                        <li><a href="#">more</a></li>
-                        <li><a href="#">nav ul li a</a></li>
-                    </ul>
-                </nav>
-            </header>
-        </div>
+<div class="main-container">
+    <div class="main wrapper clearfix">
 
-        <div class="main-container">
-            <div class="main wrapper clearfix">
-                <%= yield %>      
-            </div> <!-- #main -->
-        </div> <!-- #main-container -->
+    <section id="cal-section">
+        <%= yield %>
+    </section>
 
-        <div class="footer-container">
-            <footer class="wrapper">
-                <h3 id="copyright">Cirrus Era</h3>
-                <p>&copy; All rights reserved.</p>
-            </footer><!-- footer -->
-        </div><!-- .footer-container -->
+    </div> <!-- #main -->
+</div> <!-- #main-container -->
 
-    </body>
+<div class="footer-container">
+    <footer class="wrapper">
+        <ul id="lower_nav">
+            <!--
+            <li><a href="/about">About</a></li>
+            <li><a href="/business">Businesses</a></li>
+            <li><a href="/developers">Developers</a></li>
+            <li><a href="/help">Help</a></li>
+            <li><a href="/privacy">Privacy Policy</a></li>
+            -->
+            <li><a href="/terms">Terms of Use</a></li>
+        </ul>               
+        <h3 id="copyright">Cirrus Era &copy; <%= Time.now.year %></h3>
+        <br class="clr" />
+    </footer>
+</div>
+
+<script>
+    /*
+    var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+    */
+</script>
+</body>
 </html>

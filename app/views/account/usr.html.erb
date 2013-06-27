@@ -9,7 +9,7 @@
 		  </div>
 		  <% end %>		
 		<section>
-			<%= link_to("&laquo; Go to dashboard".html_safe, {:controller => 'dashboard', :action => 'index'}, :class => 'new main_btn custom_btn', :id => 'back_link') %>
+			<%= link_to("&laquo; Go to dashboard".html_safe, {:controller => 'dashboard', :action => 'index'}, :id => 'back_link') %>
 		</section>	
 		<%= form_for(@auth_user, :url => {:action => 'update', :id => @auth_user.id} ) do |f| %>		
 		<span class="text-input">

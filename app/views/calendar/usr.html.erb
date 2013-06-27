@@ -1,16 +1,12 @@
-<article>
 	<section>
-
+		<ul>
+		<% if !@event.blank? %>
+			<% @event.each do |ev| %>
+			<li><p><strong><%= link_to(ev.item_title, {:action => 'show', :id => ev.id}) %></strong>
+				<hr /><%= ev.item_description %></p></li>
+				<% end %>
+		<% else %>
+			<li><%= @this_user.first_name %>has no events yet.</li>
+		<% end %>
+		</ul>
 	</section>
-	<ul>
-	<% if !@event.blank? %>
-		<% @event.each do |ev| %>
-		<li><p><strong><%= link_to(ev.item_title, {:action => 'show', :id => ev.id}) %></strong>
-			<br /><%= ev.item_description %></p></li>
-			<% end %>
-	<% else %>
-		<li><%= @this_user.first_name %>has no events yet.</li>
-	<% end %>
-	</ul>
-
-</article>
