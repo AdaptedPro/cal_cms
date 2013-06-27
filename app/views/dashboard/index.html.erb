@@ -83,13 +83,7 @@ function initialize() {
 			var markers = [];
 			var iterator = 0;
 			var neighborhoods = [
-  				<% if !@locals.blank? %>
-  				<% @locals.each do |local|
-  					if !@local.location_lat.blank? %>
-  					(<%= @local.location_lat %>,<%= @local.location_lng %>),
-  				<% end 
-  				end
-  				end %>
+
 			];
 
 			drop();
