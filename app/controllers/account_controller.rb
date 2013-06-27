@@ -108,11 +108,38 @@ class AccountController < ApplicationController
 	end
 
 	def attempt_recover
-		@user_email = params[:email]
+		@auth_user = AuthUser.where('email = ?', params[:email])
+		@user = User.where('email = ?', params[:email])
+
+		if !@auth_user.blank?
+			@hash = Digest::SHA1.hexdigest(Time.now.seconds_until_end_of_day)
+			@recovery = Recovery.new
+			@recovery.email = @auth_user.email
+			@recovery.recovery_hash = @hash
+
+			if @recovery.save 			
+	        	UserMailer.recover_email(@auth_user, @hash).deliver		 
+				redirect_to(:action => 'verify')
+			else	
+				flash[:notice] = "Could not reset your password at this time."
+				redirect_to(:action => 'signup')				
+			end
+		else
+			if !@user.blank?
+		        UserMailer.confirm_email(@user).deliver		 
+				redirect_to(:action => 'verify')				
+			else
+				flash[:notice] = "That email address is not in our records."
+				redirect_to(:action => 'signup')	
+			end		
+		end
 		#UserMailer.confirm_email(@user).deliver			
 	end	
 
-	def account_password			
+	def reset
+		@hash = params[:h]
+		@email = params[:e] 
+		@recovery = Recovery.where('recovery_hash = ? AND email = ?', @hash, @email)			
 	end	
 
 	def password_reset
