@@ -7,8 +7,8 @@
 			<% if !@locals.blank? %>
 			<div id="map-legend">
 				<select id="">
-					<% @user_locations.each do |location_title| %>
-					<option><%= location_title.item_title %></option>
+					<% @locals.each do |local| %>
+					<option><%= local.location_address_1 %></option>
 					<% end %>    					
 				</select>
 			</div>
@@ -23,9 +23,9 @@
 				<p>Create a new item for you calendar to get started!</p>
 			<% else %>
 			<ul class="item_count">
-				<li><strong><%= @contacts_count %></strong> - Contacts</li>				
 				<li><strong><%= @usr_events_count %></strong> - Events</li>
-				<li><strong><%= @location_count %></strong> - Locations</li>
+				<li><strong><%= @location_count %></strong> - Locations</li>				
+				<li><strong><%= @contacts_count %></strong> - Contacts</li>				
 			</ul>
 			<% end %>
 		</fieldset>	                		
