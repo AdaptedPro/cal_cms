@@ -96,7 +96,7 @@ class ItemsController < ApplicationController
 											WHERE item_data.location_id = locations.id
 											AND item_data.user_id = ?)', session[:user_id])
 		@contact = Contact.where('(SELECT COUNT(*) FROM item_data 
-											WHERE item_data.id = contact.event_id
+											WHERE item_data.id = contacts.event_id
 											AND item_data.user_id = ?)', session[:user_id])										
 	end
 
@@ -126,18 +126,18 @@ class ItemsController < ApplicationController
 
 	#REST
 	def all
-		@event = ItemData.all
-		@event = ItemData.order			
+		@event = ItemData.where('user_id = ?',session[:user_id])		
 		respond_with @event			
 	end	
 
 	def specific
-		@event = ItemData.find(params[:id])		
+		@event = ItemData.where('id = ? AND user_id = ?',params[:id],session[:user_id])	
 		respond_with @event			
 	end		
 
 	def build
 		@event = ItemData.new(params[:event])
+		@event = ItemData.user_id(session[:user_id])
 		@event.save
 		respond_with @event
 	end

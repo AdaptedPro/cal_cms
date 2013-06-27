@@ -1,32 +1,33 @@
-				<article class="content_holder">
-					<section>
-						<%= link_to("<< Back to List", {:action => 'list'}, :class => 'main_btn custom_btn') %>
-					</section>
+<article class="content_holder">
+	<section>
+		<%= link_to("&laquo; Back to List".html_safe, {:action => 'list'}, :class => 'main_btn custom_btn') %>
+	</section>
+	<br class='clr' />
+	<aside style="width:40%;">
+		<fieldset>
+			<legend><h3>Location</h3></legend>
+			<div id="map-canvas"></div>
+		</fieldset>
+	</aside>
 
-					<section>
-						<h2><%= @event.item_title %></h2>
-						<%= @event.item_description %>
-					</section>	
-		
-					<section>
-						<h3>Special Note</h3>
-						<% if !@event.item_special_note.blank? %>
-						<%= @event.item_special_note %>
-						<% else %>
-						<p>No special note.</p>
-						<% end %>
-					</section>
+	<section>
+		<h2><%= @event.item_title %></h2>
+		<%= @event.item_description %>
+	</section>	
 
-					<section>
-						<h3>Contacts</h3>
-					</section>
+	<section>
+		<h3>Special Note</h3>
+		<% if !@event.item_special_note.blank? %>
+		<%= @event.item_special_note %>
+		<% else %>
+		<p>No special note.</p>
+		<% end %>
+	</section>
 
-					<section>
-						<h3>Location</h3>
-						<div id="map-canvas"></div>
-					</section>					
-					
-				</article>
+	<section>
+		<h3>Contacts</h3>
+	</section>					
+</article>
 
 <script type="text/javascript">
 function initialize() {

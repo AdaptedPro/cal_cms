@@ -6,12 +6,11 @@
 <article class="content_holder">
 	<section>
 		<%= link_to("<< Browse Locations", {:action => 'list'}, :class => 'action_link', :id => "location_form") %>	
-	</section>
-	<section>
+		<br class='clr' />
 		<h2>Edit Location</h2>
 	</section>
-	<section class="location list">
-	<%= form_for(:location, :url => {:action => 'update'}) do |f| %>
+	<section id="edit_location" class="location list">
+	<%= form_for(:location, :url => {:action => 'update', :id => @location.id}) do |f| %>
 		<table summary="Location detail view" class="collect-table">
 			<tr>
 				<th>Address 1:</th>
@@ -74,9 +73,6 @@
 <script type="text/javascript">
 $(function() {
 	
-<script type="text/javascript">
-$(function() {
-	
 	$('input').bind('keypress', function (event) {
 	    var regex = new RegExp("^[a-zA-Z0-9 @ . _ - ]+$");
 	    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
@@ -97,104 +93,104 @@ $(function() {
 		}
 	});
 
-function initialize() {
-	var mapOptions = {
-		zoom: 8,
-		disableDefaultUI: true,     
-		zoomControl: true,
-		scaleControl: true,	   
-		mapTypeId: google.maps.MapTypeId.ROADMAP
-	};
-	var map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
+	function initialize() {
+		var mapOptions = {
+			zoom: 8,
+			disableDefaultUI: true,     
+			zoomControl: true,
+			scaleControl: true,	   
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+		var map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
 
-	 if(navigator.geolocation) {
-	    navigator.geolocation.getCurrentPosition(function(position) {
-	      
-			var markers = [];
-			var iterator = 0;
-			var neighborhoods = [];
+		 if(navigator.geolocation) {
+		    navigator.geolocation.getCurrentPosition(function(position) {
+		      
+				var markers = [];
+				var iterator = 0;
+				var neighborhoods = [];
 
-	      	var a = $('#location_location_address_1').val() ? $('#location_location_address_1').val() + ', ': '';
-			var b = $('#location_location_address_2').val() ? $('#location_location_address_2').val() + ', ': '';
-			var c = $('#location_location_city').val() ? $('#location_location_city').val() + ', ': '';
-			var d = $('#location_location_state').val() ? $('#location_location_state').val() + ', ': '';
-			var e = $('#location_location_country').val() ? $('#location_location_country').val() + ' ': '';
+		      	var a = $('#location_location_address_1').val() ? $('#location_location_address_1').val() + ', ': '';
+				var b = $('#location_location_address_2').val() ? $('#location_location_address_2').val() + ', ': '';
+				var c = $('#location_location_city').val() ? $('#location_location_city').val() + ', ': '';
+				var d = $('#location_location_state').val() ? $('#location_location_state').val() + ', ': '';
+				var e = $('#location_location_country').val() ? $('#location_location_country').val() + ' ': '';
 
-			var str = a+b+c+d+e;
-			var result = str.replace(/ /g,'+')
+				var str = a+b+c+d+e;
+				var result = str.replace(/ /g,'+')
 
-			var cur_lat = "";
-			var cur_lng = "";
-			var places = $.ajax({
-				type: 'GET',
-				url:'http://maps.googleapis.com/maps/api/geocode/json?address='+result+'&sensor=true',
-				datatype:'text',
-				success: function(msg) {
-					cur_lat = msg['results'][0]['geometry']['location']['lat'];
-					cur_lng = msg['results'][0]['geometry']['location']['lng'];
+				var cur_lat = "";
+				var cur_lng = "";
+				var places = $.ajax({
+					type: 'GET',
+					url:'http://maps.googleapis.com/maps/api/geocode/json?address='+result+'&sensor=true',
+					datatype:'text',
+					success: function(msg) {
+						cur_lat = msg['results'][0]['geometry']['location']['lat'];
+						cur_lng = msg['results'][0]['geometry']['location']['lng'];
 
-					$('#location_location_lat').val(cur_lat);
-					$('#location_location_lng').val(cur_lng);
-					neighborhoods = [
-						new google.maps.LatLng(cur_lat, cur_lng),  
-					];
-					
-					if (cur_lat != null || cur_lat != "" && 
-						cur_lng != null || cur_lng != "") {
-						var pos = new google.maps.LatLng(cur_lat, cur_lng);
-						//var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-					} else {
-						var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+						$('#location_location_lat').val(cur_lat);
+						$('#location_location_lng').val(cur_lng);
+						neighborhoods = [
+							new google.maps.LatLng(cur_lat, cur_lng),  
+						];
+						
+						if (cur_lat != null || cur_lat != "" && 
+							cur_lng != null || cur_lng != "") {
+							var pos = new google.maps.LatLng(cur_lat, cur_lng);
+							//var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+						} else {
+							var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+						}
+						drop();
+						map.setCenter(pos);
 					}
-					drop();
-					map.setCenter(pos);
+				});
+
+				function drop() {
+					for (var i = 0; i < neighborhoods.length; i++) {
+					  setTimeout(function() {
+					    addMarker();
+					  }, i * 300);
+					}
 				}
-			});
 
-			function drop() {
-				for (var i = 0; i < neighborhoods.length; i++) {
-				  setTimeout(function() {
-				    addMarker();
-				  }, i * 300);
-				}
-			}
+				function addMarker() {
+					markers.push(new google.maps.Marker({
+					  position: neighborhoods[iterator],
+					  map: map,
+					  draggable: false
+					  //animation: google.maps.Animation.BOUNCE
+					}));
+					iterator++;
+				} 
 
-			function addMarker() {
-				markers.push(new google.maps.Marker({
-				  position: neighborhoods[iterator],
-				  map: map,
-				  draggable: false
-				  //animation: google.maps.Animation.BOUNCE
-				}));
-				iterator++;
-			} 
-
-	    }, function() {
-	      handleNoGeolocation(true);
-	    });
-	  } else {		  	
-	    // Browser doesn't support Geolocation
-	    handleNoGeolocation(false);
-	  }
-}
-
-function handleNoGeolocation(errorFlag) {
-	if (errorFlag) {
-		var content = 'Error: The Geolocation service failed.';
-	} else {
-		var content = 'Error: Your browser doesn\'t support geolocation.';
+		    }, function() {
+		      handleNoGeolocation(true);
+		    });
+		  } else {		  	
+		    // Browser doesn't support Geolocation
+		    handleNoGeolocation(false);
+		  }
 	}
 
-	var options = {
-		map: map,
-		position: new google.maps.LatLng(60, 105),
-		content: content
-	};
+	function handleNoGeolocation(errorFlag) {
+		if (errorFlag) {
+			var content = 'Error: The Geolocation service failed.';
+		} else {
+			var content = 'Error: Your browser doesn\'t support geolocation.';
+		}
 
-	var infowindow = new google.maps.InfoWindow(options);
-	map.setCenter(options.position);
-}    
- 
-google.maps.event.addDomListener(window, 'load', initialize);	
+		var options = {
+			map: map,
+			position: new google.maps.LatLng(60, 105),
+			content: content
+		};
+
+		var infowindow = new google.maps.InfoWindow(options);
+		map.setCenter(options.position);
+	}    
+	 
+	google.maps.event.addDomListener(window, 'load', initialize);	
 });
 </script>

@@ -6,23 +6,23 @@
 	<section>	
 		<%= form_for(:contact, :url => {:action => 'create'}) do |f| %>				
 		<span class="text-input">
-			<%= f.text_field(:contact_title) %>
+			<%= f.text_field(:contact_title, :placeholder => 'Title') %>
 		</span>
 		<br />
 		<span class="text-input">
-			<%= f.text_field(:contact_first_name) %>
+			<%= f.text_field(:contact_first_name, :placeholder => 'First name') %>
 		</span>
 		<br />
 		<span class="text-input">
-			<%= f.text_field(:contact_last_name) %>
+			<%= f.text_field(:contact_last_name, :placeholder => 'Last name') %>
 		</span>	
 		<br />
 		<span class="text-input">
-			<%= f.email_field(:contact_email) %>
+			<%= f.email_field(:contact_email, :placeholder => 'Email') %>
 		</span>
 		<br />
 		<span class="text-input">
-			<%= f.phone_field(:contact_phone) %>
+			<%= f.phone_field(:contact_phone, :placeholder => 'Phone') %>
 		</span>
 		<br />
 		<span class="save_btn"><%= submit_tag("Save") %></span>	

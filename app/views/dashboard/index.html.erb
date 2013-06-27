@@ -1,8 +1,7 @@
 <article id="dashboard_maincontent">
-	<% if session[:user_id] %>
-	<h2>Hello <%= @usr.first_name %>!</h2>
-
+<% if session[:user_id] %>
 	<section>
+		<h2>Hello <%= @usr.first_name %>!</h2>	
 		<fieldset>
 			<legend>Locations</legend>
 			<% if !@user_locations.blank? %>
@@ -42,7 +41,7 @@
 	</section> 
 	<% else %>
 		<p>Who are you?</p>
-	<% end %>           	                	
+<% end %>           	                	
 </article>		
 
 <div id="import_contacts_dialog" title="Get Contacts" class="dialog hideme">

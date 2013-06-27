@@ -264,7 +264,7 @@ img.logo {
 
 .search {
     background-image: url('/images/bg-trans-black.png');
-    border-radius: 25px;
+    border-radius: 25px 25px 0 0;
     padding: 20px;    
 }
 
@@ -279,6 +279,10 @@ img.logo {
 
 .save_btn {
 
+}
+
+#article_header {
+        border-radius: 0 0 25px 25px;
 }
 
 .form_btn {
@@ -316,7 +320,18 @@ img.logo {
 
 #user_info {
     margin:0 auto;
-    width: 40%;
+    color: #FFF;
+    background-image: url('/images/bg-trans-black.png');
+    border: 1px solid #000;
+    padding: 10px;
+    position: absolute;
+    width: 300px;    
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);    
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);    
 }
 
 #clear_btn {
@@ -345,8 +360,17 @@ img.logo {
 
 .action { 
     color:#FFF; 
-    padding: 1px 2px;   
+    height: 24px;
+    width: 24px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    text-align: center;      
 }
+
+.action a {
+    vertical-align: middle;
+}
+
 .lrg { font-size: 4em; }
 .yay { background-color: #009900; }
 .nay { background-color: #FF0000; }
@@ -406,11 +430,15 @@ img.logo {
 .list_layout h1,
 .list_layout h2,
 .list_layout h3 {
-    color: #FFF;
+    /*color: #FFF;*/
 }
 
 .collect-table th {
     text-align: right;
+    display: none;
+}
+
+#edit_location .table {
     display: none;
 }
 
@@ -492,6 +520,8 @@ img.logo {
 
 .form_frame {
     color: #FFF;
+    background-image: url('/images/bg-trans-black.png');
+    border: 1px solid #000;
     padding: 10px;
     position: absolute;
     height: 100px;
@@ -527,7 +557,7 @@ img.logo {
 
 .content_holder span.text-input textarea,
 span.text-input input {
-    background-color: #AAA;
+    background-color: #E0E0E0;
     color: #000;
 }
 

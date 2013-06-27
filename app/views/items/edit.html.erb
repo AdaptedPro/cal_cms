@@ -1,6 +1,6 @@
 <article class="content_holder">
 	<section>
-		<%= link_to("<< Back to List", {:action => 'list'}, :class => 'main_btn custom_btn') %>
+		<%= link_to("&laquo; Back to List".html_safe, {:action => 'list'}, :class => 'main_btn custom_btn') %>
 	</section>
 
 	<section>					
@@ -67,13 +67,14 @@
 			</p>			
         	<br />
         	<% if !@contact.blank? %>
-        	<p>	
-            <select id="event_contacts" multiple="multiple" style="width:100%;">
-            	<% @contact.each do |cont| %>
-            	<option value="<%= cont.id %>"><%= cont.contact_first_name %> <%= cont.contact_last_name %></option>
-            </select>
-        	</p>
-            <br />
+	        	<p>	
+	            <select id="event_contacts" multiple="multiple" style="width:100%;">
+	            	<% @contact.each do |cont| %>
+	            	<option value="<%= cont.id %>"><%= cont.contact_first_name %> <%= cont.contact_last_name %></option>
+	            	<% end %>
+	            </select>
+	        	</p>
+	            <br />
             <% end %>
 	        <span class="save_btn">
 	        	<%= submit_tag("Update Event") %>
@@ -106,6 +107,5 @@ $(function() {
 	       return false;
 	    }
 	});	
-
 });
 </script>

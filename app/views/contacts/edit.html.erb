@@ -6,31 +6,7 @@
 		<h2>Edit Contact</h2>
 	</section>	
 	<section>
-		<%= form_for(:contact, :url => {:action => 'create'}) do |f| %>	
-		<span class="text-input">
-		<%= f.text_field(:contact_title)	 %>
-		</span>
-		<br />
-		<span class="text-input">
-		<%= f.text_field(:contact_first_name) %>
-		</span>
-		<br />
-		<span class="text-input">
-		<%= f.text_field(:contact_last_name) %>
-		</span>
-		<br />
-		<span class="text-input">
-		<%= f.email_field(:contact_email) %>
-		</span>
-		<br />
-		<span class="text-input">
-		<%= f.phone_field(:contact_phone) %>
-		</span>
-        <br />
-        <span class="save_btn">
-        	<%= submit_tag("Update Contact") %>
-        </span>
-        <% end %> 				
+	<%= render partial: 'editForm', :locals => { :object => @contact } %>				
 	</section>
 </article>
 <script type="text/javascript">

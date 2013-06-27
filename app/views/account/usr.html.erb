@@ -1,6 +1,7 @@
+<div class="form_frame">
 	<div id="user_info">	
 		<section>
-			<%= link_to("Go to dashboard", {:controller => 'dashboard', :action => 'index'}, :class => 'action new main_btn custom_btn') %>
+			<%= link_to("&laquo; Go to dashboard".html_safe, {:controller => 'dashboard', :action => 'index'}, :class => 'action new main_btn custom_btn') %>
 		</section>	
 		<%= form_for(@auth_user, :url => {:action => 'update', :id => @auth_user.id} ) do |f| %>		
 		<span class="default_btn"><%= button_tag('Click here to change your password.') %></span>
@@ -19,4 +20,5 @@
 		<br />
 		<span class="save_btn"><%= submit_tag("Save") %></span>	
 		<% end %>	
-	</div
+	</div>
+</div>	

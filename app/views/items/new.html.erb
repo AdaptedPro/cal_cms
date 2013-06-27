@@ -1,6 +1,6 @@
 <article class="content_holder">
 	<section>
-		<%= link_to("<< Back to List", {:action => 'list'}, :class => 'main_btn custom_btn') %>
+		<%= link_to("&laquo; Back to List".html_safe, {:action => 'list'}, :class => 'main_btn custom_btn') %>
 	</section>
 
 	<section id="article_header">             		
@@ -36,21 +36,21 @@
 					<tr>
 						<td>
 							<span class="text-input">
-								<%= text_field_tag(:start_date, nil, :id => 'start_date', :read_only => true, :placeholder => 'Start Date',  :class => 'form_put') %>
+								<%= text_field_tag(:start_date, nil, :id => 'start_date', :readonly => true, :placeholder => 'Start Date',  :class => 'form_put') %>
 							</span>
 						</td>
 						<td>
 							<span class="text-input">
-							<%= text_field_tag(:end_date, nil, :id => 'end_date', :read_only => true, :placeholder => 'End Date',  :class => 'form_put') %>
+							<%= text_field_tag(:end_date, nil, :id => 'end_date', :readonly => true, :placeholder => 'End Date',  :class => 'form_put') %>
 						</td>
 						<td>
 							<span class="text-input">
-								<%= text_field_tag(:start_time, nil, :id => 'start_time', :read_only => true, :placeholder => 'Start Time',  :class => 'form_put time') %>
+								<%= text_field_tag(:start_time, nil, :id => 'start_time', :placeholder => 'Start Time',  :class => 'form_put time') %>
 							</span>	
 						</td>
 						<td>
 							<span class="text-input">
-								<%= text_field_tag(:end_time, nil, :id => 'end_time', :read_only => true, :placeholder => 'End Time',  :class => 'form_put time') %>
+								<%= text_field_tag(:end_time, nil, :id => 'end_time', :placeholder => 'End Time',  :class => 'form_put time') %>
 							</span>	
 						</td>
 					</tr>
@@ -87,11 +87,18 @@
 			</span>					
 			<br />
 			<span class="text-input">				
-				<%= text_area(:parking_details, :placeholder => 'Parking info...',  :class => 'form_put') %>
+				<%= f.text_area(:parking, :placeholder => 'Parking info...',  :class => 'form_put') %>
 			</span>	
 			<br />
 			<fieldset>
 				<legend>Location</legend>
+				<% if !@event_location.blank? %>
+					<select style="width:100%;" multiple="multiple" style="width:100%;">
+						<% @event_location.each do |location| %> 
+						<option value="<%= location.id %>"><%= location.location_address_1 %></option>
+						<% end %>
+					</select>				
+				<% end %>
 				<span class="text-input">
 				<%= text_field_tag(:location_address_1, nil, :id => 'location_address_1', :placeholder => 'Address 1',  :class => 'form_put') %>
 				</span>
@@ -118,7 +125,7 @@
 				<legend>Contacts</legend>
 				<% if !@event_contact.blank? %>
 				<p>
-					<select style="width:100%;">
+					<select style="width:100%;" multiple="multiple" style="width:100%;">
 						<% @event_contact.each do |contact| %> 
 						<option value="<%= contact.id %>"><%= contact.contact_first_name %> <%= contact.contact_last_name %></option>
 						<% end %>
@@ -151,7 +158,7 @@
 	</section>
 		
 </article>
-<%= javascript_include_tag "select2.min","jquery.timepicker", "lib/base" %>
+<%= javascript_include_tag "select2.min","jquery.timepicker" %>
 <script type="text/javascript">
 $(function() {
 	$('select').select2({
@@ -171,8 +178,11 @@ $(function() {
         }
     });
 
-	$('#start_time').timepicker();
-	$('#end_time').timepicker();  
+	$('#start_time').timepicker({});
+	$('#end_time').timepicker({});  
+	$('#start_time').bind('click', function() {
+		$(this).focus();
+	});
 
 	$('#recur_select').change(function(){
 		var c = this.checked ? $('#recurring_select').slideDown() : $('#recurring_select').slideUp();
@@ -181,14 +191,6 @@ $(function() {
     $('.form_put').bind('input', function() {
     	$(this).val($(this).val().replace(/[^a-z0-9$,.@'"\/-]/gi, ''));
     });
-
-	$('#commit_message').bind('keypress', function (event) {
-	    var regex = new RegExp("^[a-zA-Z0-9]+$");
-	    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-	    if (!regex.test(key)) {
-	       event.preventDefault();
-	       return false;
-	    }
-	});    
+   
 });
 </script>			
