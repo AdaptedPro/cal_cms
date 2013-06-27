@@ -104,6 +104,19 @@ class AccountController < ApplicationController
 		@auth_user = AuthUser.find_by_id(session[:user_id])
 	end
 
+	def update
+		# Find object using form parameters
+		@auth_user = AuthUser.find(params[:id])
+		# Update the object
+		if @auth_user.update_attributes(params[:auth_user])
+			flash[:notice] = "Your info has been updated."			
+			# if update succeeds, redirect to the list action
+			redirect_to(:action => 'usr')
+		else
+			render('usr')
+		end			
+	end
+
 	def recover
 	end
 
