@@ -93,7 +93,9 @@ function initialize() {
 			var iterator = 0;
 			var neighborhoods = [
   				<% if !@locals.blank? %>
+  				<% @locals.each do |local| %>
   				(<%= @locals.location_lat %>,<%= @locals.location_lng %>),
+  				<% end %>
   				<% end %>
 			];
 
