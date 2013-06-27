@@ -41,6 +41,12 @@ class MainController < ApplicationController
 
 	def facebook
 		if params[:verified] == 'true' && params[:link].start_with?('https://www.facebook.com/')
+			#@auth_user = AuthUser.where('email = ?', params[:email])
+			#if !@auth_user.blank?
+			#	#@auth_user.fb_id = params[:]
+			#else
+			#	session[:user_id]
+			#end
 			session[:user_id] = params[:id]
 			session[:email] = params[:email]
 			session[:fb] = true

@@ -12,13 +12,12 @@
         <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css' />
 		<%= stylesheet_link_tag    "main","normalize","normalize.min","ui-lightness/jquery-ui-1.10.3.custom.css", :media => "all" %>
 		<%= javascript_include_tag    "application" %>
-		<!--<script src="//connect.facebook.net/en_US/all.js"></script>-->
+		<script src="//connect.facebook.net/en_US/all.js"></script>
         <%= csrf_meta_tags %>
     </head>
     <body class="welcome">
     <div id="fb-root"></div> 
         <script>
-            /*
             window.fbAsyncInit = function() {
                 FB.init({
                     appId      : '392071250858110', // App ID
@@ -73,11 +72,10 @@
                         }
                     });
                    } else {
-                     console.log('User cancelled login or did not fully authorize.');
+                     alert('Login attempt failed');//console.log('User cancelled login or did not fully authorize.');
                    }
                 }, {scope: 'email,user_likes,create_event'});                
-            }  
-            */              
+            }             
         </script>        
 
         <!--[if lt IE 7]>

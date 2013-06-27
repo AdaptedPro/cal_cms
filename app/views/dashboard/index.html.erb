@@ -4,15 +4,6 @@
 		<h2>Hello <%= @usr.first_name %>!</h2>	
 		<fieldset>
 			<legend>Locations</legend>
-			<% if !@locals.blank? %>
-			<div id="map-legend">
-				<select id="">
-					<% @locals.each do |local| %>
-					<option><%= local.location_address_1 %></option>
-					<% end %>    					
-				</select>
-			</div>
-			<% end %>
 			<div id="map-canvas"></div>
 		</fieldset>	                		
 	</section>
@@ -93,18 +84,13 @@ function initialize() {
 			var iterator = 0;
 			var neighborhoods = [
   				<% if !@locals.blank? %>
-  				<% @locals.each do |local| %>
-  				(<%= @local.location_lat %>,<%= @local.location_lng %>),
-  				<% end %>
-  				<% end %>
+  				<% @locals.each do |local|
+  					if !@local.location_lat.blank? %>
+  					(<%= @local.location_lat %>,<%= @local.location_lng %>),
+  				<% end 
+  				end
+  				end %>
 			];
-
-			<% if !@locals.blank? %>	
-			var contentString = "<div class='content_window'>" + @locals.location_address_1 + "<br />" + @locals.location_city  + "<br />" + @locals.location_state +  "<div>";	
-			var infowindow = new google.maps.InfoWindow({
-				content: contentString
-			});
-			<% end %>
 
 			drop();
 			function drop() {
