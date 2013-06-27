@@ -4,7 +4,7 @@
 		<h2>Hello <%= @usr.first_name %>!</h2>	
 		<fieldset>
 			<legend>Locations</legend>
-			<% if !@user_locations.blank? %>
+			<% if !@locals.blank? %>
 			<div id="map-legend">
 				<select id="">
 					<% @user_locations.each do |location_title| %>
@@ -92,8 +92,17 @@ function initialize() {
 			var markers = [];
 			var iterator = 0;
 			var neighborhoods = [
-  
+  				<% if !@locals.blank? %>
+  				(<%= @locals.location_lat %>,<%= @locals.location_lng %>),
+  				<% end %>
 			];
+
+			<% if !@locals.blank? %>	
+			var contentString = "<div class='content_window'>" + @locals.location_address_1 + "<br />" + @locals.location_city  + "<br />" + @locals.location_state +  "<div>";	
+			var infowindow = new google.maps.InfoWindow({
+				content: contentString
+			});
+			<% end %>
 
 			drop();
 			function drop() {

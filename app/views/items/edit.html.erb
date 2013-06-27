@@ -4,7 +4,7 @@
 	</section>
 
 	<section>					
-		<%= form_for(@event, :url => {:action => 'update'}, :html => {:id => @event.id}) do |f| %>
+		<%= form_for(@event, :url => {:action => 'update', :id => @event.id}) do |f| %>
 			<p>
 			<select id="item" name="item" style="width:40%;">
 				<option></option>
