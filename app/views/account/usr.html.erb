@@ -1,11 +1,14 @@
-<div class="form_frame">
+<div class="form_frame">	
 	<div id="user_info">	
+		  <% if !flash[:notice].blank? %>
+		  <div class="notice">
+		    <%= flash[:notice] %>
+		  </div>
+		  <% end %>		
 		<section>
 			<%= link_to("&laquo; Go to dashboard".html_safe, {:controller => 'dashboard', :action => 'index'}, :class => 'new main_btn custom_btn') %>
 		</section>	
 		<%= form_for(@auth_user, :url => {:action => 'update', :id => @auth_user.id} ) do |f| %>		
-		<span class="default_btn"><%= button_tag('Click here to change your password.') %></span>
-		<br />				
 		<span class="text-input">
 			<%= f.text_field(:first_name, :placeholder => 'First Name', :class => 'form_put') %>
 		</span>

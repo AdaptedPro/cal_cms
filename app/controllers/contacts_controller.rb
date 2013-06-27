@@ -9,8 +9,7 @@ class ContactsController < ApplicationController
 	end
 
 	def list
-		@contact = Contact.all
-		@contact = Contact.order
+		@contact = Contact.where('user_id = ?', session[:user_id])
 	end
 
 	def show
