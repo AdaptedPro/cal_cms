@@ -84,6 +84,8 @@
 </article>
 <br class="clr" />
 <script type="text/javascript">
+$(function() {
+	$("table").tablesorter({widthFixed: true, widgets: ['zebra']}).tablesorterPager({container: $("#pager")});
 	$("table thead th:eq(4)").data("sorter", false);
 	$("#search_btn").click(function() {
 		doSearch();
@@ -115,5 +117,6 @@
 			  $("table").trigger("sorton", [sorting]);
 			}
 		});
-	}; 				
+	}; 	
+});				
 </script>

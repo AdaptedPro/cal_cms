@@ -46,10 +46,10 @@
 							<td><%= event.item_publish_date %></td> 
 							<td><%= event.item_status %></td> 	 	 	 	 	 		 
 							<td class="action_links" width="100">
-								<%= link_to("Show", {:controller => 'items', :action => 'show', :id => event.id}, :class => 'action show') %>
-								<%= link_to("Edit", {:controller => 'items', :action => 'edit', :id => event.id}, :class => 'action edit') %>
-								<%= link_to("Delete", {:controller => 'items', :action => 'delete', :id => event.id}, :class => 'action delete') %>
-							</td>			
+								<%= link_to("S", {:action => 'show', :id => event.id}, :class => 'action show', :title => 'Show') %>
+								<%= link_to("E", {:action => 'edit', :id => event.id}, :class => 'action edit', :title => 'Edit') %>
+								<%= link_to("D", {:action => 'delete', :id => event.id}, :class => 'action delete', :title => 'Delete') %>
+							</td>				
 						</tr>
 						<% end %>
 					</tbody>
@@ -80,3 +80,9 @@
 		</fieldset>
 	</section>
 </article>
+<script type="text/javascript">
+$(function() {
+	$("table").tablesorter({widthFixed: true, widgets: ['zebra']}).tablesorterPager({container: $("#pager")});
+	$("table thead th:eq(4)").data("sorter", false);
+});
+</script> 

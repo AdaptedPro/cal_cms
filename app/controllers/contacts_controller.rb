@@ -15,7 +15,7 @@ class ContactsController < ApplicationController
 	def show
 		@contact = Contact.find(params[:id])	
 		@event = ItemData.where('SELECT COUNT(*) FROM contacts 
-									WHERE contacts.event_id = item_data.id')
+									WHERE contacts.event_id = item_data.id AND contacts.id = ?', params[:id])
 	end
 
 	def new
