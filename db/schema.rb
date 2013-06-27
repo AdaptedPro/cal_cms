@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130621042135) do
+ActiveRecord::Schema.define(:version => 20130627135718) do
+
+  create_table "apikeys", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "public_key",  :limit => 40, :null => false
+    t.string   "private_key", :limit => 40, :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
 
   create_table "auth_user_pages", :id => false, :force => true do |t|
     t.integer "auth_user_id"
@@ -31,6 +39,15 @@ ActiveRecord::Schema.define(:version => 20130621042135) do
     t.datetime "updated_at",                                    :null => false
   end
 
+  add_index "auth_users", ["email"], :name => "email", :unique => true
+
+  create_table "calendars", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "calendar_name", :limit => 50
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
+
   create_table "contacts", :force => true do |t|
     t.string   "contact_title",        :limit => 5
     t.string   "contact_first_name",   :limit => 20
@@ -41,12 +58,13 @@ ActiveRecord::Schema.define(:version => 20130621042135) do
     t.string   "created_by",           :limit => 40
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
+    t.integer  "user_id",                            :null => false
+    t.integer  "event_id",                           :null => false
   end
 
   create_table "item_data", :force => true do |t|
     t.integer  "timedate_id"
     t.integer  "item_id"
-    t.integer  "contact_id"
     t.integer  "location_id"
     t.integer  "parking_id"
     t.integer  "user_id"
@@ -63,7 +81,6 @@ ActiveRecord::Schema.define(:version => 20130621042135) do
     t.datetime "updated_at",                                          :null => false
   end
 
-  add_index "item_data", ["contact_id"], :name => "index_item_data_on_contact_id"
   add_index "item_data", ["item_id"], :name => "index_item_data_on_item_id"
   add_index "item_data", ["location_id"], :name => "index_item_data_on_location_id"
   add_index "item_data", ["parking_id"], :name => "index_item_data_on_parking_id"
@@ -138,6 +155,14 @@ ActiveRecord::Schema.define(:version => 20130621042135) do
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
     t.string   "created_by",      :limit => 40
+  end
+
+  create_table "recovery", :force => true do |t|
+    t.string   "email"
+    t.boolean  "recovered",                   :default => false
+    t.string   "recovery_hash", :limit => 40,                    :null => false
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
   end
 
   create_table "section_edits", :force => true do |t|

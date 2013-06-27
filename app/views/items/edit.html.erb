@@ -31,40 +31,35 @@
             	:id => 'event_description', :class => 'setWidth')%> 
 			</span>
 	        <br />
-	        <p>
 	        <% if !@event_location.blank? %>	
-			<select id="event_location" style="width:100%;">
+			<p>
+			<select id="event_location" multiple="multiple" style="width:100%;">
 				<option></option>
 				<% @event_location.each do |location| %>
 					<option value="<%= location.id %>"<% if @event.location_id == location.id %> selected="selected"<% end %>><%= location.location_address_1 %></option>
 				<% end %>
 			</select>
-			<% else %>
-			<fieldset>
-				<legend>Location</legend>
-				<span class="text-input">
-				<%= text_field_tag(:location_address_1, nil, :id => 'location_address_1', :placeholder => 'Address 1',  :class => 'form_put') %>
-				</span>
-				<br />
-				<span class="text-input">
-				<%= text_field_tag(:location_address_2, nil, :id => 'location_address_2', :placeholder => 'Address 2',  :class => 'form_put') %>
-				</span>
-				<br />
-				<span class="text-input">
-				<%= text_field_tag(:location_city, nil, :id => 'location_city', :placeholder => 'City',  :class => 'form_put') %>
-				</span>
-				<br />
-				<span class="text-input">
-				<%= text_field_tag(:location_state, nil, :id => 'location_state', :placeholder => 'State',  :class => 'form_put') %>
-				</span>
-				<br />
-				<span class="text-input">
-				<%= text_field_tag(:location_country, nil, :id => 'location_country', :placeholder => 'Country',  :class => 'form_put') %>
-				</span>
-				<br />
-			</fieldset>	
+			</p>
 			<% end %>
-			</p>			
+			<span class="text-input">
+			<%= text_field_tag(:location_address_1, nil, :id => 'location_address_1', :placeholder => 'Address 1',  :class => 'form_put') %>
+			</span>
+			<br />
+			<span class="text-input">
+			<%= text_field_tag(:location_address_2, nil, :id => 'location_address_2', :placeholder => 'Address 2',  :class => 'form_put') %>
+			</span>
+			<br />
+			<span class="text-input">
+			<%= text_field_tag(:location_city, nil, :id => 'location_city', :placeholder => 'City',  :class => 'form_put') %>
+			</span>
+			<br />
+			<span class="text-input">
+			<%= text_field_tag(:location_state, nil, :id => 'location_state', :placeholder => 'State',  :class => 'form_put') %>
+			</span>
+			<br />
+			<span class="text-input">
+			<%= text_field_tag(:location_country, nil, :id => 'location_country', :placeholder => 'Country',  :class => 'form_put') %>
+			</span>		
         	<br />
         	<% if !@contact.blank? %>
 	        	<p>	
@@ -74,12 +69,31 @@
 	            	<% end %>
 	            </select>
 	        	</p>
-	            <br />
             <% end %>
+           	<br />
+			<span class="text-input">
+			<%= text_field_tag(:contact_title, nil, :id => 'contact_title', :placeholder => 'Title',  :class => 'form_put') %>
+			</span>
+			<br />
+			<span class="text-input">
+			<%= text_field_tag(:contact_first_name, nil, :id => 'contact_first_name', :placeholder => 'First name',  :class => 'form_put') %>
+			</span>
+			<br />
+			<span class="text-input">
+			<%= text_field_tag(:contact_last_name, nil, :id => 'contact_last_name', :placeholder => 'Last name',  :class => 'form_put') %>
+			</span>
+			<br />
+			<span class="text-input">
+			<%= email_field_tag(:contact_email, nil, :id => 'contact_email', :placeholder => 'Email',  :class => 'form_put') %>
+			</span>
+			<br />
+			<span class="text-input">
+			<%= phone_field_tag(:contact_phone, nil, :id => 'contact_phone', :placeholder => 'Phone',  :class => 'form_put') %>
+			</span>     
+			<br />       
 	        <span class="save_btn">
 	        	<%= submit_tag("Update Event") %>
 	        </span> 								
-
 		<% end %>
 
 	</section>
@@ -88,12 +102,13 @@
 <%= javascript_include_tag "select2.min" %>
 <script type="text/javascript">
 $(function() {
-	$('#item').select2().select2({
+	$('#item').select2({
 	    placeholder: "Choose a calendar item.",
 	    allowClear: true		
 	});
 	$('#event_type').select2();
-	$('#event_status').select2();	
+	$('#event_status').select2();
+	$('#event_location').select2();	
 	$('#event_contacts').select2({
 	    placeholder: "Choose a contact for this item.",
 	    allowClear: true		

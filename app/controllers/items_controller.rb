@@ -47,6 +47,7 @@ class ItemsController < ApplicationController
 	def create
 		#If param not set will default
 		#params[:contacts_array]
+		@event = ItemData.create(params[:item_data])
 
 		@contact = Contact.new
 		@contact.contact_title = params[:contact_title]
@@ -55,6 +56,8 @@ class ItemsController < ApplicationController
 		@contact.contact_email = params[:contact_email]
 		@contact.contact_phone = params[:contact_phone]
 		@contact.contact_organization = params[:contact_organization]
+		@contact.event_id = @event.id
+		@contact.user_id = session[:user_id]
 		@contact.save 
 
 		@parking = Parking.new()
@@ -72,7 +75,7 @@ class ItemsController < ApplicationController
 		@timedate.week_of_month = params[:week_of_month]
 		@timedate.save		
 
-		@event = ItemData.create(params[:item_data])
+ 
 		@event.user_id = session[:user_id]
 		@event.item_id = params[:item]
 		@event.parking_id = @parking.id
