@@ -105,12 +105,12 @@ class ItemsController < ApplicationController
 
 	def update
 		# Find object using form parameters
-		@event = ItemData.find(params[:id])
+		@event = ItemData.find_by_id(params[:id])
 		# Update the object
-		if @ItemData.update_attributes(params[:event])
+		if @event.update_attributes(params[:item_data])
 			flash[:notice] = "event updated."			
 			# if update succeeds, redirect to the list action
-			redirect_to(:action => 'show', :id => @ItemData.id)
+			redirect_to(:action => 'show', :id => @event.id)
 		else
 			# If save fails, redisplay the form so the iser can fix problems
 			render('edit')

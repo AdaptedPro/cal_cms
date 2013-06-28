@@ -1,12 +1,31 @@
-	<section>
-		<ul>
+	<sectionid id="main_content">
+		<ul class="items">
 		<% if !@event.blank? %>
 			<% @event.each do |ev| %>
 			<li><p><strong><%= link_to(ev.item_title, {:action => 'show', :id => ev.id}) %></strong>
 				<hr /><%= ev.item_description %></p></li>
 				<% end %>
 		<% else %>
-			<li><%= @this_user.first_name %>has no events yet.</li>
+			<li>This calendar has not yet been set up.</li>
 		<% end %>
+			<li>
+				<div class="inner">
+	        		<h3><a href="#">Hello World Application</a></h3>
+	        		<div class="inner_left">
+	        			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+	        			Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+	        		</div>
+	        		<div class="inner_right">
+						<dl>
+						  <dt>When:</dt>
+						  	<dd>Startdate and time - EndDate and time</dd>
+						  <dt>Where:</dt>
+						  	<dd><a href="#">Title of location links to map, if address or latlon.</a></dd>
+						  <dt>Parking:</dt>
+						  	<dd>Parking details</dd>	
+						</dl>
+	        		</div>
+	        	</div>	
+			</li>
 		</ul>
 	</section>
