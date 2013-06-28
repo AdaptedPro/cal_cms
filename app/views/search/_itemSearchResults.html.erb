@@ -1,15 +1,13 @@
 <% @results.each do |item| %>
 	<tr>	 	 	 	 	 	 		
-		<td><%= item.item_title %></td>	 	 	 	 	 	 		
-		<td style="vertical-align:middle; width:10%;">
-			<div class='viewable <%= item.item_viewable ? "yay": "nay" %>'></div>
-		</td>  
-		<td><%= item.item_publish_date %></td> 
-		<td><%= item.item_status %></td> 	 	 	 	 	 		 
-		<td>
-			<%= link_to("Show", {:action => 'show', :id => item.id}, :class => 'action show') %>
-			<%= link_to("Edit", {:action => 'edit', :id => item.id}, :class => 'action edit') %>
-			<%= link_to("Delete", {:action => 'delete', :id => item.id}, :class => 'action delete') %>
+		<td><%= event.item_title %></td>	 	 	 	 	 	 		
+		<td style="vertical-align:middle; width:10%;"><div class='viewable <%= event.item_viewable ? "yay": "nay" %>'></div></td> 
+		<td><%= event.item_publish_date %></td> 
+		<td><%= event.item_status %></td> 	 	 	 	 	 		 
+		<td class="action_links" width="100">
+			<%= link_to("S", {:action => 'show', :id => event.id}, :class => 'action show', :title => 'Show') %>
+			<%= link_to("E", {:action => 'edit', :id => event.id}, :class => 'action edit', :title => 'Edit') %>
+			<%= link_to("D", {:action => 'delete', :id => event.id}, :class => 'action delete', :title => 'Delete') %>
 		</td>			
 	</tr>
 <% end %>	
